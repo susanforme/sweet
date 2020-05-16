@@ -1,10 +1,17 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {createStackNavigator} from '@react-navigation/stack';
+import HomeScreen from '@/screens/screens/tab/HomeScreen';
 
-export default function HomeStack() {
+const HomeStack = createStackNavigator<StackList>();
+
+export default function HomeStackScreen() {
   return (
-    <View>
-      <Text>i am HomeStack </Text>
-    </View>
+    <HomeStack.Navigator>
+      <HomeStack.Screen name="Home" component={HomeScreen}></HomeStack.Screen>
+    </HomeStack.Navigator>
   );
 }
+
+type StackList = {
+  Home: undefined;
+};

@@ -16,8 +16,9 @@ export default function Main() {
     <NavigationContainer>
       <MainStack.Navigator>
         <MainStack.Screen
-          name="Tabstack"
-          component={Tabstack}></MainStack.Screen>
+          name="Tab"
+          component={Tabstack}
+          options={{header: () => null}}></MainStack.Screen>
         <MainStack.Screen name="Chat" component={Chat}></MainStack.Screen>
         <MainStack.Screen name="Login" component={Login}></MainStack.Screen>
         <MainStack.Screen name="Profile" component={Profile}></MainStack.Screen>
@@ -30,7 +31,7 @@ export default function Main() {
 }
 
 type MainStackList = {
-  Tabstack: undefined;
+  Tab: undefined;
   Chat: undefined;
   Login: undefined;
   Profile: undefined;
