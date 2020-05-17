@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import {NavigationContainer} from '@react-navigation/native';
 import Chat from '@/screens/Chat';
@@ -8,13 +8,20 @@ import Release from '@/screens/Release';
 import Search from '@/screens/Search';
 import Setting from '@/screens/Setting';
 import Tabstack from '@/screens/Tabstack';
+import {connect} from 'react-redux';
+import {MyAppState} from '@/types';
+import store from '@/store';
+import {verifyAccount} from '@/store/actions';
 
 const MainStack = createStackNavigator<MainStackList>();
 
-export default function Main() {
+function Main() {
+  useEffect(() => {
+    store.dispatch(verifyAccount());
+  }, []);
   return (
     <NavigationContainer>
-      <MainStack.Navigator>
+      <MainStack.Navigator initialRouteName="Tab">
         <MainStack.Screen
           name="Tab"
           component={Tabstack}
@@ -29,6 +36,13 @@ export default function Main() {
     </NavigationContainer>
   );
 }
+
+const stateToProps = (state: MyAppState) => ({
+  isLogin: state.isLogin,
+  isLoading: state.isLoading,
+});
+
+export default connect(stateToProps)(Main);
 
 type MainStackList = {
   Tab: undefined;
