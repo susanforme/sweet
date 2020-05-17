@@ -12,13 +12,18 @@ import {connect} from 'react-redux';
 import {MyAppState} from '@/types';
 import store from '@/store';
 import {verifyAccount} from '@/store/actions';
+import SplashScreen from 'react-native-splash-screen';
 
 const MainStack = createStackNavigator<MainStackList>();
 
-function Main() {
+function Main({isLogin, isLoading}: MainProps) {
   useEffect(() => {
     store.dispatch(verifyAccount());
   }, []);
+  if (!isLoading) {
+    SplashScreen.hide();
+  }
+  console.log(isLoading, isLogin);
   return (
     <NavigationContainer>
       <MainStack.Navigator initialRouteName="Tab">
@@ -53,3 +58,8 @@ type MainStackList = {
   Search: undefined;
   Setting: undefined;
 };
+
+interface MainProps {
+  isLogin: boolean;
+  isLoading: boolean;
+}
