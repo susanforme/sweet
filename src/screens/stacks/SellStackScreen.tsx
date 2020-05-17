@@ -1,10 +1,27 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {createStackNavigator} from '@react-navigation/stack';
+import SellScreen from '@/screens/screens/tab/SellScreen';
+import {useHeaderHeight} from '@react-navigation/stack';
+import {getDefaultHeaderStyle} from '@/style/header';
 
-export default function SellStack() {
+const SellStack = createStackNavigator<StackList>();
+
+export default function SellStackScreen() {
+  const height = useHeaderHeight();
+
   return (
-    <View>
-      <Text>i am SellStack </Text>
-    </View>
+    <SellStack.Navigator>
+      <SellStack.Screen
+        name="Sell"
+        component={SellScreen}
+        options={{
+          ...getDefaultHeaderStyle(height, 1),
+          headerTitle: '闲置专区',
+        }}></SellStack.Screen>
+    </SellStack.Navigator>
   );
 }
+
+type StackList = {
+  Sell: undefined;
+};

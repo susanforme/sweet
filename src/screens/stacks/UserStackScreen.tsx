@@ -1,10 +1,27 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {createStackNavigator} from '@react-navigation/stack';
+import UserScreen from '@/screens/screens/tab/UserScreen';
+import {useHeaderHeight} from '@react-navigation/stack';
+import {getDefaultHeaderStyle} from '@/style/header';
 
-export default function UserStack() {
+const UserStack = createStackNavigator<StackList>();
+
+export default function UserStackScreen() {
+  const height = useHeaderHeight();
+
   return (
-    <View>
-      <Text>i am UserStack </Text>
-    </View>
+    <UserStack.Navigator>
+      <UserStack.Screen
+        name="User"
+        component={UserScreen}
+        options={{
+          ...getDefaultHeaderStyle(height, 1),
+          headerTitle: '消息中心',
+        }}></UserStack.Screen>
+    </UserStack.Navigator>
   );
 }
+
+type StackList = {
+  User: undefined;
+};

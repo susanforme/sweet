@@ -1,10 +1,27 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {createStackNavigator} from '@react-navigation/stack';
+import MessageScreen from '@/screens/screens/tab/MessageScreen';
+import {useHeaderHeight} from '@react-navigation/stack';
+import {getDefaultHeaderStyle} from '@/style/header';
 
-export default function MessageStack() {
+const MessageStack = createStackNavigator<StackList>();
+
+export default function MessageStackScreen() {
+  const height = useHeaderHeight();
+
   return (
-    <View>
-      <Text>i am MessageStack </Text>
-    </View>
+    <MessageStack.Navigator>
+      <MessageStack.Screen
+        name="Message"
+        component={MessageScreen}
+        options={{
+          ...getDefaultHeaderStyle(height, 1),
+          headerTitle: '消息',
+        }}></MessageStack.Screen>
+    </MessageStack.Navigator>
   );
 }
+
+type StackList = {
+  Message: undefined;
+};
