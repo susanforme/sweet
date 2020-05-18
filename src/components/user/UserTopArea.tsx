@@ -34,6 +34,8 @@ export default function UserTopArea({
       <TopImg style={styles.img}></TopImg>
       <Text
         style={styles.userName}
+        numberOfLines={1}
+        ellipsizeMode={'tail'}
         onPress={() => {
           if (isDefault) {
             navigation.navigate('Login');
@@ -83,6 +85,7 @@ const styles = StyleSheet.create({
     paddingLeft: 10 * widthScale,
     fontSize: 20 * widthScale,
     fontWeight: '700',
+    width: 200 * widthScale,
   },
   personalFather: {
     ...heightAndLineHeight,

@@ -7,7 +7,10 @@ import {StatusBar} from 'react-native';
 export default function App() {
   return (
     <Provider store={store}>
-      <StatusBar backgroundColor="#FEEE1B" barStyle="dark-content"></StatusBar>
+      <StatusBar
+        backgroundColor="transparent"
+        translucent
+        barStyle="dark-content"></StatusBar>
       <Main></Main>
     </Provider>
   );

@@ -3,10 +3,12 @@ import {createStackNavigator} from '@react-navigation/stack';
 import HomeScreen from '@/screens/screens/tab/HomeScreen';
 import {useHeaderHeight} from '@react-navigation/stack';
 import {getDefaultHeaderStyle} from '@/style/header';
+import {StatusBar} from 'react-native';
 
 const HomeStack = createStackNavigator<StackList>();
 
 export default function HomeStackScreen() {
+  const paddingTop = StatusBar.currentHeight || 30;
   const height = useHeaderHeight();
   return (
     <HomeStack.Navigator>
@@ -14,7 +16,7 @@ export default function HomeStackScreen() {
         name="Home"
         component={HomeScreen}
         options={{
-          ...getDefaultHeaderStyle(height),
+          ...getDefaultHeaderStyle(height, paddingTop, 0.5),
           headerTitle: '首页',
         }}></HomeStack.Screen>
     </HomeStack.Navigator>

@@ -13,10 +13,14 @@ import {MyAppState} from '@/types';
 import store from '@/store';
 import {verifyAccount} from '@/store/actions';
 import SplashScreen from 'react-native-splash-screen';
+import {getDefaultHeaderStyle} from '@/style/header';
+import {widthScale} from './style';
+import {StatusBar} from 'react-native';
 
 const MainStack = createStackNavigator<MainStackList>();
 
 function Main({isLogin, isLoading}: MainProps) {
+  const paddingTop = StatusBar.currentHeight || 30;
   useEffect(() => {
     store.dispatch(verifyAccount());
   }, []);
@@ -32,11 +36,41 @@ function Main({isLogin, isLoading}: MainProps) {
           component={Tabstack}
           options={{header: () => null}}></MainStack.Screen>
         <MainStack.Screen name="Chat" component={Chat}></MainStack.Screen>
-        <MainStack.Screen name="Login" component={Login}></MainStack.Screen>
-        <MainStack.Screen name="Profile" component={Profile}></MainStack.Screen>
-        <MainStack.Screen name="Release" component={Release}></MainStack.Screen>
-        <MainStack.Screen name="Search" component={Search}></MainStack.Screen>
-        <MainStack.Screen name="Setting" component={Setting}></MainStack.Screen>
+        <MainStack.Screen
+          name="Login"
+          component={Login}
+          options={{
+            ...getDefaultHeaderStyle(80 * widthScale, paddingTop, 0.5, 'white'),
+            title: '',
+          }}></MainStack.Screen>
+        <MainStack.Screen
+          name="Profile"
+          component={Profile}
+          options={{
+            ...getDefaultHeaderStyle(80 * widthScale, paddingTop),
+            title: '个人主页',
+          }}></MainStack.Screen>
+        <MainStack.Screen
+          name="Release"
+          component={Release}
+          options={{
+            ...getDefaultHeaderStyle(80 * widthScale, paddingTop),
+            title: '发布',
+          }}></MainStack.Screen>
+        <MainStack.Screen
+          name="Search"
+          component={Search}
+          options={{
+            ...getDefaultHeaderStyle(80 * widthScale, paddingTop),
+            title: '搜索',
+          }}></MainStack.Screen>
+        <MainStack.Screen
+          name="Setting"
+          component={Setting}
+          options={{
+            ...getDefaultHeaderStyle(80 * widthScale, paddingTop),
+            title: '设置',
+          }}></MainStack.Screen>
       </MainStack.Navigator>
     </NavigationContainer>
   );
