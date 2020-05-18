@@ -15,7 +15,7 @@ export default function SellStackScreen() {
         name="Sell"
         component={SellScreen}
         options={{
-          ...getDefaultHeaderStyle(height, 1),
+          ...getDefaultHeaderStyle(height, 0.8),
           headerTitle: '闲置专区',
         }}></SellStack.Screen>
     </SellStack.Navigator>

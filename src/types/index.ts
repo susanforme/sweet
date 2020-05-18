@@ -4,6 +4,9 @@
 export interface MyAppState {
   isLogin: boolean;
   isLoading: boolean;
+  err: {
+    verifyAccount: string;
+  };
 }
 
 /**

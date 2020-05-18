@@ -37,13 +37,13 @@ export const verifyAccount = () => {
         }
         dispath({
           type: ActionTypes.CHECK_LOGIN_STATUS,
-          data: {isLogin: false, isLoading},
+          data: {isLogin: false, isLoading, err: '账号登录失效'},
         });
       })
       .catch(() => {
         dispath({
           type: ActionTypes.CHECK_LOGIN_STATUS,
-          data: {isLogin: false, isLoading},
+          data: {isLogin: false, isLoading, err: '网络错误'},
         });
       });
   };

@@ -15,7 +15,7 @@ export default function MessageStackScreen() {
         name="Message"
         component={MessageScreen}
         options={{
-          ...getDefaultHeaderStyle(height, 1),
+          ...getDefaultHeaderStyle(height, 0.8),
           headerTitle: '消息',
         }}></MessageStack.Screen>
     </MessageStack.Navigator>

@@ -23,7 +23,7 @@ function Main({isLogin, isLoading}: MainProps) {
   if (!isLoading) {
     SplashScreen.hide();
   }
-  console.log(isLoading, isLogin);
+  console.log(isLogin, isLoading);
   return (
     <NavigationContainer>
       <MainStack.Navigator initialRouteName="Tab">
