@@ -7,12 +7,22 @@ export interface MyAppState {
   err: {
     verifyAccount: string;
   };
+  user: {
+    _id: string;
+    headImg: string;
+    userName: string;
+  };
 }
 
 /**
  * check请求的response
  */
 export interface CheckResponse {
-  msg: string;
   status: 0 | 1;
+  data: {
+    msg?: string;
+    _id?: string;
+    userName?: string;
+    headImg?: string;
+  };
 }

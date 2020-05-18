@@ -29,10 +29,11 @@ export const verifyAccount = () => {
       .get<CheckResponse>('/user/check')
       .then((res) => {
         const status = res.data.status;
+        const {_id, headImg, userName} = res.data.data;
         if (status) {
           return dispath({
             type: ActionTypes.CHECK_LOGIN_STATUS,
-            data: {isLogin: true, isLoading},
+            data: {isLogin: true, isLoading, user: {_id, headImg, userName}},
           });
         }
         dispath({

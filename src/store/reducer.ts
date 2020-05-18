@@ -4,6 +4,11 @@ import {MyAppState} from '@/types';
 const initState: MyAppState = {
   isLogin: false,
   isLoading: true,
+  user: {
+    _id: '',
+    userName: '',
+    headImg: '',
+  },
   err: {
     verifyAccount: '',
   },
@@ -20,6 +25,7 @@ export default (state = initState, action: any) => {
       newState.isLogin = action.data.isLogin;
       newState.isLoading = action.data.isLoading;
       newState.err.verifyAccount = action.data.err || '';
+      newState.user = action.data.user || {};
       break;
     }
   }
