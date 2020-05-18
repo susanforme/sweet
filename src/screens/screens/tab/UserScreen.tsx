@@ -1,10 +1,38 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {ScrollView, StyleSheet} from 'react-native';
+import {MyAppState} from '@/types';
+import {connect} from 'react-redux';
+import UserTopArea from '@/components/user/UserTopArea';
 
-export default function UserScreen() {
+function UserScreen({isLogin, user}: UserProps) {
+  const {userName, _id, headImg} = user;
+  let isDefault = false;
+  if (!isLogin) {
+    isDefault = true;
+  }
   return (
-    <View>
-      <Text>i am UserScreen </Text>
-    </View>
+    <ScrollView style={styles.userFather}>
+      <UserTopArea
+        userName={userName}
+        _id={_id}
+        headImg={headImg}
+        isDefault={isDefault}></UserTopArea>
+    </ScrollView>
   );
+}
+
+const styles = StyleSheet.create({
+  userFather: {},
+});
+
+const stateToProps = (state: MyAppState) => ({
+  isLogin: state.isLogin,
+  user: state.user,
+});
+
+export default connect(stateToProps)(UserScreen);
+
+interface UserProps {
+  isLogin: boolean;
+  user: MyAppState['user'];
 }

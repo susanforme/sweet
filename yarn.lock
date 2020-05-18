@@ -11,7 +11,7 @@
 
 "@babel/core@^7.0.0", "@babel/core@^7.1.0", "@babel/core@^7.6.2":
   version "7.9.6"
-  resolved "https://registry.npm.taobao.org/@babel/core/download/@babel/core-7.9.6.tgz?cache=0&sync_timestamp=1588185908440&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40babel%2Fcore%2Fdownload%2F%40babel%2Fcore-7.9.6.tgz#d9aa1f580abf3b2286ef40b6904d390904c63376"
+  resolved "https://registry.npm.taobao.org/@babel/core/download/@babel/core-7.9.6.tgz#d9aa1f580abf3b2286ef40b6904d390904c63376"
   integrity sha1-2aofWAq/OyKG70C2kE05CQTGM3Y=
   dependencies:
     "@babel/code-frame" "^7.8.3"
@@ -627,7 +627,7 @@
 
 "@babel/runtime@^7.0.0", "@babel/runtime@^7.5.5", "@babel/runtime@^7.6.2", "@babel/runtime@^7.8.4":
   version "7.9.6"
-  resolved "https://registry.npm.taobao.org/@babel/runtime/download/@babel/runtime-7.9.6.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40babel%2Fruntime%2Fdownload%2F%40babel%2Fruntime-7.9.6.tgz#a9102eb5cadedf3f31d08a9ecf294af7827ea29f"
+  resolved "https://registry.npm.taobao.org/@babel/runtime/download/@babel/runtime-7.9.6.tgz#a9102eb5cadedf3f31d08a9ecf294af7827ea29f"
   integrity sha1-qRAutcre3z8x0IqezylK94J+op8=
   dependencies:
     regenerator-runtime "^0.13.4"
@@ -707,7 +707,7 @@
 
 "@hapi/topo@3.x.x":
   version "3.1.6"
-  resolved "https://registry.npm.taobao.org/@hapi/topo/download/@hapi/topo-3.1.6.tgz#68d935fa3eae7fdd5ab0d7f953f3205d8b2bfc29"
+  resolved "https://registry.npm.taobao.org/@hapi/topo/download/@hapi/topo-3.1.6.tgz?cache=0&sync_timestamp=1578128698166&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40hapi%2Ftopo%2Fdownload%2F%40hapi%2Ftopo-3.1.6.tgz#68d935fa3eae7fdd5ab0d7f953f3205d8b2bfc29"
   integrity sha1-aNk1+j6uf91asNf5U/MgXYsr/Ck=
   dependencies:
     "@hapi/hoek" "^8.3.0"
@@ -976,7 +976,7 @@
 
 "@react-native-community/eslint-config@^1.0.0":
   version "1.1.0"
-  resolved "https://registry.npm.taobao.org/@react-native-community/eslint-config/download/@react-native-community/eslint-config-1.1.0.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40react-native-community%2Feslint-config%2Fdownload%2F%40react-native-community%2Feslint-config-1.1.0.tgz#2dacad06dd44d13e778510864473fc6091f080c0"
+  resolved "https://registry.npm.taobao.org/@react-native-community/eslint-config/download/@react-native-community/eslint-config-1.1.0.tgz#2dacad06dd44d13e778510864473fc6091f080c0"
   integrity sha1-LaytBt1E0T53hRCGRHP8YJHwgMA=
   dependencies:
     "@react-native-community/eslint-plugin" "^1.1.0"
@@ -1039,7 +1039,7 @@
 
 "@react-navigation/stack@^5.3.6":
   version "5.3.6"
-  resolved "https://registry.npm.taobao.org/@react-navigation/stack/download/@react-navigation/stack-5.3.6.tgz?cache=0&sync_timestamp=1589556999506&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40react-navigation%2Fstack%2Fdownload%2F%40react-navigation%2Fstack-5.3.6.tgz#7a1bf2f6b77dd92a0aa7befb4f3263215bed58f5"
+  resolved "https://registry.npm.taobao.org/@react-navigation/stack/download/@react-navigation/stack-5.3.6.tgz#7a1bf2f6b77dd92a0aa7befb4f3263215bed58f5"
   integrity sha1-ehvy9rd92SoKp777TzJjIVvtWPU=
   dependencies:
     color "^3.1.2"
@@ -1178,6 +1178,13 @@
     "@types/prop-types" "*"
     csstype "^2.2.0"
 
+"@types/redux@^3.6.0":
+  version "3.6.0"
+  resolved "https://registry.npm.taobao.org/@types/redux/download/@types/redux-3.6.0.tgz#f1ebe1e5411518072e4fdfca5c76e16e74c1399a"
+  integrity sha1-8evh5UEVGAcuT9/KXHbhbnTBOZo=
+  dependencies:
+    redux "*"
+
 "@types/stack-utils@^1.0.1":
   version "1.0.1"
   resolved "https://registry.npm.taobao.org/@types/stack-utils/download/@types/stack-utils-1.0.1.tgz#0a851d3bd96498fa25c33ab7278ed3bd65f06c3e"
@@ -1204,7 +1211,7 @@
 
 "@typescript-eslint/eslint-plugin@^2.25.0", "@typescript-eslint/eslint-plugin@^2.27.0":
   version "2.33.0"
-  resolved "https://registry.npm.taobao.org/@typescript-eslint/eslint-plugin/download/@typescript-eslint/eslint-plugin-2.33.0.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40typescript-eslint%2Feslint-plugin%2Fdownload%2F%40typescript-eslint%2Feslint-plugin-2.33.0.tgz#d6c8319d5011b4783bb3d2dadf105d8bdd499bd5"
+  resolved "https://registry.npm.taobao.org/@typescript-eslint/eslint-plugin/download/@typescript-eslint/eslint-plugin-2.33.0.tgz#d6c8319d5011b4783bb3d2dadf105d8bdd499bd5"
   integrity sha1-1sgxnVARtHg7s9La3xBdi91Jm9U=
   dependencies:
     "@typescript-eslint/experimental-utils" "2.33.0"
@@ -1214,7 +1221,7 @@
 
 "@typescript-eslint/experimental-utils@2.33.0":
   version "2.33.0"
-  resolved "https://registry.npm.taobao.org/@typescript-eslint/experimental-utils/download/@typescript-eslint/experimental-utils-2.33.0.tgz?cache=0&sync_timestamp=1589568803888&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40typescript-eslint%2Fexperimental-utils%2Fdownload%2F%40typescript-eslint%2Fexperimental-utils-2.33.0.tgz#000f1e5f344fbea1323dc91cc174805d75f99a03"
+  resolved "https://registry.npm.taobao.org/@typescript-eslint/experimental-utils/download/@typescript-eslint/experimental-utils-2.33.0.tgz#000f1e5f344fbea1323dc91cc174805d75f99a03"
   integrity sha1-AA8eXzRPvqEyPckcwXSAXXX5mgM=
   dependencies:
     "@types/json-schema" "^7.0.3"
@@ -1224,7 +1231,7 @@
 
 "@typescript-eslint/parser@^2.25.0", "@typescript-eslint/parser@^2.27.0":
   version "2.33.0"
-  resolved "https://registry.npm.taobao.org/@typescript-eslint/parser/download/@typescript-eslint/parser-2.33.0.tgz?cache=0&sync_timestamp=1589568800685&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40typescript-eslint%2Fparser%2Fdownload%2F%40typescript-eslint%2Fparser-2.33.0.tgz#395c0ef229ebef883608f8632a34f0acf02b9bdd"
+  resolved "https://registry.npm.taobao.org/@typescript-eslint/parser/download/@typescript-eslint/parser-2.33.0.tgz#395c0ef229ebef883608f8632a34f0acf02b9bdd"
   integrity sha1-OVwO8inr74g2CPhjKjTwrPArm90=
   dependencies:
     "@types/eslint-visitor-keys" "^1.0.0"
@@ -1234,7 +1241,7 @@
 
 "@typescript-eslint/typescript-estree@2.33.0":
   version "2.33.0"
-  resolved "https://registry.npm.taobao.org/@typescript-eslint/typescript-estree/download/@typescript-eslint/typescript-estree-2.33.0.tgz?cache=0&sync_timestamp=1589568805932&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40typescript-eslint%2Ftypescript-estree%2Fdownload%2F%40typescript-eslint%2Ftypescript-estree-2.33.0.tgz#33504c050ccafd38f397a645d4e9534d2eccbb5c"
+  resolved "https://registry.npm.taobao.org/@typescript-eslint/typescript-estree/download/@typescript-eslint/typescript-estree-2.33.0.tgz#33504c050ccafd38f397a645d4e9534d2eccbb5c"
   integrity sha1-M1BMBQzK/Tjzl6ZF1OlTTS7Mu1w=
   dependencies:
     debug "^4.1.1"
@@ -2444,14 +2451,14 @@ eslint-plugin-eslint-comments@^3.1.2:
 
 eslint-plugin-flowtype@2.50.3:
   version "2.50.3"
-  resolved "https://registry.npm.taobao.org/eslint-plugin-flowtype/download/eslint-plugin-flowtype-2.50.3.tgz#61379d6dce1d010370acd6681740fd913d68175f"
+  resolved "https://registry.npm.taobao.org/eslint-plugin-flowtype/download/eslint-plugin-flowtype-2.50.3.tgz?cache=0&sync_timestamp=1589775759830&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Feslint-plugin-flowtype%2Fdownload%2Feslint-plugin-flowtype-2.50.3.tgz#61379d6dce1d010370acd6681740fd913d68175f"
   integrity sha1-YTedbc4dAQNwrNZoF0D9kT1oF18=
   dependencies:
     lodash "^4.17.10"
 
 eslint-plugin-jest@22.4.1:
   version "22.4.1"
-  resolved "https://registry.npm.taobao.org/eslint-plugin-jest/download/eslint-plugin-jest-22.4.1.tgz#a5fd6f7a2a41388d16f527073b778013c5189a9c"
+  resolved "https://registry.npm.taobao.org/eslint-plugin-jest/download/eslint-plugin-jest-22.4.1.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Feslint-plugin-jest%2Fdownload%2Feslint-plugin-jest-22.4.1.tgz#a5fd6f7a2a41388d16f527073b778013c5189a9c"
   integrity sha1-pf1veipBOI0W9ScHO3eAE8UYmpw=
 
 eslint-plugin-prettier@3.1.2:
@@ -2669,7 +2676,7 @@ expand-brackets@^2.1.4:
 
 expect@^24.9.0:
   version "24.9.0"
-  resolved "https://registry.npm.taobao.org/expect/download/expect-24.9.0.tgz?cache=0&sync_timestamp=1588675340802&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fexpect%2Fdownload%2Fexpect-24.9.0.tgz#b75165b4817074fa4a157794f46fe9f1ba15b6ca"
+  resolved "https://registry.npm.taobao.org/expect/download/expect-24.9.0.tgz#b75165b4817074fa4a157794f46fe9f1ba15b6ca"
   integrity sha1-t1FltIFwdPpKFXeU9G/p8boVtso=
   dependencies:
     "@jest/types" "^24.9.0"
@@ -2770,7 +2777,7 @@ fast-diff@^1.1.2:
 
 fast-json-stable-stringify@^2.0.0:
   version "2.1.0"
-  resolved "https://registry.npm.taobao.org/fast-json-stable-stringify/download/fast-json-stable-stringify-2.1.0.tgz?cache=0&sync_timestamp=1576340291001&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Ffast-json-stable-stringify%2Fdownload%2Ffast-json-stable-stringify-2.1.0.tgz#874bf69c6f404c2b5d99c481341399fd55892633"
+  resolved "https://registry.npm.taobao.org/fast-json-stable-stringify/download/fast-json-stable-stringify-2.1.0.tgz#874bf69c6f404c2b5d99c481341399fd55892633"
   integrity sha1-h0v2nG9ATCtdmcSBNBOZ/VWJJjM=
 
 fast-levenshtein@~2.0.6:
@@ -3695,7 +3702,7 @@ jest-environment-jsdom@^24.9.0:
 
 jest-environment-node@^24.9.0:
   version "24.9.0"
-  resolved "https://registry.npm.taobao.org/jest-environment-node/download/jest-environment-node-24.9.0.tgz?cache=0&sync_timestamp=1588675336982&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fjest-environment-node%2Fdownload%2Fjest-environment-node-24.9.0.tgz#333d2d2796f9687f2aeebf0742b519f33c1cbfd3"
+  resolved "https://registry.npm.taobao.org/jest-environment-node/download/jest-environment-node-24.9.0.tgz#333d2d2796f9687f2aeebf0742b519f33c1cbfd3"
   integrity sha1-Mz0tJ5b5aH8q7r8HQrUZ8zwcv9M=
   dependencies:
     "@jest/environment" "^24.9.0"
@@ -3784,7 +3791,7 @@ jest-message-util@^24.9.0:
 
 jest-mock@^24.9.0:
   version "24.9.0"
-  resolved "https://registry.npm.taobao.org/jest-mock/download/jest-mock-24.9.0.tgz?cache=0&sync_timestamp=1588675318142&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fjest-mock%2Fdownload%2Fjest-mock-24.9.0.tgz#c22835541ee379b908673ad51087a2185c13f1c6"
+  resolved "https://registry.npm.taobao.org/jest-mock/download/jest-mock-24.9.0.tgz#c22835541ee379b908673ad51087a2185c13f1c6"
   integrity sha1-wig1VB7jebkIZzrVEIeiGFwT8cY=
   dependencies:
     "@jest/types" "^24.9.0"
@@ -4322,7 +4329,7 @@ metro-babel-transformer@0.58.0:
 
 metro-cache@0.58.0:
   version "0.58.0"
-  resolved "https://registry.npm.taobao.org/metro-cache/download/metro-cache-0.58.0.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fmetro-cache%2Fdownload%2Fmetro-cache-0.58.0.tgz#630ea0a4626dfb9591c71fdb85dce14b5e9a04ec"
+  resolved "https://registry.npm.taobao.org/metro-cache/download/metro-cache-0.58.0.tgz#630ea0a4626dfb9591c71fdb85dce14b5e9a04ec"
   integrity sha1-Yw6gpGJt+5WRxx/bhdzhS16aBOw=
   dependencies:
     jest-serializer "^24.4.0"
@@ -4641,9 +4648,9 @@ nan@^2.12.1:
   integrity sha1-174036MQW5FJTDFHCJMV7/iHSwE=
 
 nanoid@^3.1.5:
-  version "3.1.8"
-  resolved "https://registry.npm.taobao.org/nanoid/download/nanoid-3.1.8.tgz#de6460f6609e8031c161a12f7dfb09bcdf7449a7"
-  integrity sha1-3mRg9mCegDHBYaEvffsJvN90Sac=
+  version "3.1.9"
+  resolved "https://registry.npm.taobao.org/nanoid/download/nanoid-3.1.9.tgz#1f148669c70bb2072dc5af0666e46edb6cd31fb2"
+  integrity sha1-HxSGaccLsgctxa8GZuRu22zTH7I=
 
 nanomatch@^1.2.9:
   version "1.2.13"
@@ -5259,6 +5266,11 @@ react-native-iphone-x-helper@^1.2.1:
   resolved "https://registry.npm.taobao.org/react-native-iphone-x-helper/download/react-native-iphone-x-helper-1.2.1.tgz#645e2ffbbb49e80844bb4cbbe34a126fda1e6772"
   integrity sha1-ZF4v+7tJ6AhEu0y740oSb9oeZ3I=
 
+react-native-linear-gradient@^2.5.6:
+  version "2.5.6"
+  resolved "https://registry.npm.taobao.org/react-native-linear-gradient/download/react-native-linear-gradient-2.5.6.tgz#96215cbc5ec7a01247a20890888aa75b834d44a0"
+  integrity sha1-liFcvF7HoBJHogiQiIqnW4NNRKA=
+
 react-native-reanimated@^1.8.0:
   version "1.8.0"
   resolved "https://registry.npm.taobao.org/react-native-reanimated/download/react-native-reanimated-1.8.0.tgz#0b5719b20c1fed9aaf8afd9a12e21c9bd46ee428"
@@ -5292,7 +5304,7 @@ react-native-vector-icons@^6.6.0:
 
 react-native@0.62.2:
   version "0.62.2"
-  resolved "https://registry.npm.taobao.org/react-native/download/react-native-0.62.2.tgz?cache=0&sync_timestamp=1589675520284&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Freact-native%2Fdownload%2Freact-native-0.62.2.tgz#d831e11a3178705449142df19a70ac2ca16bad10"
+  resolved "https://registry.npm.taobao.org/react-native/download/react-native-0.62.2.tgz#d831e11a3178705449142df19a70ac2ca16bad10"
   integrity sha1-2DHhGjF4cFRJFC3xmnCsLKFrrRA=
   dependencies:
     "@babel/runtime" "^7.0.0"
@@ -5329,7 +5341,7 @@ react-native@0.62.2:
 
 react-redux@^7.2.0:
   version "7.2.0"
-  resolved "https://registry.npm.taobao.org/react-redux/download/react-redux-7.2.0.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Freact-redux%2Fdownload%2Freact-redux-7.2.0.tgz#f970f62192b3981642fec46fd0db18a074fe879d"
+  resolved "https://registry.npm.taobao.org/react-redux/download/react-redux-7.2.0.tgz#f970f62192b3981642fec46fd0db18a074fe879d"
   integrity sha1-+XD2IZKzmBZC/sRv0NsYoHT+h50=
   dependencies:
     "@babel/runtime" "^7.5.5"
@@ -5404,9 +5416,9 @@ redux-thunk@^2.3.0:
   resolved "https://registry.npm.taobao.org/redux-thunk/download/redux-thunk-2.3.0.tgz#51c2c19a185ed5187aaa9a2d08b666d0d6467622"
   integrity sha1-UcLBmhhe1Rh6qpotCLZm0NZGdiI=
 
-redux@^4.0.0, redux@^4.0.5:
+redux@*, redux@^4.0.0, redux@^4.0.5:
   version "4.0.5"
-  resolved "https://registry.npm.taobao.org/redux/download/redux-4.0.5.tgz?cache=0&sync_timestamp=1577154547246&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fredux%2Fdownload%2Fredux-4.0.5.tgz#4db5de5816e17891de8a80c424232d06f051d93f"
+  resolved "https://registry.npm.taobao.org/redux/download/redux-4.0.5.tgz#4db5de5816e17891de8a80c424232d06f051d93f"
   integrity sha1-TbXeWBbheJHeioDEJCMtBvBR2T8=
   dependencies:
     loose-envify "^1.4.0"
@@ -5520,7 +5532,7 @@ request-promise-native@^1.0.5:
 
 request@^2.87.0:
   version "2.88.2"
-  resolved "https://registry.npm.taobao.org/request/download/request-2.88.2.tgz#d73c918731cb5a87da047e207234146f664d12b3"
+  resolved "https://registry.npm.taobao.org/request/download/request-2.88.2.tgz?cache=0&sync_timestamp=1589682741998&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Frequest%2Fdownload%2Frequest-2.88.2.tgz#d73c918731cb5a87da047e207234146f664d12b3"
   integrity sha1-1zyRhzHLWofaBH4gcjQUb2ZNErM=
   dependencies:
     aws-sign2 "~0.7.0"
@@ -6396,7 +6408,7 @@ typedarray@^0.0.6:
 
 typescript@^3.8.3:
   version "3.9.2"
-  resolved "https://registry.npm.taobao.org/typescript/download/typescript-3.9.2.tgz?cache=0&sync_timestamp=1589699798423&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Ftypescript%2Fdownload%2Ftypescript-3.9.2.tgz#64e9c8e9be6ea583c54607677dd4680a1cf35db9"
+  resolved "https://registry.npm.taobao.org/typescript/download/typescript-3.9.2.tgz#64e9c8e9be6ea583c54607677dd4680a1cf35db9"
   integrity sha1-ZOnI6b5upYPFRgdnfdRoChzzXbk=
 
 ua-parser-js@^0.7.18:

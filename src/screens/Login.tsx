@@ -1,10 +1,12 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View} from 'react-native';
+import LoginModule from '@/components/login/LoginModule';
+import {padding} from '@/style';
 
 export default function Login() {
   return (
-    <View>
-      <Text>i am Login </Text>
+    <View style={{flex: 1, ...padding, backgroundColor: 'white'}}>
+      <LoginModule></LoginModule>
     </View>
   );
 }

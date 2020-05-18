@@ -4,6 +4,14 @@ import {MyAppState} from '@/types';
 const initState: MyAppState = {
   isLogin: false,
   isLoading: true,
+  user: {
+    _id: '',
+    userName: '',
+    headImg: '',
+  },
+  err: {
+    verifyAccount: '',
+  },
 };
 
 export default (state = initState, action: any) => {
@@ -16,6 +24,8 @@ export default (state = initState, action: any) => {
     case ActionTypes.CHECK_LOGIN_STATUS: {
       newState.isLogin = action.data.isLogin;
       newState.isLoading = action.data.isLoading;
+      newState.err.verifyAccount = action.data.err || '';
+      newState.user = action.data.user || {};
       break;
     }
   }
