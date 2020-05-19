@@ -1,6 +1,6 @@
 {
   "name": "sweet",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": true,
   "scripts": {
     "android": "react-native run-android",
@@ -25,6 +25,7 @@
     "react-native-safe-area-context": "^1.0.0",
     "react-native-screens": "^2.7.0",
     "react-native-splash-screen": "^3.2.0",
+    "react-native-swiper": "^1.6.0",
     "react-native-vector-icons": "^6.6.0",
     "react-redux": "^7.2.0",
     "redux": "^4.0.5",
@@ -37,6 +38,7 @@
     "@types/jest": "^24.0.24",
     "@types/md5": "^2.2.0",
     "@types/react-native": "^0.62.0",
+    "@types/react-native-swiper": "^1.5.10",
     "@types/react-native-vector-icons": "^6.4.5",
     "@types/react-redux": "^7.1.8",
     "@types/react-test-renderer": "16.9.2",
