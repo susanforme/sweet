@@ -109,3 +109,72 @@ export const UserTopAreaStyles = StyleSheet.create({
     paddingRight: 35 * widthScale,
   },
 });
+
+/**
+ * UserInfluenceArea 的样式
+ */
+export const UserInfluenceAreaStyles = StyleSheet.create({
+  influence: {
+    backgroundColor: '#ffee00',
+    paddingTop: 15 * widthScale,
+    paddingBottom: 20 * widthScale,
+    ...padding,
+    display: 'flex',
+    flexDirection: 'row',
+  },
+  box: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  num: {
+    fontWeight: '700',
+    fontSize: 18 * widthScale,
+  },
+  title: {
+    fontSize: 13 * widthScale,
+    color: 'rgba(48, 47, 47, 0.808)',
+  },
+});
+
+/**
+ * UserFeatureArea 的样式
+ */
+export const UserFeatureAreaStyles = StyleSheet.create({
+  area: {
+    backgroundColor: 'white',
+    marginLeft: 15 * widthScale,
+    marginRight: 15 * widthScale,
+    padding: 15 * widthScale,
+    borderRadius: 15 * widthScale,
+    paddingTop: 8 * widthScale,
+    marginTop: 15 * widthScale,
+  },
+  title: {
+    fontSize: 16 * widthScale,
+    fontWeight: '700',
+  },
+  content: {
+    flex: 1,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    paddingTop: 16 * widthScale,
+    paddingBottom: 16 * widthScale,
+  },
+  box: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    flex: 0,
+    flexBasis: '25%',
+    marginTop: 5 * widthScale,
+  },
+  img: {
+    width: 30 * widthScale,
+    height: 30 * widthScale,
+  },
+  count: {
+    marginTop: 5 * widthScale,
+    fontSize: 13 * widthScale,
+    color: 'rgba(100, 98, 98, 0.808)',
+  },
+});
