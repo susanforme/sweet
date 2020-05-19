@@ -178,3 +178,28 @@ export const UserFeatureAreaStyles = StyleSheet.create({
     color: 'rgba(100, 98, 98, 0.808)',
   },
 });
+
+/**
+ * 设置页面单行样式
+ */
+
+export const SingleLineSettingAreaStyles = StyleSheet.create({
+  area: {
+    display: 'flex',
+    flexDirection: 'row',
+    ...padding,
+    backgroundColor: 'white',
+    height: 42 * widthScale,
+    alignItems: 'center',
+    borderBottomColor: 'rgba(196, 196, 196, 0.192)',
+    borderBottomWidth: 0.5 * widthScale,
+  },
+  right: {
+    position: 'absolute',
+    right: 15 * widthScale,
+  },
+  text: {
+    fontSize: 15 * widthScale,
+    marginLeft: 8 * widthScale,
+  },
+});

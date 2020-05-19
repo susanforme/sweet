@@ -1,4 +1,9 @@
-import {StyleProp, ViewStyle} from 'react-native';
+import {
+  StyleProp,
+  ViewStyle,
+  TextStyle,
+  GestureResponderEvent,
+} from 'react-native';
 
 /**
  * redux初始状态类型
@@ -129,4 +134,16 @@ export interface ProfileUserResponse {
     sellCount: number;
     totalCount: number;
   };
+}
+
+/**
+ * 设置页面单行props
+ */
+export interface SingleLineSettingAreaProps {
+  iconName: string;
+  size?: number;
+  title: string;
+  style?: StyleProp<ViewStyle>;
+  textStyle?: StyleProp<TextStyle>;
+  onPress?: ((event: GestureResponderEvent) => void) | undefined;
 }

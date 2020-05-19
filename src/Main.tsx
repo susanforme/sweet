@@ -68,7 +68,7 @@ function Main({isLogin, isLoading}: MainProps) {
           name="Setting"
           component={Setting}
           options={{
-            ...getDefaultHeaderStyle(80 * widthScale, paddingTop),
+            ...getDefaultHeaderStyle(80 * widthScale, paddingTop, 0.6, 'white'),
             title: '设置',
           }}></MainStack.Screen>
       </MainStack.Navigator>

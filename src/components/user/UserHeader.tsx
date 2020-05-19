@@ -14,7 +14,7 @@ export default function UserHeader() {
     <NavigationBar
       backLabelText=""
       backLabelIcon={<Text></Text>}
-      style={{height: height * 0.7, backgroundColor: '#ffee11', paddingTop}}
+      style={{height: height * 0.8, backgroundColor: '#ffee11', paddingTop}}
       onPressForward={() => {
         navigation.navigate('Setting');
       }}
