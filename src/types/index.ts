@@ -104,3 +104,29 @@ export interface UserTopAreaProps {
   _id: string;
   isDefault: boolean;
 }
+
+/**
+ * UserFeatureArea props
+ */
+export interface UserFeatureAreaProps {
+  title: string;
+  data: {
+    title: string;
+    count: number;
+    img: string;
+    style?: StyleProp<ViewStyle>;
+  }[];
+  style?: StyleProp<ViewStyle>;
+}
+
+/**
+ * 用户页面profile的response
+ */
+export interface ProfileUserResponse {
+  status: 0 | 1;
+  data: {
+    buyCount: number;
+    sellCount: number;
+    totalCount: number;
+  };
+}
