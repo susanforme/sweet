@@ -1,6 +1,6 @@
 import React, {useState, useRef, useEffect} from 'react';
-import {View, Image, StyleSheet, Animated} from 'react-native';
-import {widthScale} from '@/style';
+import {View, Image, Animated} from 'react-native';
+import {widthScale, LoginModuleStyles as styles} from '@/style';
 import {Input} from 'beeshell/dist/components/Input';
 import {Form} from 'beeshell/dist/components/Form';
 import {Button} from 'beeshell/dist/components/Button';
@@ -170,41 +170,6 @@ const dispatchToProps = (dispatch: Function) => ({
 });
 
 export default connect(stateToProps, dispatchToProps)(LoginModule);
-
-const styles = StyleSheet.create({
-  module: {
-    flex: 1,
-    alignItems: 'center',
-    marginTop: 60 * widthScale,
-  },
-  image: {
-    width: 70 * widthScale,
-    height: 70 * widthScale,
-  },
-  inputStyle: {
-    backgroundColor: 'white',
-    textAlignVertical: 'bottom',
-    height: 45 * widthScale,
-  },
-  form: {
-    width: '100%',
-  },
-  item: {
-    borderBottomColor: '#F79286',
-    borderBottomWidth: 1,
-    paddingTop: 20 * widthScale,
-    paddingBottom: 0,
-  },
-  icon: {
-    marginLeft: -10 * widthScale,
-    marginRight: 10 * widthScale,
-  },
-  button: {
-    borderRadius: 50 * widthScale,
-    backgroundColor: 'rgba(253, 159, 131, 0.781)',
-    marginTop: 40 * widthScale,
-  },
-});
 
 async function checkPassword(
   user: string,

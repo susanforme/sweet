@@ -1,6 +1,6 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
-import {widthScale} from '@/style';
+import {View, Text} from 'react-native';
+import {LoginBottomStyles as styles} from '@/style';
 import {LoginBottomProps} from '@/types';
 
 export default function LoginBottom({
@@ -23,17 +23,3 @@ export default function LoginBottom({
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  bottom: {
-    marginTop: 20 * widthScale,
-  },
-  right: {
-    position: 'absolute',
-    right: 15 * widthScale,
-  },
-  text: {
-    fontSize: 15 * widthScale,
-    color: 'gray',
-  },
-});

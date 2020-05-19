@@ -1,5 +1,5 @@
 import React from 'react';
-import {ScrollView, StyleSheet} from 'react-native';
+import {ScrollView} from 'react-native';
 import {MyAppState, UserScreenProps} from '@/types';
 import {connect} from 'react-redux';
 import UserTopArea from '@/components/user/UserTopArea';
@@ -11,7 +11,7 @@ function UserScreen({isLogin, user}: UserScreenProps) {
     isDefault = true;
   }
   return (
-    <ScrollView style={styles.userFather}>
+    <ScrollView>
       <UserTopArea
         userName={userName}
         _id={_id}
@@ -20,10 +20,6 @@ function UserScreen({isLogin, user}: UserScreenProps) {
     </ScrollView>
   );
 }
-
-const styles = StyleSheet.create({
-  userFather: {},
-});
 
 const stateToProps = (state: MyAppState) => ({
   isLogin: state.isLogin,

@@ -94,3 +94,13 @@ export interface UserScreenProps {
   isLogin: boolean;
   user: MyAppState['user'];
 }
+
+/**
+ * usertoparea 的props
+ */
+export interface UserTopAreaProps {
+  userName: string;
+  headImg: string;
+  _id: string;
+  isDefault: boolean;
+}
