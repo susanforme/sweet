@@ -9,7 +9,7 @@ import Search from '@/screens/Search';
 import Setting from '@/screens/Setting';
 import Tabstack from '@/screens/Tabstack';
 import {connect} from 'react-redux';
-import {MyAppState} from '@/types';
+import {MyAppState, MainProps, MainStackList} from '@/types';
 import store from '@/store';
 import {verifyAccount} from '@/store/actions';
 import SplashScreen from 'react-native-splash-screen';
@@ -82,18 +82,3 @@ const stateToProps = (state: MyAppState) => ({
 });
 
 export default connect(stateToProps)(Main);
-
-type MainStackList = {
-  Tab: undefined;
-  Chat: undefined;
-  Login: undefined;
-  Profile: undefined;
-  Release: undefined;
-  Search: undefined;
-  Setting: undefined;
-};
-
-interface MainProps {
-  isLogin: boolean;
-  isLoading: boolean;
-}

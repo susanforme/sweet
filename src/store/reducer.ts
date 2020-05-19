@@ -28,6 +28,11 @@ export default (state = initState, action: any) => {
       newState.user = action.data.user || {};
       break;
     }
+    case ActionTypes.ADD_USER_MSG: {
+      newState.isLogin = true;
+      newState.user = action.data.user;
+      break;
+    }
   }
   return newState;
 };

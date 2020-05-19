@@ -1,15 +1,9 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  Image,
-  StyleSheet,
-  StyleProp,
-  ImageStyle,
-} from 'react-native';
-import {widthScale, padding} from '@/style';
+import {View, Text, Image, StyleProp, ImageStyle} from 'react-native';
+import {widthScale, UserTopAreaStyles as styles} from '@/style';
 import {Button} from 'beeshell/dist/components/Button';
 import {useNavigation} from '@react-navigation/native';
+import {UserTopAreaProps} from '@/types';
 
 export default function UserTopArea({
   userName,
@@ -60,54 +54,6 @@ export default function UserTopArea({
       </View>
     </View>
   );
-}
-
-const heightAndLineHeight = {
-  height: 50 * widthScale,
-  lineHeight: 50 * widthScale,
-};
-
-const styles = StyleSheet.create({
-  topArea: {
-    height: 50 * widthScale,
-    backgroundColor: '#ffee00',
-    ...padding,
-    flex: 1,
-    flexDirection: 'row',
-  },
-  img: {
-    width: 50 * widthScale,
-    borderRadius: 10 * widthScale,
-    height: 50 * widthScale,
-  },
-  userName: {
-    ...heightAndLineHeight,
-    paddingLeft: 10 * widthScale,
-    fontSize: 20 * widthScale,
-    fontWeight: '700',
-    width: 200 * widthScale,
-  },
-  personalFather: {
-    ...heightAndLineHeight,
-    position: 'absolute',
-    right: 15 * widthScale,
-    flex: 1,
-    justifyContent: 'center',
-  },
-  personal: {
-    backgroundColor: 'white',
-    borderRadius: 50 * widthScale,
-    height: 15 * widthScale,
-    paddingLeft: 35 * widthScale,
-    paddingRight: 35 * widthScale,
-  },
-});
-
-interface UserTopAreaProps {
-  userName: string;
-  headImg: string;
-  _id: string;
-  isDefault: boolean;
 }
 
 interface MyImageStyle {

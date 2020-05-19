@@ -1,6 +1,6 @@
-import React, {useState, useRef} from 'react';
-import {View, Image, StyleSheet, Animated} from 'react-native';
-import {widthScale} from '@/style';
+import React, {useState, useRef, useEffect} from 'react';
+import {View, Image, Animated} from 'react-native';
+import {widthScale, LoginModuleStyles as styles} from '@/style';
 import {Input} from 'beeshell/dist/components/Input';
 import {Form} from 'beeshell/dist/components/Form';
 import {Button} from 'beeshell/dist/components/Button';
@@ -8,19 +8,27 @@ import Icon from 'react-native-vector-icons/Feather';
 import LoginBottom from './LoginBottom';
 import {Dialog} from 'beeshell/dist/components/Dialog';
 import {axios} from '@/api';
+import MD5 from 'md5';
+import {connect} from 'react-redux';
+import {UserResponse, LoginModuleProps, MyAppState} from '@/types';
+import {ActionTypes} from '@/store/actionTypes';
+import {useNavigation} from '@react-navigation/native';
 
-export default function LoginModule() {
+function LoginModule({addUser, isLogin}: LoginModuleProps) {
   const [user, setUser] = useState('');
   const [password, setPassword] = useState('');
   const [rePassword, setRePassword] = useState('');
   const [isShow, setShow] = useState(false);
   const [isRegister, setRegister] = useState(false);
   const [animaHeight] = useState(new Animated.Value(0));
-  const dialog = useRef<Dialog>(null);
+  const [error, setError] = useState('');
+  const dialogRef = useRef<Dialog>(null);
+  const navigation = useNavigation();
   const translate = animaHeight.interpolate({
     inputRange: [0, 0.4, 1],
     outputRange: [0, 40, 60],
   });
+
   const fadeIn = () => {
     Animated.timing(animaHeight, {
       toValue: 1,
@@ -57,6 +65,11 @@ export default function LoginModule() {
     }
   };
 
+  useEffect(() => {
+    if (isLogin) {
+      navigation.goBack();
+    }
+  }, [isLogin]);
   return (
     <View style={styles.module}>
       <Image
@@ -112,10 +125,27 @@ export default function LoginModule() {
             </Form.Item>
           ) : null}
         </Animated.View>
-        <Button style={styles.button} textStyle={{color: 'white'}}>
+        <Button
+          style={styles.button}
+          textStyle={{color: 'white'}}
+          onPress={() => {
+            checkPassword(user, password, rePassword, isRegister)
+              .then((data) => {
+                addUser(data.data.data);
+              })
+              .catch((err) => {
+                setError(err.message);
+                dialogRef.current?.open();
+              });
+          }}>
           {isRegister ? '注册' : '登录'}
         </Button>
-        <Dialog title="错误提示" bodyText="hello" ref={dialog}></Dialog>
+        <Dialog
+          title="错误提示"
+          titleStyle={{color: 'red'}}
+          bodyText={error}
+          ref={dialogRef}
+          cancelLabelText={''}></Dialog>
         <LoginBottom
           isRegister={isRegister}
           fade={isRegister ? fadeOut : fadeIn}
@@ -125,64 +155,62 @@ export default function LoginModule() {
   );
 }
 
-const styles = StyleSheet.create({
-  module: {
-    flex: 1,
-    alignItems: 'center',
-    marginTop: 60 * widthScale,
-  },
-  image: {
-    width: 70 * widthScale,
-    height: 70 * widthScale,
-  },
-  inputStyle: {
-    backgroundColor: 'white',
-    textAlignVertical: 'bottom',
-    height: 45 * widthScale,
-  },
-  form: {
-    width: '100%',
-  },
-  item: {
-    borderBottomColor: '#F79286',
-    borderBottomWidth: 1,
-    paddingTop: 20 * widthScale,
-    paddingBottom: 0,
-  },
-  icon: {
-    marginLeft: -10 * widthScale,
-    marginRight: 10 * widthScale,
-  },
-  button: {
-    borderRadius: 50 * widthScale,
-    backgroundColor: 'rgba(253, 159, 131, 0.781)',
-    marginTop: 40 * widthScale,
+const stateToProps = (state: MyAppState) => ({
+  isLogin: state.isLogin,
+});
+
+const dispatchToProps = (dispatch: Function) => ({
+  addUser: (user: UserResponse) => {
+    const action = {
+      type: ActionTypes.ADD_USER_MSG,
+      data: {user},
+    };
+    dispatch(action);
   },
 });
 
-function checkPassword(
+export default connect(stateToProps, dispatchToProps)(LoginModule);
+
+async function checkPassword(
   user: string,
   password: string,
   rePassword: string,
   isRegister: boolean,
-  setError: Function,
 ) {
   const userReg = /^[a-zA-z]\w{3,15}$/;
   const passwordReg = /^[\w_-]{6,16}$/;
   if (!isRegister) {
-    return axios.post('/user/login', {
-      userName: user,
-      password,
-    });
+    if (!user || !password) {
+      throw new Error('密码不能为空');
+    }
+    const data = await axios
+      .post('/user/login', {
+        userName: user,
+        password: MD5(password),
+      })
+      .catch((err) => {
+        throw new Error(err.response.data.data.msg);
+      });
+    return data;
   } else {
     if (password !== rePassword) {
-      return setError('两次密码不相等');
+      throw new Error('两次密码不相同');
     }
     if (!user.match(userReg)) {
-      return setError('用户名过于简单');
+      throw new Error('用户名过于简单');
     }
     if (!password.match(passwordReg)) {
-      return setError('密码过于简单');
+      throw new Error('密码过于简单');
     }
+    const data = await axios
+      .post('/user/register', {
+        userName: user,
+        password: MD5(password),
+      })
+      .catch((err) => {
+        console.log(err);
+        throw new Error(err.response.data.data.msg);
+      });
+    return data;
   }
 }
