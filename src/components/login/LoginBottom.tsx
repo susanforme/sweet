@@ -1,6 +1,7 @@
 import React from 'react';
-import {View, Text, StyleSheet, StyleProp, ViewStyle} from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
 import {widthScale} from '@/style';
+import {LoginBottomProps} from '@/types';
 
 export default function LoginBottom({
   isRegister,
@@ -36,10 +37,3 @@ const styles = StyleSheet.create({
     color: 'gray',
   },
 });
-
-interface LoginBottomProps {
-  isRegister: boolean;
-  setRegister: React.Dispatch<React.SetStateAction<boolean>>;
-  fade: Function;
-  style?: StyleProp<ViewStyle>;
-}

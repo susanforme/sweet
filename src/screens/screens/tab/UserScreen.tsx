@@ -1,10 +1,10 @@
 import React from 'react';
 import {ScrollView, StyleSheet} from 'react-native';
-import {MyAppState} from '@/types';
+import {MyAppState, UserScreenProps} from '@/types';
 import {connect} from 'react-redux';
 import UserTopArea from '@/components/user/UserTopArea';
 
-function UserScreen({isLogin, user}: UserProps) {
+function UserScreen({isLogin, user}: UserScreenProps) {
   const {userName, _id, headImg} = user;
   let isDefault = false;
   if (!isLogin) {
@@ -31,8 +31,3 @@ const stateToProps = (state: MyAppState) => ({
 });
 
 export default connect(stateToProps)(UserScreen);
-
-interface UserProps {
-  isLogin: boolean;
-  user: MyAppState['user'];
-}

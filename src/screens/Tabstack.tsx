@@ -5,8 +5,9 @@ import MessageStackScreen from './stacks/MessageStackScreen';
 import SellStackScreen from './stacks/SellStackScreen';
 import UserStackScreen from './stacks/UserStackScreen';
 import Icon from 'react-native-vector-icons/AntDesign';
+import {TabStackList} from '@/types';
 
-const Tab = createBottomTabNavigator<StackList>();
+const Tab = createBottomTabNavigator<TabStackList>();
 
 export default function TabStack() {
   return (
@@ -55,10 +56,3 @@ export default function TabStack() {
     </Tab.Navigator>
   );
 }
-
-type StackList = {
-  Home: undefined;
-  Message: undefined;
-  Sell: undefined;
-  User: undefined;
-};
