@@ -1,8 +1,25 @@
-import React from 'react';
+import React, {useRef, useState, useEffect} from 'react';
 import {ScrollView} from 'react-native';
-import getAreaByData from '@/components/setting/SingleLineSettingArea';
+import getAreaByData from '@/components/comm/SingleLineSettingArea';
+import {Button} from 'beeshell/dist/components/Button';
+import {widthScale} from '@/style';
+import {axios} from '@/api';
+import {Dialog} from 'beeshell/dist/components/Dialog';
+import {connect} from 'react-redux';
+import {MyAppState, SettingProps} from '@/types';
+import {ActionTypes} from '@/store/actionTypes';
+import {useNavigation} from '@react-navigation/native';
 
-export default function Setting() {
+function Setting({clearUserData, isLogin}: SettingProps) {
+  const dialogRef = useRef<Dialog>(null);
+  const [msg, setMsg] = useState('');
+  const [isLogout, setIsLogout] = useState(false);
+  const navigation = useNavigation();
+  useEffect(() => {
+    if (msg) {
+      dialogRef.current?.open();
+    }
+  }, [msg]);
   const Top = getAreaByData([
     {title: '个人资料设置', iconName: 'user'},
     {title: '收货地址', iconName: 'enviromento'},
@@ -17,16 +34,72 @@ export default function Setting() {
     {title: '语音电话设置', iconName: 'phone'},
     {title: '隐私', iconName: 'infocirlceo'},
   ]);
-  const Bottom = getAreaByData([
-    {title: '关于甜虾', iconName: 'checkcircleo'},
-    {title: '把甜虾推荐给朋友', iconName: 'hearto'},
-    {title: '社区公约', iconName: 'notification'},
-  ]);
+  const Bottom = getAreaByData(
+    [
+      {title: '关于甜虾', iconName: 'checkcircleo'},
+      {title: '把甜虾推荐给朋友', iconName: 'hearto'},
+      {title: '社区公约', iconName: 'notification'},
+    ],
+    null,
+    {
+      index: 0,
+      onPress: () => {
+        console.log(1);
+        navigation.navigate('About');
+      },
+    },
+  );
+  const Refresh = getAreaByData([{title: '清除缓存', iconName: 'reload1'}]);
   return (
     <ScrollView>
       {Top}
       {Middle}
       {Bottom}
+      {Refresh}
+      <Button
+        disabled={!isLogin}
+        type="danger"
+        style={{margin: 15 * widthScale}}
+        onPress={() => {
+          axios
+            .get('/user/logout')
+            .then(() => {
+              setIsLogout(true);
+              clearUserData();
+              setMsg('注销成功');
+            })
+            .catch(() => {
+              setMsg('注销失败');
+            });
+        }}>
+        退出登录
+      </Button>
+      <Dialog
+        ref={dialogRef}
+        cancelLabel={null}
+        bodyText={msg}
+        title="注销提示"
+        confirmCallback={() => {
+          if (isLogout) {
+            navigation.navigate('Tab');
+          }
+        }}
+        cancelLabelText=""></Dialog>
     </ScrollView>
   );
 }
+
+const stateToProps = (state: MyAppState) => ({
+  isLogin: state.isLogin,
+});
+
+const dispatchToProps = (dispatch: Function) => ({
+  clearUserData() {
+    const actions = {
+      type: ActionTypes.CLEAR_USER_DATA,
+    };
+    dispatch(actions);
+  },
+});
+
+export default connect(stateToProps, dispatchToProps)(Setting);

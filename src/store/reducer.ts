@@ -33,6 +33,11 @@ export default (state = initState, action: any) => {
       newState.user = action.data.user;
       break;
     }
+    case ActionTypes.CLEAR_USER_DATA: {
+      newState.user = {_id: '', userName: '', headImg: ''};
+      newState.isLogin = false;
+      break;
+    }
   }
   return newState;
 };
