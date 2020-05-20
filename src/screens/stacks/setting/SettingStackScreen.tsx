@@ -21,13 +21,27 @@ function SettingStackScreen({clearUserData, isLogin}: SettingProps) {
       dialogRef.current?.open();
     }
   }, [msg]);
-  const Top = getAreaByData([
-    {title: '个人资料设置', iconName: 'user'},
-    {title: '收货地址', iconName: 'enviromento'},
-    {title: '鱼塘', iconName: 'team'},
-    {title: '用户', iconName: 'github'},
-    {title: '黑名单', iconName: 'user'},
-  ]);
+  const Top = getAreaByData(
+    [
+      {title: '个人资料设置', iconName: 'user'},
+      {title: '收货地址', iconName: 'enviromento'},
+      {title: '鱼塘', iconName: 'team'},
+      {title: '用户', iconName: 'github'},
+      {title: '黑名单', iconName: 'user'},
+    ],
+    null,
+    [
+      {
+        index: 1,
+        onPress: () => {
+          navigation.navigate('Setting', {
+            screen: 'LocationScreen',
+            title: '关于',
+          });
+        },
+      },
+    ],
+  );
   const Middle = getAreaByData([
     {title: '宝贝自动回复', iconName: 'swap'},
     {title: '图片质量设置', iconName: 'picture'},

@@ -8,6 +8,7 @@ export default function Loading({
   loadingStyle,
   size,
   show = true,
+  title = '加载中...',
 }: LoadingProps) {
   return show ? (
     <View style={[styles.view, style]}>
@@ -15,7 +16,7 @@ export default function Loading({
         size={(size || 30) * widthScale}
         style={[styles.anima, loadingStyle]}
         color="white"></ActivityIndicator>
-      <Text style={styles.text}>加载中...</Text>
+      <Text style={styles.text}>{title}</Text>
     </View>
   ) : null;
 }

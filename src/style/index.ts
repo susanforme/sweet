@@ -269,3 +269,88 @@ export const LoadingStyle = StyleSheet.create({
     color: 'white',
   },
 });
+
+/**
+ * location 组件
+ */
+export const LocationScreenStyles = StyleSheet.create({
+  area: {
+    flex: 1,
+  },
+  imgFather: {
+    flex: 1,
+    backgroundColor: 'white',
+    alignItems: 'center',
+  },
+  img: {
+    width: 120 * widthScale,
+    height: 120 * widthScale,
+    marginTop: 60 * widthScale,
+  },
+  text: {
+    marginTop: 10 * widthScale,
+    textAlign: 'center',
+    fontSize: 16 * widthScale,
+  },
+  btn: {
+    marginLeft: '5%',
+    marginRight: '5%',
+    position: 'absolute',
+    bottom: 10 * widthScale,
+    width: '90%',
+    borderRadius: 20 * widthScale,
+  },
+});
+
+/**
+ * 添加地址
+ */
+export const AddLocationScreenStyles = StyleSheet.create({
+  area: {
+    padding: 10 * widthScale,
+    flex: 1,
+  },
+  content: {
+    borderRadius: 10 * widthScale,
+    backgroundColor: 'white',
+  },
+  box: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    ...padding,
+    borderBottomColor: 'rgba(128, 128, 128, 0.308)',
+    borderBottomWidth: 0.5,
+  },
+  btn: {
+    marginLeft: '5%',
+    marginRight: '5%',
+    width: '90%',
+    borderRadius: 30 * widthScale,
+    height: 40 * widthScale,
+    marginTop: 12 * widthScale,
+  },
+  title: {
+    width: '20%',
+  },
+  input: {
+    width: '76%',
+  },
+  bottom: {
+    borderBottomWidth: 0,
+    backgroundColor: 'white',
+    marginTop: 20,
+    borderRadius: 10 * widthScale,
+    height: 50 * widthScale,
+    marginBottom: 25 * widthScale,
+  },
+  switch: {
+    position: 'absolute',
+    right: '5%',
+    width: 55 * widthScale,
+    height: 27 * widthScale,
+  },
+  defaultLocation: {
+    width: '70%',
+  },
+});

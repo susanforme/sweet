@@ -19,6 +19,12 @@ export interface MyAppState {
     headImg: string;
     userName: string;
   };
+  location: {
+    area: string;
+    phoneNum: string;
+    _id: string;
+    name: string;
+  };
 }
 
 /**
@@ -173,6 +179,7 @@ export interface LoadingProps {
   loadingStyle?: StyleProp<ViewStyle>;
   size?: number;
   show?: boolean;
+  title?: string;
 }
 
 /**
@@ -182,4 +189,12 @@ export type SettingStackList = {
   SettingScreen: undefined;
   LocationScreen: undefined;
   AboutScreen: undefined;
+  AddLocationScreen: undefined;
 };
+
+/**
+ * LocationStackScreenProps
+ */
+export interface LocationStackScreenProps {
+  userId: string;
+}

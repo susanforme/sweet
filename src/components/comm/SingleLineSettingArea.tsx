@@ -37,10 +37,11 @@ export default function getAreaByData(
 ) {
   const DataArea = data.map((v, index) => {
     if (pressData && pressData.find((v) => v.index === index)) {
+      const pressIndex = pressData.findIndex((v) => v.index === index);
       return (
         <SingleLineSettingArea
           key={index}
-          onPress={pressData[index].onPress}
+          onPress={pressData[pressIndex].onPress}
           title={v.title}
           iconName={v.iconName}></SingleLineSettingArea>
       );

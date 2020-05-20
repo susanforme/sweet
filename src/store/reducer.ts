@@ -12,6 +12,12 @@ const initState: MyAppState = {
   err: {
     verifyAccount: '',
   },
+  location: {
+    area: '',
+    _id: '',
+    phoneNum: '',
+    name: '',
+  },
 };
 
 export default (state = initState, action: any) => {
@@ -36,6 +42,10 @@ export default (state = initState, action: any) => {
     case ActionTypes.CLEAR_USER_DATA: {
       newState.user = {_id: '', userName: '', headImg: ''};
       newState.isLogin = false;
+      break;
+    }
+    case ActionTypes.SET_DEFAULT_LOCATION: {
+      newState.location = action.data.location;
       break;
     }
   }
