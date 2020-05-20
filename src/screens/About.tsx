@@ -29,8 +29,18 @@ export default function About() {
             }, 0);
           }, 2000);
         }}></SingleLine>
-      <SingleLine title="软件许可证协议" style={styles.line}></SingleLine>
-      <SingleLine title="证照信息" style={styles.line}></SingleLine>
+      <SingleLine
+        title="软件许可证协议"
+        style={styles.line}
+        onPress={() => {
+          Tip.show('本软件遵循Apache2.0协议', 1000, true, 'center');
+        }}></SingleLine>
+      <SingleLine
+        title="证照信息"
+        style={styles.line}
+        onPress={() => {
+          Linking.openURL('https://www.wdf5.com');
+        }}></SingleLine>
       <SingleLine
         title="QQ群"
         iconName="QQ"

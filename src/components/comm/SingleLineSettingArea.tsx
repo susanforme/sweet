@@ -33,14 +33,14 @@ export function SingleLineSettingArea({
 export default function getAreaByData(
   data: AreaData,
   style?: StyleProp<ViewStyle>,
-  pressData?: OnPressDataInSetting,
+  pressData?: OnPressDataInSetting[],
 ) {
   const DataArea = data.map((v, index) => {
-    if (pressData && index === pressData.index) {
+    if (pressData && pressData.find((v) => v.index === index)) {
       return (
         <SingleLineSettingArea
           key={index}
-          onPress={pressData.onPress}
+          onPress={pressData[index].onPress}
           title={v.title}
           iconName={v.iconName}></SingleLineSettingArea>
       );

@@ -1,5 +1,5 @@
 import React, {useRef, useState, useEffect} from 'react';
-import {ScrollView} from 'react-native';
+import {ScrollView, Clipboard} from 'react-native';
 import getAreaByData from '@/components/comm/SingleLineSettingArea';
 import {Button} from 'beeshell/dist/components/Button';
 import {widthScale} from '@/style';
@@ -9,6 +9,7 @@ import {connect} from 'react-redux';
 import {MyAppState, SettingProps} from '@/types';
 import {ActionTypes} from '@/store/actionTypes';
 import {useNavigation} from '@react-navigation/native';
+import {Tip} from 'beeshell/dist/components/Tip';
 
 function Setting({clearUserData, isLogin}: SettingProps) {
   const dialogRef = useRef<Dialog>(null);
@@ -41,13 +42,23 @@ function Setting({clearUserData, isLogin}: SettingProps) {
       {title: '社区公约', iconName: 'notification'},
     ],
     null,
-    {
-      index: 0,
-      onPress: () => {
-        console.log(1);
-        navigation.navigate('About');
+    [
+      {
+        index: 0,
+        onPress: () => {
+          navigation.navigate('About');
+        },
       },
-    },
+      {
+        index: 1,
+        onPress: () => {
+          Clipboard.setString(
+            '世界上最好的App,甜虾二手交易现已开放下载!,快去www.wdf5.com下载吧!',
+          );
+          Tip.show('地址已经复制,快去发送给朋友吧!', 1000);
+        },
+      },
+    ],
   );
   const Refresh = getAreaByData([{title: '清除缓存', iconName: 'reload1'}]);
   return (
