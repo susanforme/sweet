@@ -8,7 +8,6 @@ import Release from '@/screens/Release';
 import Search from '@/screens/Search';
 import Setting from '@/screens/Setting';
 import Tabstack from '@/screens/Tabstack';
-import About from '@/screens/About';
 import {connect} from 'react-redux';
 import {MyAppState, MainProps, MainStackList} from '@/types';
 import store from '@/store';
@@ -70,14 +69,7 @@ function Main({isLogin, isLoading}: MainProps) {
           component={Setting}
           options={{
             ...getDefaultHeaderStyle(80 * widthScale, paddingTop, 0.6, 'white'),
-            title: '设置',
-          }}></MainStack.Screen>
-        <MainStack.Screen
-          name="About"
-          component={About}
-          options={{
-            ...getDefaultHeaderStyle(80 * widthScale, paddingTop, 0.6, 'white'),
-            title: '关于甜虾',
+            header: () => null,
           }}></MainStack.Screen>
       </MainStack.Navigator>
     </NavigationContainer>

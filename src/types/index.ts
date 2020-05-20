@@ -79,8 +79,7 @@ export type MainStackList = {
   Profile: undefined;
   Release: undefined;
   Search: undefined;
-  Setting: undefined;
-  About: undefined;
+  Setting: {title: string} | undefined;
 };
 
 /**
@@ -175,3 +174,12 @@ export interface LoadingProps {
   size?: number;
   show?: boolean;
 }
+
+/**
+ * 设置堆栈列表
+ */
+export type SettingStackList = {
+  SettingScreen: undefined;
+  LocationScreen: undefined;
+  AboutScreen: undefined;
+};
