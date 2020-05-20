@@ -2,7 +2,7 @@ import {StyleSheet} from 'react-native';
 import {Dimensions} from 'react-native';
 //设计基准为宽411.43 高683.43
 
-const {width} = Dimensions.get('window');
+const {width, height} = Dimensions.get('window');
 
 export const widthScale = width / 411.43;
 
@@ -201,5 +201,71 @@ export const SingleLineSettingAreaStyles = StyleSheet.create({
   text: {
     fontSize: 15 * widthScale,
     marginLeft: 8 * widthScale,
+  },
+});
+
+/**
+ * 关于 页面样式
+ */
+
+export const AboutStyles = StyleSheet.create({
+  about: {
+    flex: 1,
+  },
+  area: {
+    alignItems: 'center',
+    display: 'flex',
+  },
+  img: {
+    marginTop: 15 * widthScale,
+    width: 90 * widthScale,
+    height: 90 * widthScale,
+  },
+  tip: {
+    marginTop: 10 * widthScale,
+    fontSize: 14 * widthScale,
+  },
+  version: {
+    marginTop: 10 * widthScale,
+    fontSize: 13 * widthScale,
+    color: 'gray',
+    marginBottom: 20 * widthScale,
+  },
+  bottom: {
+    position: 'absolute',
+    bottom: 20 * widthScale,
+    width: 200 * widthScale,
+    textAlign: 'center',
+    left: width / 2 - 100 * widthScale,
+  },
+  line: {
+    height: 50 * widthScale,
+  },
+  lineMargin: {
+    marginTop: 20 * widthScale,
+  },
+});
+
+/**
+ * 公用loading组件样式
+ */
+export const LoadingStyle = StyleSheet.create({
+  view: {
+    position: 'absolute',
+    width: 100 * widthScale,
+    height: 90 * widthScale,
+    backgroundColor: 'rgba(0, 0, 0, 0.75)',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 5 * widthScale,
+    left: width / 2 - 50 * widthScale,
+    top: height / 2 - 90 * widthScale,
+    zIndex: 10,
+  },
+  anima: {},
+  text: {
+    marginTop: 10 * widthScale,
+    color: 'white',
   },
 });

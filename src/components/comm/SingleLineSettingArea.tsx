@@ -7,11 +7,11 @@ import {
   ViewStyle,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
-import {SingleLineSettingAreaProps} from '@/types';
+import {SingleLineSettingAreaProps, OnPressDataInSetting} from '@/types';
 import {SingleLineSettingAreaStyles as styles} from '@/style';
 import {widthScale} from '@/style';
 
-function SingleLineSettingArea({
+export function SingleLineSettingArea({
   iconName,
   size,
   style,
@@ -22,7 +22,7 @@ function SingleLineSettingArea({
   return (
     <TouchableNativeFeedback onPress={onPress}>
       <View style={[styles.area, style]}>
-        <Icon name={iconName} size={size || 15}></Icon>
+        {iconName ? <Icon name={iconName} size={size || 15}></Icon> : null}
         <Text style={[styles.text, textStyle]}>{title}</Text>
         <Icon name="right" size={size || 15} style={styles.right}></Icon>
       </View>
@@ -33,8 +33,18 @@ function SingleLineSettingArea({
 export default function getAreaByData(
   data: AreaData,
   style?: StyleProp<ViewStyle>,
+  pressData?: OnPressDataInSetting[],
 ) {
   const DataArea = data.map((v, index) => {
+    if (pressData && pressData.find((v) => v.index === index)) {
+      return (
+        <SingleLineSettingArea
+          key={index}
+          onPress={pressData[index].onPress}
+          title={v.title}
+          iconName={v.iconName}></SingleLineSettingArea>
+      );
+    }
     return (
       <SingleLineSettingArea
         key={index}

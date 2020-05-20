@@ -80,6 +80,7 @@ export type MainStackList = {
   Release: undefined;
   Search: undefined;
   Setting: undefined;
+  About: undefined;
 };
 
 /**
@@ -140,10 +141,37 @@ export interface ProfileUserResponse {
  * 设置页面单行props
  */
 export interface SingleLineSettingAreaProps {
-  iconName: string;
+  iconName?: string;
   size?: number;
   title: string;
   style?: StyleProp<ViewStyle>;
   textStyle?: StyleProp<TextStyle>;
   onPress?: ((event: GestureResponderEvent) => void) | undefined;
+}
+
+/**
+ * SettingProps
+ */
+export interface SettingProps {
+  clearUserData: () => void;
+  isLogin: boolean;
+}
+
+/**
+ * SingleLineSettingArea 的数据
+ */
+
+export interface OnPressDataInSetting {
+  index: number;
+  onPress: ((event: GestureResponderEvent) => void) | undefined;
+}
+
+/**
+ * LoadingProps
+ */
+export interface LoadingProps {
+  style?: StyleProp<TextStyle>;
+  loadingStyle?: StyleProp<ViewStyle>;
+  size?: number;
+  show?: boolean;
 }

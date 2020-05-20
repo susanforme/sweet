@@ -177,7 +177,6 @@ async function checkPassword(
   rePassword: string,
   isRegister: boolean,
 ) {
-  const userReg = /^[a-zA-z]\w{3,15}$/;
   const passwordReg = /^[\w_-]{6,16}$/;
   if (!isRegister) {
     if (!user || !password) {
@@ -196,7 +195,7 @@ async function checkPassword(
     if (password !== rePassword) {
       throw new Error('两次密码不相同');
     }
-    if (!user.match(userReg)) {
+    if (user.length < 6) {
       throw new Error('用户名过于简单');
     }
     if (!password.match(passwordReg)) {
