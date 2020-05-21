@@ -10,9 +10,11 @@ import {MyAppState, SettingProps} from '@/types';
 import {ActionTypes} from '@/store/actionTypes';
 import {useNavigation} from '@react-navigation/native';
 import {Tip} from 'beeshell/dist/components/Tip';
+import AsyncStorage from '@react-native-community/async-storage';
 
 function SettingStackScreen({clearUserData, isLogin}: SettingProps) {
   const dialogRef = useRef<Dialog>(null);
+  const clearDialogRef = useRef<Dialog>(null);
   const [msg, setMsg] = useState('');
   const [isLogout, setIsLogout] = useState(false);
   const navigation = useNavigation();
@@ -77,7 +79,18 @@ function SettingStackScreen({clearUserData, isLogin}: SettingProps) {
       },
     ],
   );
-  const Refresh = getAreaByData([{title: '清除缓存', iconName: 'reload1'}]);
+  const Refresh = getAreaByData(
+    [{title: '清除缓存', iconName: 'reload1'}],
+    null,
+    [
+      {
+        index: 0,
+        onPress: () => {
+          clearDialogRef.current?.open();
+        },
+      },
+    ],
+  );
   return (
     <ScrollView>
       {Top}
@@ -113,6 +126,15 @@ function SettingStackScreen({clearUserData, isLogin}: SettingProps) {
           }
         }}
         cancelLabelText=""></Dialog>
+      <Dialog
+        ref={clearDialogRef}
+        title="警告!"
+        confirmLabelTextStyle={{color: 'red'}}
+        cancelLabelTextStyle={{color: 'green'}}
+        confirmCallback={() => {
+          AsyncStorage.clear();
+        }}
+        bodyText="你确定要清楚所有缓存吗?"></Dialog>
     </ScrollView>
   );
 }
