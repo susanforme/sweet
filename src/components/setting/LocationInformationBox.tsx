@@ -10,6 +10,7 @@ function LocationInformationBox({
   data,
   defaultLocationId,
   setDefaultLocation,
+  onPress,
 }: LocationBoxProps) {
   return (
     <TouchableNativeFeedback
@@ -43,6 +44,7 @@ function LocationInformationBox({
           <Text style={styles.area}>{data.area}</Text>
         </View>
         <TouchableNativeFeedback
+          onPress={onPress}
           background={TouchableNativeFeedback.Ripple('rgba(0,0,0,.2)', true)}>
           <View>
             <Icon name="delete" size={15}></Icon>

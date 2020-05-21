@@ -118,7 +118,16 @@ function AddLocationScreen({
         }}>
         保存
       </Button>
-      <Button style={styles.btn}>删除</Button>
+      <Button
+        style={styles.btn}
+        onPress={() => {
+          navigation.navigate('Setting', {
+            screen: 'LocationScreen',
+            refresh: Math.random(),
+          });
+        }}>
+        删除
+      </Button>
       <Loading title="添加中..." show={isLoading}></Loading>
     </View>
   );

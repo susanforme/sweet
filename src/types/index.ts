@@ -205,6 +205,8 @@ export type SettingStackList = {
  */
 export interface LocationStackScreenProps {
   userId: string;
+  defaultLocationId: string;
+  setDefaultLocation(data: SingleLocation): void;
 }
 
 /**
@@ -264,4 +266,5 @@ export interface LocationBoxProps {
   data: SingleLocation;
   defaultLocationId: string;
   setDefaultLocation: (data: SingleLocation) => void;
+  onPress: ((event: GestureResponderEvent) => void) | undefined;
 }
