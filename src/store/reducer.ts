@@ -1,7 +1,7 @@
 import {ActionTypes} from './actionTypes';
 import {MyAppState} from '@/types';
 
-const initState: MyAppState = {
+const initState = {
   isLogin: false,
   isLoading: true,
   user: {
@@ -12,16 +12,18 @@ const initState: MyAppState = {
   err: {
     verifyAccount: '',
   },
-  location: {
-    area: '',
-    _id: '',
-    phoneNum: '',
-    name: '',
-  },
 };
 
 export default (state = initState, action: any) => {
   let newState: MyAppState = JSON.parse(JSON.stringify(state));
+  if (!(state as MyAppState).location) {
+    newState.location = {
+      area: '',
+      _id: '',
+      phoneNum: '',
+      name: '',
+    };
+  }
   switch (action.type) {
     case ActionTypes.LOAD_DATA: {
       newState.isLoading = action.data.isLoading;

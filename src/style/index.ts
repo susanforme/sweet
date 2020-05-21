@@ -354,3 +354,69 @@ export const AddLocationScreenStyles = StyleSheet.create({
     width: '70%',
   },
 });
+
+/**
+ * 单个地址盒子样式
+ */
+export const LocationInformationBoxStyles = StyleSheet.create({
+  anima: {
+    borderRadius: 10 * widthScale,
+  },
+  box: {
+    backgroundColor: 'white',
+    margin: 10 * widthScale,
+    borderRadius: 10 * widthScale,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 0,
+    paddingTop: 10 * widthScale,
+    paddingBottom: 10 * widthScale,
+    display: 'flex',
+  },
+  content: {
+    width: '80%',
+    marginLeft: '2%',
+    height: '100%',
+  },
+  contentTop: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    display: 'flex',
+    height: 25 * widthScale,
+  },
+  area: {
+    overflow: 'hidden',
+    fontSize: 13 * widthScale,
+    color: 'gray',
+  },
+  name: {
+    marginRight: 5 * widthScale,
+  },
+  phoneNum: {
+    marginRight: 5 * widthScale,
+  },
+  check: {
+    width: 16 * widthScale,
+    height: 16 * widthScale,
+    borderRadius: 12.5 * widthScale,
+
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderColor: 'rgba(0, 0, 0, 0.151)',
+    borderWidth: 1 * widthScale,
+  },
+  checkIcon: {},
+  default: {
+    fontSize: 11 * widthScale,
+    backgroundColor: 'red',
+    color: 'white',
+    borderRadius: 10 * widthScale,
+    width: 27 * widthScale,
+    textAlign: 'center',
+  },
+  touchBorder: {
+    borderRadius: 12.5 * widthScale,
+  },
+});

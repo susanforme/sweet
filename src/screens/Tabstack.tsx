@@ -1,9 +1,9 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import HomeStackScreen from './stacks/HomeStackScreen';
-import MessageStackScreen from './stacks/MessageStackScreen';
-import SellStackScreen from './stacks/SellStackScreen';
-import UserStackScreen from './stacks/UserStackScreen';
+import HomeStackScreen from './stacks/home/HomeStackScreen';
+import MessageStackScreen from './stacks/home/MessageStackScreen';
+import SellStackScreen from './stacks/home/SellStackScreen';
+import UserStackScreen from './stacks/home/UserStackScreen';
 import Icon from 'react-native-vector-icons/AntDesign';
 import {TabStackList} from '@/types';
 
