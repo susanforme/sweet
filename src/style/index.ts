@@ -400,7 +400,6 @@ export const LocationInformationBoxStyles = StyleSheet.create({
     width: 16 * widthScale,
     height: 16 * widthScale,
     borderRadius: 12.5 * widthScale,
-
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
@@ -418,5 +417,45 @@ export const LocationInformationBoxStyles = StyleSheet.create({
   },
   touchBorder: {
     borderRadius: 12.5 * widthScale,
+  },
+});
+
+/**
+ * 黑名单
+ */
+export const BlackListScreenStyles = StyleSheet.create({
+  area: {
+    flex: 1,
+    backgroundColor: 'white',
+    alignItems: 'center',
+  },
+  img: {
+    width: 120 * widthScale,
+    height: 120 * widthScale,
+    marginTop: 60 * widthScale,
+  },
+  text: {
+    marginTop: 10 * widthScale,
+    textAlign: 'center',
+    fontSize: 16 * widthScale,
+  },
+});
+
+/**
+ * 鱼塘设置
+ */
+export const FishBondScreenSettingStyles = StyleSheet.create({
+  area: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    width: '100%',
+    marginTop: 20 * widthScale,
+    backgroundColor: 'white',
+    padding: 20 * widthScale,
+  },
+  right: {
+    position: 'absolute',
+    right: 20 * widthScale,
   },
 });

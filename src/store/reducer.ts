@@ -23,6 +23,7 @@ export default (state = initState, action: any) => {
       phoneNum: '',
       name: '',
     };
+    newState.fishBondStatus = false;
   }
   switch (action.type) {
     case ActionTypes.LOAD_DATA: {
@@ -49,6 +50,9 @@ export default (state = initState, action: any) => {
     case ActionTypes.SET_DEFAULT_LOCATION: {
       newState.location = action.data.location;
       break;
+    }
+    case ActionTypes.CHANGE_FISH_BOND_STATUS: {
+      newState.fishBondStatus = action.data.status;
     }
   }
   return newState;
