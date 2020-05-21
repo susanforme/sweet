@@ -1,7 +1,7 @@
 import {ActionTypes} from './actionTypes';
 import {MyAppState} from '@/types';
 
-const initState: MyAppState = {
+const initState = {
   isLogin: false,
   isLoading: true,
   user: {
@@ -11,12 +11,6 @@ const initState: MyAppState = {
   },
   err: {
     verifyAccount: '',
-  },
-  location: {
-    area: '',
-    _id: '',
-    phoneNum: '',
-    name: '',
   },
 };
 

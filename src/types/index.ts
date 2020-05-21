@@ -6,7 +6,7 @@ import {
 } from 'react-native';
 
 /**
- * redux初始状态类型
+ * redux状态
  */
 export interface MyAppState {
   isLogin: boolean;
@@ -26,6 +26,10 @@ export interface MyAppState {
     name: string;
   };
 }
+
+/**
+ * redux初始状态
+ */
 
 /**
  * check请求的response
@@ -187,7 +191,11 @@ export interface LoadingProps {
  */
 export type SettingStackList = {
   SettingScreen: undefined;
-  LocationScreen: undefined;
+  LocationScreen:
+    | {
+        refresh: number;
+      }
+    | undefined;
   AboutScreen: undefined;
   AddLocationScreen: undefined;
 };
@@ -197,4 +205,63 @@ export type SettingStackList = {
  */
 export interface LocationStackScreenProps {
   userId: string;
+}
+
+/**
+ * AddLocationScreenProps
+ */
+export interface AddLocationScreenProps {
+  userId: string;
+  setDefaultLocation: (data: {
+    area: string;
+    phoneNum: string;
+    _id: string;
+    name: string;
+  }) => void;
+}
+/**
+ * 单条地址
+ */
+export type SingleLocation = {
+  area: string;
+  name: string;
+  phoneNum: string;
+  _id: string;
+};
+
+/**
+ * PostLocationResponse
+ */
+export interface PostLocationResponse {
+  status: 0 | 1;
+  data: {
+    createTime: string;
+    information: SingleLocation[];
+    _id: string;
+    user: string;
+  };
+}
+
+/**
+ * LocationData
+ */
+export interface LocationData {
+  information: SingleLocation[];
+}
+
+/**
+ * GetLocationResponse
+ */
+export interface GetLocationResponse {
+  status: 0 | 1;
+  data: SingleLocation[];
+}
+
+/**
+ * LocationBoxProps
+ */
+export interface LocationBoxProps {
+  data: SingleLocation;
+  defaultLocationId: string;
+  setDefaultLocation: (data: SingleLocation) => void;
 }
