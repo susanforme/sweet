@@ -27,9 +27,7 @@ function UserScreen({isLogin, user}: UserScreenProps) {
         .then((res) => {
           setData(res.data.data);
         })
-        .catch(() => {
-          console.log('用户页面网络错误');
-        });
+        .catch(() => {});
     }
   }, []);
   const sellData = [

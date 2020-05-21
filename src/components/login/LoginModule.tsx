@@ -207,7 +207,6 @@ async function checkPassword(
         password: MD5(password),
       })
       .catch((err) => {
-        console.log(err);
         throw new Error(err.response.data.data.msg);
       });
     return data;

@@ -19,6 +19,12 @@ export interface MyAppState {
     headImg: string;
     userName: string;
   };
+  location: {
+    area: string;
+    phoneNum: string;
+    _id: string;
+    name: string;
+  };
 }
 
 /**
@@ -79,8 +85,7 @@ export type MainStackList = {
   Profile: undefined;
   Release: undefined;
   Search: undefined;
-  Setting: undefined;
-  About: undefined;
+  Setting: {title: string} | undefined;
 };
 
 /**
@@ -174,4 +179,22 @@ export interface LoadingProps {
   loadingStyle?: StyleProp<ViewStyle>;
   size?: number;
   show?: boolean;
+  title?: string;
+}
+
+/**
+ * 设置堆栈列表
+ */
+export type SettingStackList = {
+  SettingScreen: undefined;
+  LocationScreen: undefined;
+  AboutScreen: undefined;
+  AddLocationScreen: undefined;
+};
+
+/**
+ * LocationStackScreenProps
+ */
+export interface LocationStackScreenProps {
+  userId: string;
 }
