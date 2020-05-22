@@ -62,7 +62,7 @@ function Main({isLogin, isLoading}: MainProps) {
           component={Search}
           options={{
             ...getDefaultHeaderStyle(80 * widthScale, paddingTop),
-            title: '搜索',
+            header: () => null,
           }}></MainStack.Screen>
         <MainStack.Screen
           name="Setting"

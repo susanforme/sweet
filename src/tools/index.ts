@@ -25,6 +25,7 @@ export function uploadImage(callback: (err: any, imgUrl: string) => any) {
     },
     takePhotoButtonTitle: '拍照',
     chooseFromLibraryButtonTitle: '从相册选择',
+    noData: true,
   };
   ImagePicker.showImagePicker(options, (response) => {
     console.log('Response = ', response);

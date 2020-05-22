@@ -293,3 +293,30 @@ export interface PersonalSettingScreenProps {
   user: MyAppState['user'];
   changeHeadImg(headImg: string): void;
 }
+
+/**
+ * SearchInputProps
+ */
+export interface SearchInputProps {
+  value?: string;
+  onChangeText?: ((text: string) => void) | undefined;
+  placeholder?: string;
+  style?: StyleProp<ViewStyle>;
+  iconSize?: number;
+  editable?: boolean;
+  onPress?: ((event: GestureResponderEvent) => void) | undefined;
+}
+
+/**
+ * HomeSwiperProps
+ */
+export interface HomeSwiperProps {}
+
+/**
+ * HomeSwiperInitData
+ */
+export type HomeSwiperInitData = {
+  _id: string;
+  imgPath: string;
+  commodityId?: string;
+}[];
