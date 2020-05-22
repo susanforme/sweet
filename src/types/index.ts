@@ -157,6 +157,10 @@ export interface SingleLineSettingAreaProps {
   style?: StyleProp<ViewStyle>;
   textStyle?: StyleProp<TextStyle>;
   onPress?: ((event: GestureResponderEvent) => void) | undefined;
+  showRightLabel?: boolean;
+  showRightText?: boolean;
+  rightText?: string;
+  rightChild?: JSX.Element | null;
 }
 
 /**
@@ -280,4 +284,12 @@ export interface LocationBoxProps {
 export interface FishSettingScreenProps {
   changeFishStatus(status: boolean): void;
   defaultFish: boolean;
+}
+
+/**
+ * PersonalSettingScreenProps
+ */
+export interface PersonalSettingScreenProps {
+  user: MyAppState['user'];
+  changeHeadImg(headImg: string): void;
 }

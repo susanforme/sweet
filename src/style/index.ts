@@ -197,10 +197,17 @@ export const SingleLineSettingAreaStyles = StyleSheet.create({
   right: {
     position: 'absolute',
     right: 15 * widthScale,
+    color: 'gray',
   },
   text: {
     fontSize: 15 * widthScale,
     marginLeft: 8 * widthScale,
+  },
+  rightText: {
+    position: 'absolute',
+    right: 40 * widthScale,
+    color: 'gray',
+    overflow: 'hidden',
   },
 });
 
@@ -467,5 +474,44 @@ export const DeleteAccountScreenStyles = StyleSheet.create({
   area: {
     marginTop: 15 * widthScale,
     height: 55 * widthScale,
+  },
+});
+
+/**
+ * 我的资料页面样式
+ */
+export const PersonalSettingScreenStyles = StyleSheet.create({
+  area: {
+    ...padding,
+  },
+  tip: {
+    marginTop: 30 * widthScale,
+    marginBottom: 10 * widthScale,
+    marginLeft: 5 * widthScale,
+    fontSize: 14 * widthScale,
+    color: 'gray',
+  },
+  content: {
+    marginBottom: 20 * widthScale,
+  },
+  box: {
+    height: 50 * widthScale,
+    borderBottomWidth: 0,
+  },
+  first: {
+    borderTopLeftRadius: 10 * widthScale,
+    borderTopRightRadius: 10 * widthScale,
+    height: 70 * widthScale,
+  },
+  last: {
+    borderBottomLeftRadius: 10 * widthScale,
+    borderBottomRightRadius: 10 * widthScale,
+  },
+  image: {
+    width: 55 * widthScale,
+    height: 55 * widthScale,
+    right: 40 * widthScale,
+    position: 'absolute',
+    borderRadius: 10 * widthScale,
   },
 });

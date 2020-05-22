@@ -15,7 +15,7 @@ export function getRandomNumber(low: number, high: number) {
  * @parms callback callback的参数是一个表单
  */
 
-export function uploadImage(callback: (imgUrl: string) => any) {
+export function uploadImage(callback: (err: any, imgUrl: string) => any) {
   const options = {
     title: '选择图片',
     cancelButtonTitle: '取消',
@@ -49,10 +49,10 @@ export function uploadImage(callback: (imgUrl: string) => any) {
           },
         })
         .then((res) => {
-          callback(res.data.src);
+          callback(null, res.data.data.src);
         })
         .catch((err) => {
-          console.log(err);
+          callback(err, '');
         });
     }
   });

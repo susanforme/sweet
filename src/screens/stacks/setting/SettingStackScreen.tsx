@@ -62,6 +62,7 @@ function SettingStackScreen({clearUserData, isLogin}: SettingProps) {
               setIsLogout(true);
               clearUserData();
               setMsg('注销成功');
+              AsyncStorage.clear();
             })
             .catch(() => {
               setMsg('注销失败');

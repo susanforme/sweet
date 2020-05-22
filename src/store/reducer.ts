@@ -53,6 +53,11 @@ export default (state = initState, action: any) => {
     }
     case ActionTypes.CHANGE_FISH_BOND_STATUS: {
       newState.fishBondStatus = action.data.status;
+      break;
+    }
+    case ActionTypes.CHANGE_USER_HEAD_IMG: {
+      newState.user.headImg = action.data.headImg;
+      break;
     }
   }
   return newState;

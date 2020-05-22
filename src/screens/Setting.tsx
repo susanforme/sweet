@@ -12,7 +12,7 @@ import AddLocationScreen from '@/screens/stacks/setting/AddLocationScreen';
 import BlackListScreen from './stacks/setting/BlackListScreen';
 import FishSettingScreen from './stacks/setting/FishSettingScreen';
 import DeleteAccountScreen from './stacks/setting/DeleteAccountScreen';
-import {PersonalSettingScreen} from './stacks/setting/PersonalSettingScreen';
+import PersonalSettingScreen from './stacks/setting/PersonalSettingScreen';
 
 const SettingStack = createStackNavigator<SettingStackList>();
 
