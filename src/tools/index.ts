@@ -15,7 +15,7 @@ export function getRandomNumber(low: number, high: number) {
  * @parms callback callback的参数是一个表单
  */
 
-export function uploadImage() {
+export function uploadImage(callback: (imgUrl: string) => any) {
   const options = {
     title: '选择图片',
     cancelButtonTitle: '取消',
@@ -42,7 +42,6 @@ export function uploadImage() {
         name: response.fileName || 'default.jpg',
       };
       formData.append('files', file);
-      console.log(formData);
       axios
         .post('/upload/img', formData, {
           headers: {
@@ -50,7 +49,7 @@ export function uploadImage() {
           },
         })
         .then((res) => {
-          console.log(res.data);
+          callback(res.data.src);
         })
         .catch((err) => {
           console.log(err);
