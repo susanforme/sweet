@@ -114,7 +114,7 @@ function getTopData(navigation: Navigation): any {
       {title: '个人资料设置', iconName: 'user'},
       {title: '收货地址', iconName: 'enviromento'},
       {title: '鱼塘', iconName: 'team'},
-      {title: '用户', iconName: 'github'},
+      {title: '账号', iconName: 'github'},
       {title: '黑名单', iconName: 'user'},
     ],
     null,
@@ -141,6 +141,22 @@ function getTopData(navigation: Navigation): any {
         onPress: () => {
           navigation.navigate('Setting', {
             screen: 'FishSettingScreen',
+          });
+        },
+      },
+      {
+        index: 3,
+        onPress: () => {
+          navigation.navigate('Setting', {
+            screen: 'DeleteAccountScreen',
+          });
+        },
+      },
+      {
+        index: 0,
+        onPress: () => {
+          navigation.navigate('Setting', {
+            screen: 'PersonalSettingScreen',
           });
         },
       },

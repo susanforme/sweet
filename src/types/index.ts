@@ -201,6 +201,8 @@ export type SettingStackList = {
   AddLocationScreen: undefined;
   BlackListScreen: undefined;
   FishSettingScreen: undefined;
+  DeleteAccountScreen: undefined;
+  PersonalSettingScreen: undefined;
 };
 
 /**
@@ -277,4 +279,5 @@ export interface LocationBoxProps {
  */
 export interface FishSettingScreenProps {
   changeFishStatus(status: boolean): void;
+  defaultFish: boolean;
 }

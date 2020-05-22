@@ -459,3 +459,13 @@ export const FishBondScreenSettingStyles = StyleSheet.create({
     right: 20 * widthScale,
   },
 });
+
+/**
+ * 删除账户页面样式
+ */
+export const DeleteAccountScreenStyles = StyleSheet.create({
+  area: {
+    marginTop: 15 * widthScale,
+    height: 55 * widthScale,
+  },
+});

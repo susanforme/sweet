@@ -11,6 +11,8 @@ import SettingHeader from '@/components/setting/SettingHeader';
 import AddLocationScreen from '@/screens/stacks/setting/AddLocationScreen';
 import BlackListScreen from './stacks/setting/BlackListScreen';
 import FishSettingScreen from './stacks/setting/FishSettingScreen';
+import DeleteAccountScreen from './stacks/setting/DeleteAccountScreen';
+import {PersonalSettingScreen} from './stacks/setting/PersonalSettingScreen';
 
 const SettingStack = createStackNavigator<SettingStackList>();
 
@@ -61,6 +63,20 @@ export default function Setting() {
           ...getDefaultHeaderStyle(80 * widthScale, paddingTop, 0.6, 'white'),
         }}
         component={FishSettingScreen}></SettingStack.Screen>
+      <SettingStack.Screen
+        name="DeleteAccountScreen"
+        options={{
+          title: '账号',
+          ...getDefaultHeaderStyle(80 * widthScale, paddingTop, 0.6, 'white'),
+        }}
+        component={DeleteAccountScreen}></SettingStack.Screen>
+      <SettingStack.Screen
+        name="PersonalSettingScreen"
+        options={{
+          title: '我的资料',
+          ...getDefaultHeaderStyle(80 * widthScale, paddingTop, 0.6, 'white'),
+        }}
+        component={PersonalSettingScreen}></SettingStack.Screen>
     </SettingStack.Navigator>
   );
 }
