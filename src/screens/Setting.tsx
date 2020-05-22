@@ -25,56 +25,56 @@ export default function Setting() {
         component={SettingStackScreen}
         options={{
           title: '设置',
-          ...getDefaultHeaderStyle(80 * widthScale, paddingTop, 0.6, 'white'),
+          ...getDefaultHeaderStyle(80 * widthScale, paddingTop, 0.7, 'white'),
           header: SettingHeader,
         }}></SettingStack.Screen>
       <SettingStack.Screen
         name="LocationScreen"
         options={{
           title: '我的地址',
-          ...getDefaultHeaderStyle(80 * widthScale, paddingTop, 0.6, 'white'),
+          ...getDefaultHeaderStyle(80 * widthScale, paddingTop, 0.7, 'white'),
         }}
         component={LocationStackScreen}></SettingStack.Screen>
       <SettingStack.Screen
         name="AboutScreen"
         options={{
           title: '关于',
-          ...getDefaultHeaderStyle(80 * widthScale, paddingTop, 0.6, 'white'),
+          ...getDefaultHeaderStyle(80 * widthScale, paddingTop, 0.7, 'white'),
         }}
         component={AboutStackScreen}></SettingStack.Screen>
       <SettingStack.Screen
         name="AddLocationScreen"
         options={{
           title: '新增地址',
-          ...getDefaultHeaderStyle(80 * widthScale, paddingTop, 0.6, 'white'),
+          ...getDefaultHeaderStyle(80 * widthScale, paddingTop, 0.7, 'white'),
         }}
         component={AddLocationScreen}></SettingStack.Screen>
       <SettingStack.Screen
         name="BlackListScreen"
         options={{
           title: '黑名单',
-          ...getDefaultHeaderStyle(80 * widthScale, paddingTop, 0.6, 'white'),
+          ...getDefaultHeaderStyle(80 * widthScale, paddingTop, 0.7, 'white'),
         }}
         component={BlackListScreen}></SettingStack.Screen>
       <SettingStack.Screen
         name="FishSettingScreen"
         options={{
           title: '鱼塘设置',
-          ...getDefaultHeaderStyle(80 * widthScale, paddingTop, 0.6, 'white'),
+          ...getDefaultHeaderStyle(80 * widthScale, paddingTop, 0.7, 'white'),
         }}
         component={FishSettingScreen}></SettingStack.Screen>
       <SettingStack.Screen
         name="DeleteAccountScreen"
         options={{
           title: '账号',
-          ...getDefaultHeaderStyle(80 * widthScale, paddingTop, 0.6, 'white'),
+          ...getDefaultHeaderStyle(80 * widthScale, paddingTop, 0.7, 'white'),
         }}
         component={DeleteAccountScreen}></SettingStack.Screen>
       <SettingStack.Screen
         name="PersonalSettingScreen"
         options={{
           title: '我的资料',
-          ...getDefaultHeaderStyle(80 * widthScale, paddingTop, 0.6, 'white'),
+          ...getDefaultHeaderStyle(80 * widthScale, paddingTop, 0.7, 'white'),
         }}
         component={PersonalSettingScreen}></SettingStack.Screen>
     </SettingStack.Navigator>

@@ -189,7 +189,7 @@ export const SingleLineSettingAreaStyles = StyleSheet.create({
     flexDirection: 'row',
     ...padding,
     backgroundColor: 'white',
-    height: 42 * widthScale,
+    height: 55 * widthScale,
     alignItems: 'center',
     borderBottomColor: 'rgba(196, 196, 196, 0.192)',
     borderBottomWidth: 0.5 * widthScale,
@@ -513,5 +513,67 @@ export const PersonalSettingScreenStyles = StyleSheet.create({
     right: 40 * widthScale,
     position: 'absolute',
     borderRadius: 10 * widthScale,
+  },
+});
+
+/**
+ * 搜索框
+ */
+export const SearchInputPropsStyles = StyleSheet.create({
+  area: {
+    flexDirection: 'row',
+    backgroundColor: 'white',
+    display: 'flex',
+    alignItems: 'center',
+    width: '100%',
+    overflow: 'hidden',
+    paddingLeft: 5 * widthScale,
+    paddingRight: 5 * widthScale,
+    height: 36 * widthScale,
+    borderRadius: 30 * widthScale,
+  },
+  input: {
+    textAlign: 'center',
+    paddingTop: 0,
+    paddingBottom: 0,
+  },
+});
+
+/**
+ * homescreen
+ */
+export const HomeScreenStyles = StyleSheet.create({
+  top: {
+    backgroundColor: '#ffee00',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: 50 * widthScale,
+    ...padding,
+  },
+});
+
+/**
+ * HomeSwiperStyles
+ */
+export const HomeSwiperStyles = StyleSheet.create({
+  swiper: {
+    marginTop: 5 * widthScale,
+    borderRadius: 10 * widthScale,
+  },
+  img: {
+    width: '100%',
+    height: '100%',
+    borderRadius: 10 * widthScale,
+  },
+  father: {
+    paddingLeft: 5 * widthScale,
+    paddingRight: 5 * widthScale,
+    backgroundColor: 'white',
+    height: 150 * widthScale,
+  },
+  loading: {
+    width: '100%',
+    height: '100%',
   },
 });
