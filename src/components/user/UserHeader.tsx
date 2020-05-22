@@ -1,5 +1,4 @@
 import React from 'react';
-import {useHeaderHeight} from '@react-navigation/stack';
 import {NavigationBar} from 'beeshell/dist/components/NavigationBar';
 import {Text} from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
@@ -7,18 +6,21 @@ import {useNavigation} from '@react-navigation/native';
 import {StatusBar} from 'react-native';
 
 export default function UserHeader() {
-  const height = useHeaderHeight();
   const navigation = useNavigation();
-  const paddingTop = StatusBar.currentHeight || 30;
+  const height = StatusBar.currentHeight || 30;
   return (
     <NavigationBar
       backLabelText=""
       backLabelIcon={<Text></Text>}
-      style={{height: height * 0.8, backgroundColor: '#ffee11', paddingTop}}
+      style={{
+        height: height * 2.4,
+        backgroundColor: '#ffee11',
+        paddingTop: height,
+      }}
       onPressForward={() => {
         navigation.navigate('Setting');
       }}
-      forwardLabel={<Icon name="setting" size={height * 0.31}></Icon>}
+      forwardLabel={<Icon name="setting" size={height}></Icon>}
       title=""></NavigationBar>
   );
 }

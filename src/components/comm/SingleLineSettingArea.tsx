@@ -18,13 +18,23 @@ export function SingleLineSettingArea({
   textStyle,
   title,
   onPress,
+  showRightLabel = true,
+  showRightText = false,
+  rightText = '',
+  rightChild = null,
 }: SingleLineSettingAreaProps) {
   return (
     <TouchableNativeFeedback onPress={onPress}>
       <View style={[styles.area, style]}>
         {iconName ? <Icon name={iconName} size={size || 15}></Icon> : null}
         <Text style={[styles.text, textStyle]}>{title}</Text>
-        <Icon name="right" size={size || 15} style={styles.right}></Icon>
+        {showRightText ? (
+          <Text style={styles.rightText}>{rightText}</Text>
+        ) : null}
+        {rightChild}
+        {showRightLabel ? (
+          <Icon name="right" size={size || 15} style={styles.right}></Icon>
+        ) : null}
       </View>
     </TouchableNativeFeedback>
   );

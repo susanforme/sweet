@@ -197,10 +197,17 @@ export const SingleLineSettingAreaStyles = StyleSheet.create({
   right: {
     position: 'absolute',
     right: 15 * widthScale,
+    color: 'gray',
   },
   text: {
     fontSize: 15 * widthScale,
     marginLeft: 8 * widthScale,
+  },
+  rightText: {
+    position: 'absolute',
+    right: 40 * widthScale,
+    color: 'gray',
+    overflow: 'hidden',
   },
 });
 
@@ -400,7 +407,6 @@ export const LocationInformationBoxStyles = StyleSheet.create({
     width: 16 * widthScale,
     height: 16 * widthScale,
     borderRadius: 12.5 * widthScale,
-
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
@@ -418,5 +424,94 @@ export const LocationInformationBoxStyles = StyleSheet.create({
   },
   touchBorder: {
     borderRadius: 12.5 * widthScale,
+  },
+});
+
+/**
+ * 黑名单
+ */
+export const BlackListScreenStyles = StyleSheet.create({
+  area: {
+    flex: 1,
+    backgroundColor: 'white',
+    alignItems: 'center',
+  },
+  img: {
+    width: 120 * widthScale,
+    height: 120 * widthScale,
+    marginTop: 60 * widthScale,
+  },
+  text: {
+    marginTop: 10 * widthScale,
+    textAlign: 'center',
+    fontSize: 16 * widthScale,
+  },
+});
+
+/**
+ * 鱼塘设置
+ */
+export const FishBondScreenSettingStyles = StyleSheet.create({
+  area: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    width: '100%',
+    marginTop: 20 * widthScale,
+    backgroundColor: 'white',
+    padding: 20 * widthScale,
+  },
+  right: {
+    position: 'absolute',
+    right: 20 * widthScale,
+  },
+});
+
+/**
+ * 删除账户页面样式
+ */
+export const DeleteAccountScreenStyles = StyleSheet.create({
+  area: {
+    marginTop: 15 * widthScale,
+    height: 55 * widthScale,
+  },
+});
+
+/**
+ * 我的资料页面样式
+ */
+export const PersonalSettingScreenStyles = StyleSheet.create({
+  area: {
+    ...padding,
+  },
+  tip: {
+    marginTop: 30 * widthScale,
+    marginBottom: 10 * widthScale,
+    marginLeft: 5 * widthScale,
+    fontSize: 14 * widthScale,
+    color: 'gray',
+  },
+  content: {
+    marginBottom: 20 * widthScale,
+  },
+  box: {
+    height: 50 * widthScale,
+    borderBottomWidth: 0,
+  },
+  first: {
+    borderTopLeftRadius: 10 * widthScale,
+    borderTopRightRadius: 10 * widthScale,
+    height: 70 * widthScale,
+  },
+  last: {
+    borderBottomLeftRadius: 10 * widthScale,
+    borderBottomRightRadius: 10 * widthScale,
+  },
+  image: {
+    width: 55 * widthScale,
+    height: 55 * widthScale,
+    right: 40 * widthScale,
+    position: 'absolute',
+    borderRadius: 10 * widthScale,
   },
 });

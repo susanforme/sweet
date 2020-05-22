@@ -4,4 +4,6 @@ export enum ActionTypes {
   ADD_USER_MSG = 'addUserMsg',
   CLEAR_USER_DATA = 'clearUserData',
   SET_DEFAULT_LOCATION = 'setDefaultLocation',
+  CHANGE_FISH_BOND_STATUS = 'changeFishBondStatus',
+  CHANGE_USER_HEAD_IMG = 'changeUserHeadImg',
 }

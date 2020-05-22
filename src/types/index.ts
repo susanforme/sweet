@@ -25,6 +25,7 @@ export interface MyAppState {
     _id: string;
     name: string;
   };
+  fishBondStatus: boolean;
 }
 
 /**
@@ -156,6 +157,10 @@ export interface SingleLineSettingAreaProps {
   style?: StyleProp<ViewStyle>;
   textStyle?: StyleProp<TextStyle>;
   onPress?: ((event: GestureResponderEvent) => void) | undefined;
+  showRightLabel?: boolean;
+  showRightText?: boolean;
+  rightText?: string;
+  rightChild?: JSX.Element | null;
 }
 
 /**
@@ -198,6 +203,10 @@ export type SettingStackList = {
     | undefined;
   AboutScreen: undefined;
   AddLocationScreen: undefined;
+  BlackListScreen: undefined;
+  FishSettingScreen: undefined;
+  DeleteAccountScreen: undefined;
+  PersonalSettingScreen: undefined;
 };
 
 /**
@@ -267,4 +276,20 @@ export interface LocationBoxProps {
   defaultLocationId: string;
   setDefaultLocation: (data: SingleLocation) => void;
   onPress: ((event: GestureResponderEvent) => void) | undefined;
+}
+
+/**
+ * FishSettingScreenProps
+ */
+export interface FishSettingScreenProps {
+  changeFishStatus(status: boolean): void;
+  defaultFish: boolean;
+}
+
+/**
+ * PersonalSettingScreenProps
+ */
+export interface PersonalSettingScreenProps {
+  user: MyAppState['user'];
+  changeHeadImg(headImg: string): void;
 }
