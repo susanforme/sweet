@@ -4,6 +4,7 @@ import SearchInput from '@/components/comm/SearchInput';
 import {HomeScreenStyles as styles} from '@/style';
 import {useNavigation} from '@react-navigation/native';
 import HomeSwiper from '@/components/home/HomeSwiper';
+import KindArea from '@/components/home/KindArea';
 
 export default function HomeScreen() {
   const navigation = useNavigation();
@@ -19,6 +20,7 @@ export default function HomeScreen() {
           editable={false}></SearchInput>
       </View>
       <HomeSwiper></HomeSwiper>
+      <KindArea></KindArea>
     </ScrollView>
   );
 }
