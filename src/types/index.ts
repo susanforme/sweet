@@ -320,3 +320,15 @@ export type HomeSwiperInitData = {
   imgPath: string;
   commodityId?: string;
 }[];
+
+/**
+ * KindAreaGetResponse
+ */
+export interface KindAreaGetResponse {
+  data: {
+    _id: string;
+    imgPath: string;
+    kindName: string;
+  }[];
+  status: 0 | 1;
+}

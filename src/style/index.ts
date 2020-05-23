@@ -531,6 +531,7 @@ export const SearchInputPropsStyles = StyleSheet.create({
     paddingRight: 5 * widthScale,
     height: 36 * widthScale,
     borderRadius: 30 * widthScale,
+    marginTop: 10 * widthScale,
   },
   input: {
     textAlign: 'center',
@@ -548,7 +549,7 @@ export const HomeScreenStyles = StyleSheet.create({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    height: 50 * widthScale,
+    height: 60 * widthScale,
     ...padding,
   },
 });
@@ -559,12 +560,12 @@ export const HomeScreenStyles = StyleSheet.create({
 export const HomeSwiperStyles = StyleSheet.create({
   swiper: {
     marginTop: 5 * widthScale,
-    borderRadius: 10 * widthScale,
+    borderRadius: 15 * widthScale,
   },
   img: {
     width: '100%',
     height: '100%',
-    borderRadius: 10 * widthScale,
+    borderRadius: 15 * widthScale,
   },
   father: {
     paddingLeft: 5 * widthScale,
@@ -575,5 +576,37 @@ export const HomeSwiperStyles = StyleSheet.create({
   loading: {
     width: '100%',
     height: '100%',
+  },
+  pageStyle: {
+    marginBottom: '-5%',
+  },
+});
+
+/**
+ * KindAreaStyles
+ */
+export const KindAreaStyles = StyleSheet.create({
+  area: {
+    backgroundColor: 'white',
+    height: 140 * widthScale,
+    display: 'flex',
+    flexWrap: 'wrap',
+    flexDirection: 'row',
+    paddingTop: 20 * widthScale,
+    paddingBottom: 20 * widthScale,
+  },
+  loading: {
+    width: '100%',
+    height: '100%',
+  },
+  box: {
+    width: '20%',
+    display: 'flex',
+    alignItems: 'center',
+    marginBottom: 10 * widthScale,
+  },
+  img: {
+    width: 30 * widthScale,
+    height: 30 * widthScale,
   },
 });

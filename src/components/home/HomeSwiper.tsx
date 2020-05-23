@@ -35,7 +35,11 @@ export default function SearchInput() {
           color="#ffee00"
         />
       ) : (
-        <Swiper autoplay activeDotColor="#ffee00" style={styles.swiper}>
+        <Swiper
+          autoplay
+          activeDotColor="#ffee00"
+          style={styles.swiper}
+          paginationStyle={styles.pageStyle}>
           {Images}
         </Swiper>
       )}
