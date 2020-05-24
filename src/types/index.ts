@@ -332,3 +332,29 @@ export interface KindAreaGetResponse {
   }[];
   status: 0 | 1;
 }
+
+/**
+ * RecommendGetResponse
+ */
+export interface RecommendGetResponse {
+  status: 0 | 1;
+  data: {
+    _id: string;
+    description: string;
+    imgPath: Array<string>;
+    user: {
+      userName: string;
+      headImg: string;
+    };
+    price: number;
+  }[];
+}
+
+/**
+ * RefreshListProps
+ */
+export interface RefreshListProps<DataT> {
+  data: DataT | undefined;
+  onRefresh: (() => void) | undefined;
+  isRefresh: boolean;
+}
