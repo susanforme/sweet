@@ -3,6 +3,8 @@ import {
   ViewStyle,
   TextStyle,
   GestureResponderEvent,
+  NativeSyntheticEvent,
+  NativeScrollEvent,
 } from 'react-native';
 
 /**
@@ -91,6 +93,8 @@ export type MainStackList = {
   Release: undefined;
   Search: undefined;
   Setting: {title: string} | undefined;
+  Classificat: {kindId: string; kindName: string};
+  Detail: {commodityId: string};
 };
 
 /**
@@ -331,4 +335,53 @@ export interface KindAreaGetResponse {
     kindName: string;
   }[];
   status: 0 | 1;
+}
+
+/**
+ * RecommendGetResponse
+ */
+export interface RecommendGetResponse {
+  status: 0 | 1;
+  data: {
+    _id: string;
+    description: string;
+    imgPath: Array<string>;
+    user: {
+      userName: string;
+      headImg: string;
+    };
+    price: number;
+  }[];
+}
+
+/**
+ * RefreshListProps
+ */
+export interface RefreshListProps<DataT> {
+  data: DataT | undefined;
+  onRefresh?: (() => void) | undefined;
+  isRefresh?: boolean;
+  ListHeaderComponent?: React.ComponentType<any> | React.ReactElement | null;
+  onEndReached?: ((info: {distanceFromEnd: number}) => void) | null | undefined;
+  isToTop?: boolean;
+  onScroll?:
+    | ((event: NativeSyntheticEvent<NativeScrollEvent>) => void)
+    | undefined;
+}
+
+/**
+ * getClassificationResponse
+ */
+export interface getClassificationResponse {
+  status: 0 | 1;
+  data: {
+    _id: string;
+    description: string;
+    imgPath: Array<string>;
+    user: {
+      userName: string;
+      headImg: string;
+    };
+    price: number;
+  }[];
 }

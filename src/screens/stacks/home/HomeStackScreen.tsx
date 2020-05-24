@@ -16,7 +16,7 @@ export default function HomeStackScreen() {
         name="Home"
         component={HomeScreen}
         options={{
-          ...getDefaultHeaderStyle(height, paddingTop, 0.5),
+          ...getDefaultHeaderStyle(height, paddingTop, 0.6),
           headerTitle: '首页',
         }}></HomeStack.Screen>
     </HomeStack.Navigator>

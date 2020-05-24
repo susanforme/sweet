@@ -9,13 +9,23 @@ import {
 import {axios} from '@/api';
 import {KindAreaGetResponse} from '@/types';
 import {KindAreaStyles as styles, widthScale} from '@/style';
+import {useNavigation} from '@react-navigation/native';
 
 export default function KindArea() {
   const [data, setData] = useState<KindAreaGetResponse['data']>();
   const [isLoading, setIsLoading] = useState(true);
+  const navigation = useNavigation();
   const Area = data?.map((v) => {
     return (
-      <TouchableNativeFeedback key={v._id}>
+      <TouchableNativeFeedback
+        background={TouchableNativeFeedback.Ripple('rgba(0,0,0,.2)')}
+        key={v._id}
+        onPress={() => {
+          navigation.navigate('Classificat', {
+            kindId: v._id,
+            kindName: v.kindName,
+          });
+        }}>
         <View style={styles.box}>
           <Image source={{uri: v.imgPath}} style={styles.img}></Image>
           <Text>{v.kindName}</Text>
