@@ -497,6 +497,7 @@ export const PersonalSettingScreenStyles = StyleSheet.create({
   box: {
     height: 50 * widthScale,
     borderBottomWidth: 0,
+    backgroundColor: 'white',
   },
   first: {
     borderTopLeftRadius: 10 * widthScale,
@@ -551,6 +552,33 @@ export const HomeScreenStyles = StyleSheet.create({
     justifyContent: 'center',
     height: 60 * widthScale,
     ...padding,
+  },
+  bottom: {
+    marginBottom: 10 * widthScale,
+  },
+  goTop: {
+    position: 'absolute',
+    bottom: '10%',
+    right: '6%',
+    width: 40 * widthScale,
+    height: 40 * widthScale,
+    backgroundColor: 'white',
+    borderRadius: 20 * widthScale,
+    borderWidth: 2 * widthScale,
+    borderColor: '#ffee00',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  goTopText: {},
+  box: {
+    backgroundColor: 'white',
+    width: '47.5%',
+    marginLeft: '1.25%',
+    marginRight: '1.25%',
+    marginBottom: '2%',
+    borderRadius: 10 * widthScale,
+    height: 300 * widthScale,
   },
 });
 
@@ -608,5 +636,74 @@ export const KindAreaStyles = StyleSheet.create({
   img: {
     width: 30 * widthScale,
     height: 30 * widthScale,
+  },
+});
+
+/**
+ * RefreshListStyles
+ */
+export const RefreshListStyles = StyleSheet.create({
+  empty: {
+    marginTop: 10 * widthScale,
+    height: 400 * widthScale,
+    backgroundColor: 'white',
+  },
+  loading: {
+    width: '100%',
+    height: '30%',
+  },
+  headImg: {
+    width: 30 * widthScale,
+    height: 30 * widthScale,
+  },
+  father: {},
+  box: {
+    backgroundColor: 'white',
+    width: '47.5%',
+    marginLeft: '1.25%',
+    marginRight: '1.25%',
+    marginBottom: '2%',
+    borderRadius: 10 * widthScale,
+    height: 300 * widthScale,
+  },
+  img: {
+    width: '100%',
+    borderTopLeftRadius: 10 * widthScale,
+    borderTopRightRadius: 10 * widthScale,
+    height: '60%',
+  },
+  priceList: {
+    display: 'flex',
+    paddingLeft: 5 * widthScale,
+    paddingRight: 5 * widthScale,
+  },
+  priceRight: {
+    position: 'absolute',
+    right: 15 * widthScale,
+    fontSize: 12 * widthScale,
+    color: 'gray',
+  },
+  price: {
+    color: 'red',
+    fontWeight: '700',
+    fontSize: 16 * widthScale,
+  },
+  description: {
+    overflow: 'hidden',
+    fontWeight: '700',
+    padding: 5 * widthScale,
+    height: 50 * widthScale,
+  },
+  head: {
+    padding: 5 * widthScale,
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  headRight: {
+    position: 'absolute',
+    right: 15 * widthScale,
+    fontSize: 12 * widthScale,
+    color: 'gray',
   },
 });

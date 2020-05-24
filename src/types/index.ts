@@ -3,6 +3,8 @@ import {
   ViewStyle,
   TextStyle,
   GestureResponderEvent,
+  NativeSyntheticEvent,
+  NativeScrollEvent,
 } from 'react-native';
 
 /**
@@ -357,4 +359,10 @@ export interface RefreshListProps<DataT> {
   data: DataT | undefined;
   onRefresh: (() => void) | undefined;
   isRefresh: boolean;
+  ListHeaderComponent?: React.ComponentType<any> | React.ReactElement | null;
+  onEndReached?: ((info: {distanceFromEnd: number}) => void) | null | undefined;
+  isToTop?: boolean;
+  onScroll?:
+    | ((event: NativeSyntheticEvent<NativeScrollEvent>) => void)
+    | undefined;
 }
