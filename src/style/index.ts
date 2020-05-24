@@ -532,7 +532,6 @@ export const SearchInputPropsStyles = StyleSheet.create({
     paddingRight: 5 * widthScale,
     height: 36 * widthScale,
     borderRadius: 30 * widthScale,
-    marginTop: 10 * widthScale,
   },
   input: {
     textAlign: 'center',
@@ -548,9 +547,9 @@ export const HomeScreenStyles = StyleSheet.create({
   top: {
     backgroundColor: '#ffee00',
     display: 'flex',
-    alignItems: 'center',
+    alignItems: 'flex-start',
     justifyContent: 'center',
-    height: 60 * widthScale,
+    height: 50 * widthScale,
     ...padding,
   },
   bottom: {
@@ -628,6 +627,11 @@ export const KindAreaStyles = StyleSheet.create({
     height: '100%',
   },
   box: {
+    display: 'flex',
+    alignItems: 'center',
+    marginBottom: 10 * widthScale,
+  },
+  boxFather: {
     width: '20%',
     display: 'flex',
     alignItems: 'center',

@@ -16,6 +16,7 @@ import SplashScreen from 'react-native-splash-screen';
 import {getDefaultHeaderStyle} from '@/style/header';
 import {widthScale} from './style';
 import {StatusBar} from 'react-native';
+import Classificat from '@/screens/Classificat';
 
 const MainStack = createStackNavigator<MainStackList>();
 
@@ -71,6 +72,13 @@ function Main({isLogin, isLoading}: MainProps) {
             ...getDefaultHeaderStyle(80 * widthScale, paddingTop, 0.6, 'white'),
             header: () => null,
           }}></MainStack.Screen>
+        <MainStack.Screen
+          name="Classificat"
+          component={Classificat}
+          options={({route}) => ({
+            ...getDefaultHeaderStyle(80 * widthScale, paddingTop, 0.6, 'white'),
+            headerTitle: route.params.kindName,
+          })}></MainStack.Screen>
       </MainStack.Navigator>
     </NavigationContainer>
   );

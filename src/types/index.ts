@@ -93,6 +93,7 @@ export type MainStackList = {
   Release: undefined;
   Search: undefined;
   Setting: {title: string} | undefined;
+  Classificat: {kindId: string; kindName: string};
 };
 
 /**

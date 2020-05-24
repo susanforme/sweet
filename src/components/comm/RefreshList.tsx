@@ -41,7 +41,6 @@ export default function RefreshList({
       ref={flatListRef}
       keyExtractor={(item) => item._id}
       ListHeaderComponent={ListHeaderComponent}
-      initialNumToRender={6}
       scrollsToTop={true}
       ListEmptyComponent={() => renderListEmptyComponent()}
       refreshControl={
