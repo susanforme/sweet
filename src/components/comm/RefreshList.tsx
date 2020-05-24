@@ -8,9 +8,10 @@ import {
   Image,
   TouchableWithoutFeedback,
 } from 'react-native';
-import {RefreshListProps, RecommendGetResponse} from '@/types';
+import {RefreshListProps, RecommendGetResponse, MainStackList} from '@/types';
 import {RefreshListStyles as styles, widthScale} from '@/style';
 import {getRandomNumber} from '@/tools';
+import {useNavigation, NavigationProp} from '@react-navigation/native';
 
 export default function RefreshList({
   onRefresh,
@@ -21,6 +22,7 @@ export default function RefreshList({
   onScroll,
 }: RefreshListProps<RecommendGetResponse['data']>) {
   const flatListRef = useRef<FlatList>(null);
+  const navigation = useNavigation<NavigationProp<MainStackList>>();
   if (isToTop) {
     flatListRef.current?.scrollToIndex({
       animated: true,
@@ -45,18 +47,28 @@ export default function RefreshList({
       ListEmptyComponent={() => renderListEmptyComponent()}
       refreshControl={
         <RefreshControl
-          refreshing={isRefresh}
+          refreshing={Boolean(isRefresh)}
           onRefresh={onRefresh}
           colors={['#ffee00']}
         />
       }
       numColumns={2}
-      renderItem={({item}) => (item._id ? renderItem(item) : null)}></FlatList>
+      renderItem={({item}) =>
+        item._id ? renderItem(item, navigation) : null
+      }></FlatList>
   );
 }
-function renderItem(item: RecommendGetResponse['data'][0]) {
+function renderItem(
+  item: RecommendGetResponse['data'][0],
+  navigation: NavigationProp<MainStackList>,
+) {
   return (
-    <TouchableWithoutFeedback>
+    <TouchableWithoutFeedback
+      onPress={() => {
+        navigation.navigate('Detail', {
+          commodityId: item._id,
+        });
+      }}>
       <View style={[styles.box]}>
         <Image source={{uri: item.imgPath[0]}} style={[styles.img]}></Image>
         <Text numberOfLines={2} style={styles.description}>

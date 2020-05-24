@@ -17,22 +17,20 @@ export default function KindArea() {
   const navigation = useNavigation();
   const Area = data?.map((v) => {
     return (
-      <View style={styles.boxFather}>
-        <TouchableNativeFeedback
-          background={TouchableNativeFeedback.Ripple('rgba(0,0,0,.2)', true)}
-          key={v._id}
-          onPress={() => {
-            navigation.navigate('Classificat', {
-              kindId: v._id,
-              kindName: v.kindName,
-            });
-          }}>
-          <View style={styles.box}>
-            <Image source={{uri: v.imgPath}} style={styles.img}></Image>
-            <Text>{v.kindName}</Text>
-          </View>
-        </TouchableNativeFeedback>
-      </View>
+      <TouchableNativeFeedback
+        background={TouchableNativeFeedback.Ripple('rgba(0,0,0,.2)')}
+        key={v._id}
+        onPress={() => {
+          navigation.navigate('Classificat', {
+            kindId: v._id,
+            kindName: v.kindName,
+          });
+        }}>
+        <View style={styles.box}>
+          <Image source={{uri: v.imgPath}} style={styles.img}></Image>
+          <Text>{v.kindName}</Text>
+        </View>
+      </TouchableNativeFeedback>
     );
   });
   useEffect(() => {

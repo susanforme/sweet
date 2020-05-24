@@ -94,6 +94,7 @@ export type MainStackList = {
   Search: undefined;
   Setting: {title: string} | undefined;
   Classificat: {kindId: string; kindName: string};
+  Detail: {commodityId: string};
 };
 
 /**
@@ -358,12 +359,29 @@ export interface RecommendGetResponse {
  */
 export interface RefreshListProps<DataT> {
   data: DataT | undefined;
-  onRefresh: (() => void) | undefined;
-  isRefresh: boolean;
+  onRefresh?: (() => void) | undefined;
+  isRefresh?: boolean;
   ListHeaderComponent?: React.ComponentType<any> | React.ReactElement | null;
   onEndReached?: ((info: {distanceFromEnd: number}) => void) | null | undefined;
   isToTop?: boolean;
   onScroll?:
     | ((event: NativeSyntheticEvent<NativeScrollEvent>) => void)
     | undefined;
+}
+
+/**
+ * getClassificationResponse
+ */
+export interface getClassificationResponse {
+  status: 0 | 1;
+  data: {
+    _id: string;
+    description: string;
+    imgPath: Array<string>;
+    user: {
+      userName: string;
+      headImg: string;
+    };
+    price: number;
+  }[];
 }

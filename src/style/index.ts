@@ -627,11 +627,6 @@ export const KindAreaStyles = StyleSheet.create({
     height: '100%',
   },
   box: {
-    display: 'flex',
-    alignItems: 'center',
-    marginBottom: 10 * widthScale,
-  },
-  boxFather: {
     width: '20%',
     display: 'flex',
     alignItems: 'center',
