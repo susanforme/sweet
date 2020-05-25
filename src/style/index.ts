@@ -710,12 +710,129 @@ export const RefreshListStyles = StyleSheet.create({
 /**
  * DetailStyles
  */
+const detailstylePadding = {
+  backgroundColor: 'white',
+  paddingLeft: 20 * widthScale,
+  paddingRight: 20 * widthScale,
+};
 export const DetailStyles = StyleSheet.create({
-  area: {
-    backgroundColor: 'white',
-    paddingLeft: 20 * widthScale,
-    paddingRight: 20 * widthScale,
+  area: {},
+  image: {
+    width: '100%',
+    height: 300 * widthScale,
+    marginBottom: 10 * widthScale,
   },
+  imageFather: {
+    ...detailstylePadding,
+  },
+  bottom: {
+    paddingTop: 20 * widthScale,
+    paddingBottom: 15 * widthScale,
+    ...detailstylePadding,
+  },
+  guarantee: {
+    fontSize: 18 * widthScale,
+    color: 'rgb(71, 162, 204)',
+  },
+  bottomRight: {
+    position: 'absolute',
+    right: 20 * widthScale,
+    paddingTop: 20 * widthScale,
+    fontSize: 14 * widthScale,
+    color: 'gray',
+  },
+});
+
+/**
+ * CommentStyles
+ */
+export const CommentStyles = StyleSheet.create({
+  comment: {
+    marginTop: 15 * widthScale,
+    backgroundColor: 'white',
+    ...detailstylePadding,
+    paddingTop: 15 * widthScale,
+    paddingBottom: 15 * widthScale,
+    marginBottom: 10 * widthScale,
+  },
+  commentTitle: {
+    fontSize: 20 * widthScale,
+    fontWeight: '700',
+    paddingBottom: 15 * widthScale,
+    borderBottomColor: 'rgba(128, 128, 128, 0.1)',
+    borderBottomWidth: 1,
+  },
+  commentImg: {
+    width: 150 * widthScale,
+    height: 110 * widthScale,
+  },
+  noComment: {
+    height: 270 * widthScale,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  commentTip: {
+    color: 'gray',
+    marginTop: 20 * widthScale,
+  },
+  commentBtnStyle: {
+    width: 100 * widthScale,
+    height: 40 * widthScale,
+    borderWidth: 0,
+    backgroundColor: '#ffee00',
+    paddingLeft: 0,
+    paddingBottom: 0,
+    paddingRight: 0,
+    paddingTop: 0,
+    marginTop: 20 * widthScale,
+  },
+});
+
+/**
+ * UserMsgStyles
+ */
+export const UserMsgStyles = StyleSheet.create({
+  userMsg: {
+    marginTop: 15 * widthScale,
+    backgroundColor: 'white',
+    ...detailstylePadding,
+    paddingTop: 20 * widthScale,
+    paddingBottom: 11 * widthScale,
+  },
+  userMsgLeft: {},
+  userMsgRight: {
+    position: 'absolute',
+    right: 20 * widthScale,
+    top: 28 * widthScale,
+    width: 65 * widthScale,
+    height: 65 * widthScale,
+  },
+  userMsgBottom: {
+    display: 'flex',
+    flexDirection: 'row',
+    paddingTop: 8 * widthScale,
+    paddingBottom: 8 * widthScale,
+  },
+  userMsgUsername: {
+    paddingTop: 8 * widthScale,
+    paddingBottom: 8 * widthScale,
+    fontSize: 20 * widthScale,
+    fontWeight: '700',
+  },
+  userMsgDescription: {
+    fontSize: 16 * widthScale,
+    fontWeight: '600',
+  },
+  userMsgTip: {
+    color: 'gray',
+  },
+});
+
+/**
+ * DeatailContentTopStyles
+ */
+export const DeatailContentTopStyles = StyleSheet.create({
   head: {
     paddingTop: 10 * widthScale,
     display: 'flex',
@@ -723,6 +840,7 @@ export const DetailStyles = StyleSheet.create({
     borderBottomColor: 'rgba(128, 128, 128, 0.1)',
     paddingBottom: 10 * widthScale,
     borderBottomWidth: 1,
+    ...detailstylePadding,
   },
   userName: {
     fontSize: 15 * widthScale,
@@ -770,6 +888,7 @@ export const DetailStyles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
+    ...detailstylePadding,
   },
   priceLeft: {
     color: 'red',
@@ -793,9 +912,6 @@ export const DetailStyles = StyleSheet.create({
   description: {
     fontSize: 16 * widthScale,
     paddingBottom: 20 * widthScale,
-  },
-  image: {
-    width: '100%',
-    height: 300 * widthScale,
+    ...detailstylePadding,
   },
 });

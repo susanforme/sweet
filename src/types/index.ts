@@ -87,7 +87,7 @@ export interface MainProps {
  */
 export type MainStackList = {
   Tab: undefined;
-  Chat: undefined;
+  Chat: {userId: string};
   Login: undefined;
   Profile: undefined;
   Release: undefined;
@@ -412,6 +412,27 @@ export interface getInfoResponse {
       _id: string;
       headImg: string;
       userName: string;
+      createTime: string;
     };
   };
+}
+
+/**
+ * CommentProps
+ */
+export interface CommentProps {
+  comment: getInfoResponse['data']['comment'] | undefined;
+}
+
+/**
+ * UserMsgProps
+ */
+export interface UserMsgProps {
+  user: getInfoResponse['data']['user'] | undefined;
+}
+/**
+ * DetailContentTopProps
+ */
+export interface DetailContentTopProps {
+  data: getInfoResponse['data'] | undefined;
 }
