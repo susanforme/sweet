@@ -87,7 +87,7 @@ export interface MainProps {
  */
 export type MainStackList = {
   Tab: undefined;
-  Chat: {userId: string};
+  Chat: {userId: string; userName: string};
   Login: undefined;
   Profile: undefined;
   Release: undefined;
@@ -435,4 +435,12 @@ export interface UserMsgProps {
  */
 export interface DetailContentTopProps {
   data: getInfoResponse['data'] | undefined;
+}
+
+/**
+ * DetailBottomAreaProps
+ */
+export interface DetailBottomAreaProps {
+  userId: string;
+  userName: string;
 }

@@ -756,7 +756,7 @@ export const CommentStyles = StyleSheet.create({
     marginBottom: 10 * widthScale,
   },
   commentTitle: {
-    fontSize: 20 * widthScale,
+    fontSize: 18 * widthScale,
     fontWeight: '700',
     paddingBottom: 15 * widthScale,
     borderBottomColor: 'rgba(128, 128, 128, 0.1)',
@@ -786,6 +786,35 @@ export const CommentStyles = StyleSheet.create({
     paddingRight: 0,
     paddingTop: 0,
     marginTop: 20 * widthScale,
+  },
+  commentBox: {
+    display: 'flex',
+    flexDirection: 'row',
+    paddingTop: 20 * widthScale,
+    paddingBottom: 5 * widthScale,
+  },
+  commentUsername: {
+    fontSize: 16 * widthScale,
+    fontWeight: '700',
+    paddingBottom: 5 * widthScale,
+    paddingTop: 5 * widthScale,
+  },
+  commentRight: {
+    display: 'flex',
+    justifyContent: 'center',
+  },
+  commentImage: {
+    width: 35 * widthScale,
+    height: 35 * widthScale,
+    borderRadius: 5 * widthScale,
+    marginRight: 15 * widthScale,
+  },
+  commentContent: {
+    paddingBottom: 10 * widthScale,
+    fontSize: 16 * widthScale,
+  },
+  commentTime: {
+    color: 'gray',
   },
 });
 
@@ -817,12 +846,11 @@ export const UserMsgStyles = StyleSheet.create({
   userMsgUsername: {
     paddingTop: 8 * widthScale,
     paddingBottom: 8 * widthScale,
-    fontSize: 20 * widthScale,
+    fontSize: 18 * widthScale,
     fontWeight: '700',
   },
   userMsgDescription: {
-    fontSize: 16 * widthScale,
-    fontWeight: '600',
+    fontSize: 14 * widthScale,
   },
   userMsgTip: {
     color: 'gray',
@@ -913,5 +941,43 @@ export const DeatailContentTopStyles = StyleSheet.create({
     fontSize: 16 * widthScale,
     paddingBottom: 20 * widthScale,
     ...detailstylePadding,
+  },
+});
+
+/**
+ * DetailBottomAreaStyles
+ */
+export const DetailBottomAreaStyles = StyleSheet.create({
+  area: {
+    height: 50 * widthScale,
+    backgroundColor: 'white',
+    borderTopColor: 'rgba(128, 128, 128, 0.1)',
+    borderTopWidth: 1,
+    display: 'flex',
+    flexDirection: 'row',
+    padding: 10 * widthScale,
+    alignItems: 'center',
+  },
+  right: {
+    position: 'absolute',
+    right: 20 * widthScale,
+    top: 7.5 * widthScale,
+    backgroundColor: '#ffee00',
+    borderWidth: 0,
+    width: 100 * widthScale,
+    height: 35 * widthScale,
+    paddingLeft: 0,
+    paddingRight: 0,
+    borderRadius: 20 * widthScale,
+  },
+  icon: {
+    marginRight: 20 * widthScale,
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  text: {
+    fontSize: 13 * widthScale,
+    color: 'gray',
   },
 });

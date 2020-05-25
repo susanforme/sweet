@@ -7,6 +7,7 @@ import {
   Image,
   TouchableWithoutFeedback,
   Modal,
+  ActivityIndicator,
 } from 'react-native';
 import {useRoute, RouteProp} from '@react-navigation/native';
 import {MainStackList, getInfoResponse} from '@/types';
@@ -18,12 +19,14 @@ import {getRandomNumber} from '@/tools';
 import Comment from '@/components/Detail/Comment';
 import UserMsg from '@/components/Detail/UserMsg';
 import ContentTop from '@/components/Detail/ContentTop';
+import BottomArea from '@/components/Detail/BottomArea';
 
 export default function Detail() {
   const route = useRoute<RouteProp<MainStackList, 'Detail'>>();
   const [data, setData] = useState<getInfoResponse['data']>();
   const [showImg, setShowImg] = useState(false);
   const [index, setIndex] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
   const Images = data?.imgPath.map((v, index) => {
     return (
       <TouchableWithoutFeedback
@@ -46,45 +49,60 @@ export default function Detail() {
       .get<getInfoResponse>(`/commodity/info/${route.params.commodityId}`)
       .then((res) => {
         setData(res.data.data);
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 0);
       })
-      .catch(() => {});
+      .catch(() => {
+        setIsLoading(false);
+      });
   }, []);
   return (
     <SafeAreaView style={{flex: 1}}>
-      <ScrollView style={styles.area}>
-        <ContentTop data={data}></ContentTop>
-        <View style={styles.imageFather}>{Images}</View>
-        <View style={styles.bottom}>
-          <Text style={styles.guarantee}>
-            <Icon name="alipay-square" size={18 * widthScale}></Icon> 担保交易
-          </Text>
-          <Text style={styles.bottomRight}>
-            {getRandomNumber(0, 10)}人想要·浏览{getRandomNumber(10, 1000)}
-          </Text>
-        </View>
-        <Modal
-          visible={showImg}
-          transparent={true}
-          animationType="fade"
-          onRequestClose={() => setShowImg(false)}>
-          <ImageViewer
-            imageUrls={imgs}
-            enableSwipeDown
-            useNativeDriver
-            index={index}
-            menuContext={{saveToLocal: '保存到本地', cancel: '取消'}}
-            onClick={(onCancel) => {
-              if (onCancel) {
-                onCancel();
-              }
-            }}
-            onCancel={() => {
-              setShowImg(false);
-            }}></ImageViewer>
-        </Modal>
-        <UserMsg user={data?.user}></UserMsg>
-        <Comment comment={data?.comment || []}></Comment>
-      </ScrollView>
+      {isLoading ? (
+        <ActivityIndicator size={50} color="#ffee00" />
+      ) : (
+        <>
+          <ScrollView style={styles.area}>
+            <ContentTop data={data}></ContentTop>
+            <View style={styles.imageFather}>{Images}</View>
+            <View style={styles.bottom}>
+              <Text style={styles.guarantee}>
+                <Icon name="alipay-square" size={18 * widthScale}></Icon>{' '}
+                担保交易
+              </Text>
+              <Text style={styles.bottomRight}>
+                {getRandomNumber(0, 10)}人想要·浏览{getRandomNumber(10, 1000)}
+              </Text>
+            </View>
+            <Modal
+              visible={showImg}
+              transparent={true}
+              animationType="fade"
+              onRequestClose={() => setShowImg(false)}>
+              <ImageViewer
+                imageUrls={imgs}
+                enableSwipeDown
+                useNativeDriver
+                index={index}
+                menuContext={{saveToLocal: '保存到本地', cancel: '取消'}}
+                onClick={(onCancel) => {
+                  if (onCancel) {
+                    onCancel();
+                  }
+                }}
+                onCancel={() => {
+                  setShowImg(false);
+                }}></ImageViewer>
+            </Modal>
+            <UserMsg user={data?.user}></UserMsg>
+            <Comment comment={data?.comment || []}></Comment>
+          </ScrollView>
+          <BottomArea
+            userId={data?.user._id || ''}
+            userName={data?.user.userName || ''}></BottomArea>
+        </>
+      )}
     </SafeAreaView>
   );
 }
