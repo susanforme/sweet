@@ -385,3 +385,33 @@ export interface getClassificationResponse {
     price: number;
   }[];
 }
+
+/**
+ * getInfoResponse
+ */
+export interface getInfoResponse {
+  status: 0 | 1;
+  data: {
+    _id: string;
+    comment: {
+      comment: string;
+      createTime: string;
+      userId: {
+        _id: string;
+        headImg: string;
+        userName: string;
+      };
+    }[];
+    createTime: string;
+    description: string;
+    imgPath: Array<string>;
+    isSale: boolean;
+    kind: string;
+    price: number;
+    user: {
+      _id: string;
+      headImg: string;
+      userName: string;
+    };
+  };
+}

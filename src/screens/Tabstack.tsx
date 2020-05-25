@@ -24,7 +24,7 @@ export default function TabStack() {
               iconName = 'home';
               break;
             case 'Sell':
-              iconName = 'shoppingcart';
+              iconName = 'isv';
               break;
             case 'Message':
               iconName = 'message1';
@@ -53,6 +53,7 @@ export default function TabStack() {
         name="User"
         component={UserStackScreen}
         options={{tabBarLabel: '我的'}}></Tab.Screen>
+      {/* 这里添加一个抽屉侧边栏放聊天 */}
     </Tab.Navigator>
   );
 }

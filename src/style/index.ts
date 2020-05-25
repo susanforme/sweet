@@ -706,3 +706,104 @@ export const RefreshListStyles = StyleSheet.create({
     color: 'gray',
   },
 });
+
+/**
+ * DetailStyles
+ */
+export const DetailStyles = StyleSheet.create({
+  area: {
+    backgroundColor: 'white',
+    paddingLeft: 20 * widthScale,
+    paddingRight: 20 * widthScale,
+  },
+  head: {
+    paddingTop: 10 * widthScale,
+    display: 'flex',
+    flexDirection: 'row',
+    borderBottomColor: 'rgba(128, 128, 128, 0.1)',
+    paddingBottom: 10 * widthScale,
+    borderBottomWidth: 1,
+  },
+  userName: {
+    fontSize: 15 * widthScale,
+    fontWeight: '700',
+    overflow: 'hidden',
+  },
+  userNameArea: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  userNameIcon: {
+    color: 'rgb(71, 162, 204)',
+  },
+  iconArea: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: 'rgba(71, 162, 204, 0.1)',
+    marginLeft: 15 * widthScale,
+    borderRadius: 2 * widthScale,
+  },
+  iconText: {
+    color: 'rgb(71, 162, 204)',
+    fontSize: 13 * widthScale,
+    fontWeight: '600',
+  },
+  location: {
+    color: 'gray',
+    fontSize: 12 * widthScale,
+  },
+  headImg: {
+    width: 48 * widthScale,
+    height: 48 * widthScale,
+    borderRadius: 10 * widthScale,
+  },
+  headRight: {
+    marginLeft: 10 * widthScale,
+    display: 'flex',
+    justifyContent: 'flex-end',
+  },
+  priceArea: {
+    paddingTop: 20 * widthScale,
+    paddingBottom: 20 * widthScale,
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  priceLeft: {
+    color: 'red',
+    fontSize: 15 * widthScale,
+  },
+  priceText: {
+    color: 'red',
+    fontWeight: '700',
+    fontSize: 20 * widthScale,
+  },
+  priceRight: {
+    marginLeft: 5 * widthScale,
+    backgroundColor: 'rgba(255, 0, 0, 0.116)',
+    paddingLeft: 5 * widthScale,
+    paddingRight: 5 * widthScale,
+  },
+  priceRightText: {
+    fontSize: 12 * widthScale,
+    color: 'red',
+  },
+  description: {
+    fontSize: 16 * widthScale,
+    paddingBottom: 20 * widthScale,
+  },
+  image: {
+    width: '100%',
+    height: 300 * widthScale,
+  },
+  imgHeader: {
+    backgroundColor: 'black',
+    position: 'absolute',
+    top: 20 * widthScale,
+  },
+  headerIcon: {
+    color: 'white',
+  },
+});
