@@ -11,21 +11,24 @@ import {
 import {useRoute, RouteProp} from '@react-navigation/native';
 import {MainStackList, getInfoResponse} from '@/types';
 import {axios} from '@/api';
-import {DetailStyles as styles, widthScale} from '@/style';
+import {DetailStyles as styles} from '@/style';
 import Icon from 'react-native-vector-icons/AntDesign';
 import ImageViewer from 'react-native-image-zoom-viewer';
-import {NavigationBar} from 'beeshell/dist/components/NavigationBar';
 
 export default function Detail() {
   const route = useRoute<RouteProp<MainStackList, 'Detail'>>();
   const [data, setData] = useState<getInfoResponse['data']>();
   const [showImg, setShowImg] = useState(false);
+  const [index, setIndex] = useState(0);
   const Images = data?.imgPath.map((v, index) => {
     return (
       <TouchableWithoutFeedback
         key={index}
         onPress={() => {
-          setShowImg(true);
+          setIndex(index);
+          setTimeout(() => {
+            setShowImg(true);
+          }, 0);
         }}>
         <Image source={{uri: v}} style={styles.image}></Image>
       </TouchableWithoutFeedback>
@@ -74,40 +77,26 @@ export default function Detail() {
           <Text style={styles.description}>{data?.description}</Text>
         </View>
         {Images}
-        {showImg ? (
-          <Modal
-            visible={true}
-            transparent={true}
-            animationType="fade"
-            presentationStyle="fullScreen"
-            onRequestClose={() => setShowImg(false)}>
-            <ImageViewer
-              imageUrls={imgs}
-              enableSwipeDown
-              useNativeDriver
-              renderHeader={() => {
-                return (
-                  <NavigationBar
-                    backLabelText=""
-                    backLabelIcon={
-                      <Icon
-                        name="arrowleft"
-                        style={styles.headerIcon}
-                        size={25 * widthScale}></Icon>
-                    }
-                    style={styles.imgHeader}></NavigationBar>
-                );
-              }}
-              onClick={(onCancel) => {
-                if (onCancel) {
-                  onCancel();
-                }
-              }}
-              onCancel={() => {
-                setShowImg(false);
-              }}></ImageViewer>
-          </Modal>
-        ) : null}
+        <Modal
+          visible={showImg}
+          transparent={true}
+          animationType="fade"
+          onRequestClose={() => setShowImg(false)}>
+          <ImageViewer
+            imageUrls={imgs}
+            enableSwipeDown
+            useNativeDriver
+            index={index}
+            menuContext={{saveToLocal: '保存到本地', cancel: '取消'}}
+            onClick={(onCancel) => {
+              if (onCancel) {
+                onCancel();
+              }
+            }}
+            onCancel={() => {
+              setShowImg(false);
+            }}></ImageViewer>
+        </Modal>
       </ScrollView>
     </SafeAreaView>
   );

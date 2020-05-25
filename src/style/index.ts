@@ -798,12 +798,4 @@ export const DetailStyles = StyleSheet.create({
     width: '100%',
     height: 300 * widthScale,
   },
-  imgHeader: {
-    backgroundColor: 'black',
-    position: 'absolute',
-    top: 20 * widthScale,
-  },
-  headerIcon: {
-    color: 'white',
-  },
 });
