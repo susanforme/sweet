@@ -706,3 +706,278 @@ export const RefreshListStyles = StyleSheet.create({
     color: 'gray',
   },
 });
+
+/**
+ * DetailStyles
+ */
+const detailstylePadding = {
+  backgroundColor: 'white',
+  paddingLeft: 20 * widthScale,
+  paddingRight: 20 * widthScale,
+};
+export const DetailStyles = StyleSheet.create({
+  area: {},
+  image: {
+    width: '100%',
+    height: 300 * widthScale,
+    marginBottom: 10 * widthScale,
+  },
+  imageFather: {
+    ...detailstylePadding,
+  },
+  bottom: {
+    paddingTop: 20 * widthScale,
+    paddingBottom: 15 * widthScale,
+    ...detailstylePadding,
+  },
+  guarantee: {
+    fontSize: 18 * widthScale,
+    color: 'rgb(71, 162, 204)',
+  },
+  bottomRight: {
+    position: 'absolute',
+    right: 20 * widthScale,
+    paddingTop: 20 * widthScale,
+    fontSize: 14 * widthScale,
+    color: 'gray',
+  },
+});
+
+/**
+ * CommentStyles
+ */
+export const CommentStyles = StyleSheet.create({
+  comment: {
+    marginTop: 15 * widthScale,
+    backgroundColor: 'white',
+    ...detailstylePadding,
+    paddingTop: 15 * widthScale,
+    paddingBottom: 15 * widthScale,
+    marginBottom: 10 * widthScale,
+  },
+  commentTitle: {
+    fontSize: 18 * widthScale,
+    fontWeight: '700',
+    paddingBottom: 15 * widthScale,
+    borderBottomColor: 'rgba(128, 128, 128, 0.1)',
+    borderBottomWidth: 1,
+  },
+  commentImg: {
+    width: 150 * widthScale,
+    height: 110 * widthScale,
+  },
+  noComment: {
+    height: 270 * widthScale,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  commentTip: {
+    color: 'gray',
+    marginTop: 20 * widthScale,
+  },
+  commentBtnStyle: {
+    width: 100 * widthScale,
+    height: 40 * widthScale,
+    borderWidth: 0,
+    backgroundColor: '#ffee00',
+    paddingLeft: 0,
+    paddingBottom: 0,
+    paddingRight: 0,
+    paddingTop: 0,
+    marginTop: 20 * widthScale,
+  },
+  commentBox: {
+    display: 'flex',
+    flexDirection: 'row',
+    paddingTop: 20 * widthScale,
+    paddingBottom: 5 * widthScale,
+  },
+  commentUsername: {
+    fontSize: 16 * widthScale,
+    fontWeight: '700',
+    paddingBottom: 5 * widthScale,
+    paddingTop: 5 * widthScale,
+  },
+  commentRight: {
+    display: 'flex',
+    justifyContent: 'center',
+  },
+  commentImage: {
+    width: 35 * widthScale,
+    height: 35 * widthScale,
+    borderRadius: 5 * widthScale,
+    marginRight: 15 * widthScale,
+  },
+  commentContent: {
+    paddingBottom: 10 * widthScale,
+    fontSize: 16 * widthScale,
+  },
+  commentTime: {
+    color: 'gray',
+  },
+});
+
+/**
+ * UserMsgStyles
+ */
+export const UserMsgStyles = StyleSheet.create({
+  userMsg: {
+    marginTop: 15 * widthScale,
+    backgroundColor: 'white',
+    ...detailstylePadding,
+    paddingTop: 20 * widthScale,
+    paddingBottom: 11 * widthScale,
+  },
+  userMsgLeft: {},
+  userMsgRight: {
+    position: 'absolute',
+    right: 20 * widthScale,
+    top: 28 * widthScale,
+    width: 65 * widthScale,
+    height: 65 * widthScale,
+  },
+  userMsgBottom: {
+    display: 'flex',
+    flexDirection: 'row',
+    paddingTop: 8 * widthScale,
+    paddingBottom: 8 * widthScale,
+  },
+  userMsgUsername: {
+    paddingTop: 8 * widthScale,
+    paddingBottom: 8 * widthScale,
+    fontSize: 18 * widthScale,
+    fontWeight: '700',
+  },
+  userMsgDescription: {
+    fontSize: 14 * widthScale,
+  },
+  userMsgTip: {
+    color: 'gray',
+  },
+});
+
+/**
+ * DeatailContentTopStyles
+ */
+export const DeatailContentTopStyles = StyleSheet.create({
+  head: {
+    paddingTop: 10 * widthScale,
+    display: 'flex',
+    flexDirection: 'row',
+    borderBottomColor: 'rgba(128, 128, 128, 0.1)',
+    paddingBottom: 10 * widthScale,
+    borderBottomWidth: 1,
+    ...detailstylePadding,
+  },
+  userName: {
+    fontSize: 15 * widthScale,
+    fontWeight: '700',
+    overflow: 'hidden',
+  },
+  userNameArea: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  userNameIcon: {
+    color: 'rgb(71, 162, 204)',
+  },
+  iconArea: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: 'rgba(71, 162, 204, 0.1)',
+    marginLeft: 15 * widthScale,
+    borderRadius: 2 * widthScale,
+  },
+  iconText: {
+    color: 'rgb(71, 162, 204)',
+    fontSize: 13 * widthScale,
+    fontWeight: '600',
+  },
+  location: {
+    color: 'gray',
+    fontSize: 12 * widthScale,
+  },
+  headImg: {
+    width: 48 * widthScale,
+    height: 48 * widthScale,
+    borderRadius: 10 * widthScale,
+  },
+  headRight: {
+    marginLeft: 10 * widthScale,
+    display: 'flex',
+    justifyContent: 'flex-end',
+  },
+  priceArea: {
+    paddingTop: 20 * widthScale,
+    paddingBottom: 20 * widthScale,
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    ...detailstylePadding,
+  },
+  priceLeft: {
+    color: 'red',
+    fontSize: 15 * widthScale,
+  },
+  priceText: {
+    color: 'red',
+    fontWeight: '700',
+    fontSize: 20 * widthScale,
+  },
+  priceRight: {
+    marginLeft: 5 * widthScale,
+    backgroundColor: 'rgba(255, 0, 0, 0.116)',
+    paddingLeft: 5 * widthScale,
+    paddingRight: 5 * widthScale,
+  },
+  priceRightText: {
+    fontSize: 12 * widthScale,
+    color: 'red',
+  },
+  description: {
+    fontSize: 16 * widthScale,
+    paddingBottom: 20 * widthScale,
+    ...detailstylePadding,
+  },
+});
+
+/**
+ * DetailBottomAreaStyles
+ */
+export const DetailBottomAreaStyles = StyleSheet.create({
+  area: {
+    height: 50 * widthScale,
+    backgroundColor: 'white',
+    borderTopColor: 'rgba(128, 128, 128, 0.1)',
+    borderTopWidth: 1,
+    display: 'flex',
+    flexDirection: 'row',
+    padding: 10 * widthScale,
+    alignItems: 'center',
+  },
+  right: {
+    position: 'absolute',
+    right: 20 * widthScale,
+    top: 7.5 * widthScale,
+    backgroundColor: '#ffee00',
+    borderWidth: 0,
+    width: 100 * widthScale,
+    height: 35 * widthScale,
+    paddingLeft: 0,
+    paddingRight: 0,
+    borderRadius: 20 * widthScale,
+  },
+  icon: {
+    marginRight: 20 * widthScale,
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  text: {
+    fontSize: 13 * widthScale,
+    color: 'gray',
+  },
+});

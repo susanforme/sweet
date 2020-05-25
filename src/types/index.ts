@@ -87,7 +87,7 @@ export interface MainProps {
  */
 export type MainStackList = {
   Tab: undefined;
-  Chat: undefined;
+  Chat: {userId: string; userName: string};
   Login: undefined;
   Profile: undefined;
   Release: undefined;
@@ -384,4 +384,63 @@ export interface getClassificationResponse {
     };
     price: number;
   }[];
+}
+
+/**
+ * getInfoResponse
+ */
+export interface getInfoResponse {
+  status: 0 | 1;
+  data: {
+    _id: string;
+    comment: {
+      comment: string;
+      createTime: string;
+      userId: {
+        _id: string;
+        headImg: string;
+        userName: string;
+      };
+    }[];
+    createTime: string;
+    description: string;
+    imgPath: Array<string>;
+    isSale: boolean;
+    kind: string;
+    price: number;
+    user: {
+      _id: string;
+      headImg: string;
+      userName: string;
+      createTime: string;
+    };
+  };
+}
+
+/**
+ * CommentProps
+ */
+export interface CommentProps {
+  comment: getInfoResponse['data']['comment'] | undefined;
+}
+
+/**
+ * UserMsgProps
+ */
+export interface UserMsgProps {
+  user: getInfoResponse['data']['user'] | undefined;
+}
+/**
+ * DetailContentTopProps
+ */
+export interface DetailContentTopProps {
+  data: getInfoResponse['data'] | undefined;
+}
+
+/**
+ * DetailBottomAreaProps
+ */
+export interface DetailBottomAreaProps {
+  userId: string;
+  userName: string;
 }

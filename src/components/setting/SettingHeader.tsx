@@ -11,7 +11,7 @@ export default function SettingHeader() {
   return (
     <NavigationBar
       backLabelText=""
-      backLabelIcon={<Icon name="arrowleft" size={height * 0.88}></Icon>}
+      backLabel={<Icon name="arrowleft" size={height * 0.88}></Icon>}
       style={{
         height: height * 2.8,
         backgroundColor: '#ffffff',

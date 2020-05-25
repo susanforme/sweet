@@ -85,6 +85,7 @@ function Main({isLogin, isLoading}: MainProps) {
           component={Detail}
           options={{
             ...getDefaultHeaderStyle(80 * widthScale, paddingTop, 0.6, 'white'),
+            title: '',
           }}></MainStack.Screen>
       </MainStack.Navigator>
     </NavigationContainer>
