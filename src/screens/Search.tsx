@@ -17,22 +17,25 @@ export default function Search() {
         isSearching={isSearching}
         setIsSearching={setIsSearching}
         search={(content) => {
-          if (!content) {
-            setIsSearching(true);
-            return Tip.show('请输入查询关键字', 500);
-          }
-          axios
-            .get<RecommendGetResponse>(`/commodity/search/${content}`)
-            .then((res) => {
-              if (res.data.data.length === 0) {
-                setIsSearching(true);
-                return Tip.show('查询结果为空', 500);
-              }
-              setData(res.data.data);
-            })
-            .catch((err) => {
-              console.log(err);
-            });
+          setData(undefined);
+          setTimeout(() => {
+            if (!content) {
+              setIsSearching(true);
+              return Tip.show('请输入查询关键字', 500);
+            }
+            axios
+              .get<RecommendGetResponse>(`/commodity/search/${content}`)
+              .then((res) => {
+                if (res.data.data.length === 0) {
+                  setIsSearching(true);
+                  return Tip.show('查询结果为空', 500);
+                }
+                setData(res.data.data);
+              })
+              .catch((err) => {
+                console.log(err);
+              });
+          }, 0);
         }}></Header>
       {isSearching ? null : (
         <RefreshList
