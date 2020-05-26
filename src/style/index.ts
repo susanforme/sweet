@@ -1088,3 +1088,18 @@ export const SearchStyles = StyleSheet.create({
     marginTop: 10 * widthScale,
   },
 });
+
+/**
+ * SellScreenStyles
+ */
+export const SellScreenStyles = StyleSheet.create({
+  area: {
+    flex: 1,
+    backgroundColor: 'white',
+  },
+  top: {},
+  first: {},
+  second: {},
+  bottomArea: {},
+  bottomBtn: {},
+});
