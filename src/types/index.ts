@@ -367,6 +367,7 @@ export interface RefreshListProps<DataT> {
   onScroll?:
     | ((event: NativeSyntheticEvent<NativeScrollEvent>) => void)
     | undefined;
+  enabelRefresh?: boolean;
 }
 
 /**
@@ -456,4 +457,13 @@ export interface DetailBottomAreaProps {
   setIsInput: React.Dispatch<React.SetStateAction<boolean>>;
   data: getInfoResponse['data'] | undefined;
   setData: React.Dispatch<React.SetStateAction<DetailBottomAreaProps['data']>>;
+}
+
+/**
+ * SearchHeaderProps
+ */
+export interface SearchHeaderProps {
+  search: (content: string) => any;
+  isSearching: boolean;
+  setIsSearching: React.Dispatch<React.SetStateAction<boolean>>;
 }

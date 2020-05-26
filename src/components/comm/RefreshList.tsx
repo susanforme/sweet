@@ -20,6 +20,7 @@ export default function RefreshList({
   ListHeaderComponent,
   isToTop,
   onScroll,
+  enabelRefresh = true,
 }: RefreshListProps<RecommendGetResponse['data']>) {
   const flatListRef = useRef<FlatList>(null);
   const navigation = useNavigation<NavigationProp<MainStackList>>();
@@ -46,11 +47,13 @@ export default function RefreshList({
       scrollsToTop={true}
       ListEmptyComponent={() => renderListEmptyComponent()}
       refreshControl={
-        <RefreshControl
-          refreshing={Boolean(isRefresh)}
-          onRefresh={onRefresh}
-          colors={['#ffee00']}
-        />
+        enabelRefresh ? (
+          <RefreshControl
+            refreshing={Boolean(isRefresh)}
+            onRefresh={onRefresh}
+            colors={['#ffee00']}
+          />
+        ) : undefined
       }
       numColumns={2}
       renderItem={({item}) =>
