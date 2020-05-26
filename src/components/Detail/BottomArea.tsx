@@ -99,7 +99,9 @@ function BottomArea({
             style={styles.angleIcon}></Icon>
         </View>
       </TouchableWithoutFeedback>
-      <Image source={{uri: myUserMsg._id}} style={styles.inputHeadImg}></Image>
+      <Image
+        source={{uri: myUserMsg.headImg}}
+        style={styles.inputHeadImg}></Image>
       <TextInput
         style={styles.input}
         ref={inputRef}
@@ -159,10 +161,10 @@ function sendComment(
   myUserMsg: DetailBottomAreaProps['myUserMsg'],
 ) {
   if (!isLogin) {
-    return Tip.show('请登录后再试', 800);
+    return Tip.show('请登录后再试', 500);
   }
   if (!comment) {
-    return Tip.show('请输入文字内容', 800);
+    return Tip.show('请输入文字内容', 500);
   }
   axios
     .post('/commodity/comment', {
@@ -171,9 +173,9 @@ function sendComment(
       userId: myUserMsg._id,
     })
     .then(() => {
-      Tip.show('发送成功', 800);
+      Tip.show('发送成功', 500);
       if (!data) {
-        return Tip.show('发送失败', 800);
+        return Tip.show('发送失败', 500);
       }
       setData({
         ...data,
@@ -192,6 +194,6 @@ function sendComment(
       });
     })
     .catch(() => {
-      Tip.show('发送失败', 800);
+      Tip.show('发送失败', 500);
     });
 }

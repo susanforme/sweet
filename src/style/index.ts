@@ -644,7 +644,7 @@ export const KindAreaStyles = StyleSheet.create({
 export const RefreshListStyles = StyleSheet.create({
   empty: {
     marginTop: 10 * widthScale,
-    height: 400 * widthScale,
+    height: height,
     backgroundColor: 'white',
   },
   loading: {
@@ -962,8 +962,8 @@ export const DetailBottomAreaStyles = StyleSheet.create({
   },
   right: {
     position: 'absolute',
-    right: 20 * widthScale,
-    top: 10 * widthScale,
+    right: 16 * widthScale,
+    top: 12 * widthScale,
     backgroundColor: '#ffee00',
     borderWidth: 0,
     width: 100 * widthScale,
@@ -1029,5 +1029,62 @@ export const DetailBottomAreaStyles = StyleSheet.create({
     paddingLeft: 0,
     paddingRight: 0,
     backgroundColor: '#ffee00',
+  },
+});
+
+/**
+ * SearchHeaderStyles
+ */
+export const SearchHeaderStyles = StyleSheet.create({
+  header: {
+    marginTop: 15 * widthScale,
+    flexDirection: 'row',
+    display: 'flex',
+    height: 60 * widthScale,
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%',
+    paddingBottom: 15 * widthScale,
+    ...padding,
+  },
+  input: {
+    backgroundColor: '#F2F2F2',
+    padding: 5 * widthScale,
+    flex: 1,
+  },
+  inputArea: {
+    flex: 8,
+    flexDirection: 'row',
+    alignItems: 'center',
+    height: 50 * widthScale,
+    marginRight: 10 * widthScale,
+  },
+  inputText: {
+    backgroundColor: '#F2F2F2',
+    padding: 10 * widthScale,
+    paddingRight: 5 * widthScale,
+  },
+  btn: {
+    borderWidth: 0,
+    flex: 1,
+    textAlign: 'center',
+    fontSize: 18 * widthScale,
+    marginLeft: 10 * widthScale,
+  },
+  leftIcon: {
+    flex: 1,
+  },
+});
+
+/**
+ * SearchStyles
+ */
+export const SearchStyles = StyleSheet.create({
+  area: {
+    flex: 1,
+    backgroundColor: 'white',
+  },
+  marginTop: {
+    marginTop: 10 * widthScale,
   },
 });
