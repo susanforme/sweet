@@ -35,7 +35,11 @@ function BottomArea({
     <>
       <TouchableWithoutFeedback>
         <View style={styles.icon}>
-          <Icon name="hearto" size={20 * widthScale} color="gray"></Icon>
+          <Icon
+            name="hearto"
+            size={22 * widthScale}
+            color="gray"
+            style={styles.iconFont}></Icon>
           <Text style={styles.text}>喜欢</Text>
         </View>
       </TouchableWithoutFeedback>
@@ -47,13 +51,21 @@ function BottomArea({
           }, 0);
         }}>
         <View style={styles.icon}>
-          <Icon name="message1" size={20 * widthScale} color="gray"></Icon>
+          <Icon
+            name="message1"
+            size={22 * widthScale}
+            color="gray"
+            style={styles.iconFont}></Icon>
           <Text style={styles.text}>留言</Text>
         </View>
       </TouchableWithoutFeedback>
       <TouchableWithoutFeedback>
         <View style={styles.icon}>
-          <Icon name="shoppingcart" size={20 * widthScale} color="gray"></Icon>
+          <Icon
+            name="shoppingcart"
+            size={22 * widthScale}
+            color="gray"
+            style={styles.iconFont}></Icon>
           <Text style={styles.text}>购买</Text>
         </View>
       </TouchableWithoutFeedback>

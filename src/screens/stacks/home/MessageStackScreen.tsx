@@ -4,6 +4,7 @@ import MessageScreen from '@/screens/screens/tab/MessageScreen';
 import {useHeaderHeight} from '@react-navigation/stack';
 import {getDefaultHeaderStyle} from '@/style/header';
 import {StatusBar} from 'react-native';
+import Header from '@/components/comm/Header';
 
 const MessageStack = createStackNavigator<StackList>();
 
@@ -18,7 +19,7 @@ export default function MessageStackScreen() {
         component={MessageScreen}
         options={{
           ...getDefaultHeaderStyle(height, paddingTop, 0.7),
-          headerTitle: '消息',
+          header: () => Header('消息'),
         }}></MessageStack.Screen>
     </MessageStack.Navigator>
   );

@@ -949,7 +949,7 @@ export const DeatailContentTopStyles = StyleSheet.create({
  */
 export const DetailBottomAreaStyles = StyleSheet.create({
   area: {
-    height: 50 * widthScale,
+    height: 66 * widthScale,
     backgroundColor: 'white',
     borderTopColor: 'rgba(128, 128, 128, 0.1)',
     borderTopWidth: 1,
@@ -957,17 +957,20 @@ export const DetailBottomAreaStyles = StyleSheet.create({
     flexDirection: 'row',
     padding: 10 * widthScale,
     alignItems: 'center',
+    paddingTop: 0 * widthScale,
+    paddingBottom: 0 * widthScale,
   },
   right: {
     position: 'absolute',
     right: 20 * widthScale,
-    top: 7.5 * widthScale,
+    top: 10 * widthScale,
     backgroundColor: '#ffee00',
     borderWidth: 0,
     width: 100 * widthScale,
-    height: 35 * widthScale,
     paddingLeft: 0,
     paddingRight: 0,
+    paddingTop: 10 * widthScale,
+    paddingBottom: 10 * widthScale,
     borderRadius: 20 * widthScale,
   },
   icon: {
@@ -975,10 +978,15 @@ export const DetailBottomAreaStyles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+    marginLeft: 10 * widthScale,
+  },
+  iconFont: {
+    marginTop: 3 * widthScale,
   },
   text: {
     fontSize: 13 * widthScale,
     color: 'gray',
+    marginTop: 3 * widthScale,
   },
   inputLeft: {},
   inputArea: {
@@ -1016,8 +1024,8 @@ export const DetailBottomAreaStyles = StyleSheet.create({
   button: {
     flex: 1.5,
     borderWidth: 0,
-    paddingTop: 5 * widthScale,
-    paddingBottom: 5 * widthScale,
+    paddingTop: 8.5 * widthScale,
+    paddingBottom: 8.5 * widthScale,
     paddingLeft: 0,
     paddingRight: 0,
     backgroundColor: '#ffee00',
