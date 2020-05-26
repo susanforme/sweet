@@ -759,8 +759,6 @@ export const CommentStyles = StyleSheet.create({
     fontSize: 18 * widthScale,
     fontWeight: '700',
     paddingBottom: 15 * widthScale,
-    borderBottomColor: 'rgba(128, 128, 128, 0.1)',
-    borderBottomWidth: 1,
   },
   commentImg: {
     width: 150 * widthScale,
@@ -792,6 +790,8 @@ export const CommentStyles = StyleSheet.create({
     flexDirection: 'row',
     paddingTop: 20 * widthScale,
     paddingBottom: 5 * widthScale,
+    borderTopColor: 'rgba(128, 128, 128, 0.05)',
+    borderTopWidth: 1,
   },
   commentUsername: {
     fontSize: 16 * widthScale,
@@ -979,5 +979,47 @@ export const DetailBottomAreaStyles = StyleSheet.create({
   text: {
     fontSize: 13 * widthScale,
     color: 'gray',
+  },
+  inputLeft: {},
+  inputArea: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  inputIcon: {
+    alignItems: 'center',
+    flex: 1,
+    paddingTop: 5 * widthScale,
+    paddingBottom: 5 * widthScale,
+    marginLeft: -10 * widthScale,
+  },
+  angleIcon: {
+    marginTop: -4 * widthScale,
+  },
+  inputHeadImg: {
+    height: 30 * widthScale,
+    flex: 0.8,
+    paddingTop: 5 * widthScale,
+    paddingBottom: 5 * widthScale,
+  },
+  input: {
+    flex: 5,
+    paddingTop: 5 * widthScale,
+    paddingBottom: 5 * widthScale,
+    paddingLeft: 5 * widthScale,
+    overflow: 'hidden',
+    backgroundColor: '#F2F2F2',
+    marginLeft: 9 * widthScale,
+    marginRight: 9 * widthScale,
+  },
+  button: {
+    flex: 1.5,
+    borderWidth: 0,
+    paddingTop: 5 * widthScale,
+    paddingBottom: 5 * widthScale,
+    paddingLeft: 0,
+    paddingRight: 0,
+    backgroundColor: '#ffee00',
   },
 });

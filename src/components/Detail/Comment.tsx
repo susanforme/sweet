@@ -4,19 +4,24 @@ import {Button} from 'beeshell/dist/components/Button';
 import {CommentStyles as styles} from '@/style';
 import {CommentProps} from '@/types';
 
-export default function Comment({comment}: CommentProps) {
+export default function Comment({comment, setIsInput}: CommentProps) {
   const noComment = (
     <View style={styles.noComment}>
       <Image
         source={require('@/resource/comment.jpg')}
         style={styles.commentImg}></Image>
       <Text style={styles.commentTip}>还没有人留言,还不快来抢沙发...</Text>
-      <Button style={styles.commentBtnStyle}>留言</Button>
+      <Button
+        style={styles.commentBtnStyle}
+        onPress={() => {
+          setIsInput(true);
+        }}>
+        留言
+      </Button>
     </View>
   );
 
   const comments = comment?.map((v) => {
-    console.log(v.createTime);
     return (
       <View style={styles.commentBox}>
         <Image
@@ -44,7 +49,10 @@ function getHours(time: string) {
   const nowDate = new Date();
   const oldDate = new Date(time);
   const hour = 1000 * 60 * 60;
-  const result = Math.floor((nowDate.getTime() - oldDate.getTime()) / hour);
+  const timeOffSet = new Date().getTimezoneOffset() / 60;
+  const result = Math.floor(
+    (nowDate.getTime() + timeOffSet - oldDate.getTime()) / hour + 8,
+  );
   if (result < 24) {
     return result + '小时前';
   }

@@ -422,6 +422,7 @@ export interface getInfoResponse {
  */
 export interface CommentProps {
   comment: getInfoResponse['data']['comment'] | undefined;
+  setIsInput: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 /**
@@ -443,4 +444,16 @@ export interface DetailContentTopProps {
 export interface DetailBottomAreaProps {
   userId: string;
   userName: string;
+  toEnd: Function;
+  myUserMsg: {
+    _id: string;
+    headImg: string;
+    userName: string;
+  };
+  commodityId: string | undefined;
+  isLogin: boolean;
+  isInput: boolean;
+  setIsInput: React.Dispatch<React.SetStateAction<boolean>>;
+  data: getInfoResponse['data'] | undefined;
+  setData: React.Dispatch<React.SetStateAction<DetailBottomAreaProps['data']>>;
 }
