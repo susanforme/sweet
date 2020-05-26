@@ -4,6 +4,7 @@ import HomeScreen from '@/screens/screens/tab/HomeScreen';
 import {useHeaderHeight} from '@react-navigation/stack';
 import {getDefaultHeaderStyle} from '@/style/header';
 import {StatusBar} from 'react-native';
+import Header from '@/components/comm/Header';
 
 const HomeStack = createStackNavigator<StackList>();
 
@@ -17,7 +18,7 @@ export default function HomeStackScreen() {
         component={HomeScreen}
         options={{
           ...getDefaultHeaderStyle(height, paddingTop, 0.6),
-          headerTitle: '首页',
+          header: () => Header('首页'),
         }}></HomeStack.Screen>
     </HomeStack.Navigator>
   );

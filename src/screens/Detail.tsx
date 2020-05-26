@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useRef} from 'react';
 import {
   View,
   Text,
@@ -27,6 +27,9 @@ export default function Detail() {
   const [showImg, setShowImg] = useState(false);
   const [index, setIndex] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
+  const [isInput, setIsInput] = useState(false);
+
+  const scrollRef = useRef<ScrollView>(null);
   const Images = data?.imgPath.map((v, index) => {
     return (
       <TouchableWithoutFeedback
@@ -59,11 +62,11 @@ export default function Detail() {
   }, []);
   return (
     <SafeAreaView style={{flex: 1}}>
-      {isLoading ? (
-        <ActivityIndicator size={50} color="#ffee00" />
-      ) : (
-        <>
-          <ScrollView style={styles.area}>
+      <ScrollView style={styles.area} ref={scrollRef}>
+        {isLoading ? (
+          <ActivityIndicator size={50} color="#ffee00" />
+        ) : (
+          <>
             <ContentTop data={data}></ContentTop>
             <View style={styles.imageFather}>{Images}</View>
             <View style={styles.bottom}>
@@ -96,13 +99,23 @@ export default function Detail() {
                 }}></ImageViewer>
             </Modal>
             <UserMsg user={data?.user}></UserMsg>
-            <Comment comment={data?.comment || []}></Comment>
-          </ScrollView>
-          <BottomArea
-            userId={data?.user._id || ''}
-            userName={data?.user.userName || ''}></BottomArea>
-        </>
-      )}
+            <Comment
+              comment={data?.comment || []}
+              setIsInput={setIsInput}></Comment>
+          </>
+        )}
+      </ScrollView>
+      <BottomArea
+        toEnd={() => {
+          scrollRef.current?.scrollToEnd({animated: true});
+        }}
+        data={data}
+        setData={setData}
+        isInput={isInput}
+        setIsInput={setIsInput}
+        commodityId={data?._id}
+        userId={data?.user._id || ''}
+        userName={data?.user.userName || ''}></BottomArea>
     </SafeAreaView>
   );
 }
