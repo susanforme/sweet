@@ -1163,8 +1163,6 @@ export const ReleaseStyles = StyleSheet.create({
   },
   priceArea: {
     height: 60 * widthScale,
-    borderBottomColor: 'rgba(128, 128, 128, 0.288)',
-    borderBottomWidth: 1 * widthScale,
     borderTopColor: 'rgba(128, 128, 128, 0.1)',
     borderTopWidth: 1 * widthScale,
     marginTop: 40 * widthScale,

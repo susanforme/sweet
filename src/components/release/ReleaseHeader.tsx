@@ -3,10 +3,12 @@ import {NavigationBar} from 'beeshell/dist/components/NavigationBar';
 import {StatusBar, Text} from 'react-native';
 import {widthScale, ReleaseHeaderStyles as styles} from '@/style';
 import {Button} from 'beeshell/dist/components/Button';
-import {StackHeaderProps} from '@react-navigation/stack/lib/typescript/src/types';
+import {useNavigation} from '@react-navigation/native';
 
-export default function SettingHeader({navigation}: StackHeaderProps) {
+export default function SettingHeader({onPress}: {onPress: Function}) {
   const height = StatusBar.currentHeight || 30;
+  const navigation = useNavigation();
+
   return (
     <NavigationBar
       backLabel={<Text style={{fontSize: 15 * widthScale}}>取消</Text>}
@@ -14,7 +16,11 @@ export default function SettingHeader({navigation}: StackHeaderProps) {
         height: height * 2.8,
         paddingTop: height,
       }}
-      forwardLabel={<Button style={styles.btn}>发布</Button>}
+      forwardLabel={
+        <Button style={styles.btn} onPress={onPress}>
+          发布
+        </Button>
+      }
       onPressBack={() => {
         navigation.goBack();
       }}

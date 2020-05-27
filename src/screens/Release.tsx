@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   View,
   Text,
@@ -13,12 +13,17 @@ import {uploadImage} from '@/tools';
 import {Tip} from 'beeshell/dist/components/Tip';
 import {BottomModal} from 'beeshell/dist/components/BottomModal';
 import NumKeyBoard from '@/components/release/NumKeyBoard';
+import ReleaseHeader from '@/components/release/ReleaseHeader';
+import {axios} from '@/api';
+import {KindAreaGetResponse} from '@/types';
 
 export default function Release() {
   const [imgPath, setImgPath] = useState<Array<string>>([]);
   const [description, setDescription] = useState('');
   const bottomModalRef = React.createRef<BottomModal>();
   const [price, setPrice] = useState<Array<string>>([]);
+  const [kindData, setKindData] = useState<KindAreaGetResponse['data']>();
+  const [kind, setKind] = useState<KindAreaGetResponse['data'][0]>();
   const imgs = imgPath?.map((v, index) => {
     return (
       <TouchableNativeFeedback
@@ -46,8 +51,22 @@ export default function Release() {
       </TouchableNativeFeedback>
     );
   });
+  useEffect(() => {
+    axios.get<KindAreaGetResponse>('/commodity/kind').then((res) => {
+      setKindData(res.data.data);
+    });
+  }, []);
   return (
     <ScrollView style={styles.area}>
+      <ReleaseHeader
+        onPress={() => {
+          if (imgPath.length === 0) {
+            return Tip.show('请至少上传一张图片', 500);
+          }
+          if (!description) {
+            return Tip.show('描述不能为空', 500);
+          }
+        }}></ReleaseHeader>
       <TextInput
         placeholder="品牌型号,新旧程度,入手渠道,转手原因..."
         multiline={true}
@@ -89,15 +108,28 @@ export default function Release() {
           </View>
         </View>
       </TouchableNativeFeedback>
-      <BottomModal
-        ref={bottomModalRef}
-        title=""
-        titleContainer={() => null}
-        leftCallback={() => {
-          setPrice(['']);
+      <TouchableNativeFeedback
+        onPress={() => {
+          bottomModalRef.current?.open('');
         }}>
-        <NumKeyBoard price={price} setPrice={setPrice} ref={bottomModalRef} />
-      </BottomModal>
+        <View
+          style={[
+            styles.priceArea,
+            {
+              borderBottomColor: 'rgba(128, 128, 128, 0.2)',
+              borderBottomWidth: 1 * widthScale,
+              marginTop: 0,
+            },
+          ]}>
+          <Icon name="bars" size={20 * widthScale}></Icon>
+          <Text style={styles.priceTip}>分类</Text>
+          <View style={styles.right}>
+            <Text style={styles.rightText}>{kind?.kindName}</Text>
+            <Icon name="right" size={18 * widthScale} color="gray"></Icon>
+          </View>
+        </View>
+      </TouchableNativeFeedback>
+      <NumKeyBoard price={price} setPrice={setPrice} ref={bottomModalRef} />
     </ScrollView>
   );
 }

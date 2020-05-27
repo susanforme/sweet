@@ -6,7 +6,6 @@ import {
   NativeSyntheticEvent,
   NativeScrollEvent,
 } from 'react-native';
-import {BottomModal} from 'beeshell/dist/components/BottomModal';
 
 /**
  * redux状态
@@ -475,5 +474,4 @@ export interface SearchHeaderProps {
 export interface NumKeyboardProps {
   price: string[];
   setPrice: React.Dispatch<React.SetStateAction<string[]>>;
-  ref: React.RefObject<BottomModal>;
 }
