@@ -1088,3 +1088,193 @@ export const SearchStyles = StyleSheet.create({
     marginTop: 10 * widthScale,
   },
 });
+
+/**
+ * SellScreenStyles
+ */
+
+export const SellScreenStyles = StyleSheet.create({
+  btn: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#ffee00',
+    width: 45 * widthScale,
+    height: 45 * widthScale,
+    borderRadius: 22.5 * widthScale,
+  },
+  border: {
+    position: 'absolute',
+    bottom: '7%',
+    right: '5%',
+    width: 45 * widthScale,
+    height: 45 * widthScale,
+    borderRadius: 22.5 * widthScale,
+    overflow: 'hidden',
+  },
+});
+
+/**
+ * ReleaseHeaderStyles
+ */
+export const ReleaseHeaderStyles = StyleSheet.create({
+  btn: {
+    backgroundColor: '#ffee00',
+    paddingTop: 6 * widthScale,
+    paddingLeft: 15 * widthScale,
+    paddingRight: 15 * widthScale,
+    paddingBottom: 6 * widthScale,
+    borderRadius: 20 * widthScale,
+  },
+});
+
+/**
+ * ReleaseStyles
+ */
+export const ReleaseStyles = StyleSheet.create({
+  area: {
+    flex: 1,
+    backgroundColor: 'white',
+    ...padding,
+  },
+  input: {
+    marginTop: 10 * widthScale,
+    height: 200 * widthScale,
+    overflow: 'hidden',
+    fontSize: 16 * widthScale,
+  },
+  imageSelectArea: {
+    display: 'flex',
+    flexDirection: 'row',
+  },
+  box: {
+    backgroundColor: '#F1F1F1',
+    flexBasis: 120 * widthScale,
+    height: 120 * widthScale,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 5 * widthScale,
+    marginRight: 5 * widthScale,
+  },
+  img: {
+    height: 120 * widthScale,
+    width: 120 * widthScale,
+    borderRadius: 5 * widthScale,
+  },
+  priceArea: {
+    height: 60 * widthScale,
+    borderTopColor: 'rgba(128, 128, 128, 0.1)',
+    borderTopWidth: 1 * widthScale,
+    marginTop: 40 * widthScale,
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingLeft: 5 * widthScale,
+  },
+  price: {
+    color: 'red',
+  },
+  priceCirle: {
+    width: 20 * widthScale,
+    height: 20 * widthScale,
+    backgroundColor: 'rgb(182, 181, 181)',
+    borderRadius: 10 * widthScale,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    overflow: 'hidden',
+  },
+  priceIcon: {
+    color: 'white',
+    fontWeight: '700',
+    fontSize: 16 * widthScale,
+  },
+  priceTip: {
+    fontSize: 17 * widthScale,
+    marginLeft: 10 * widthScale,
+  },
+  right: {
+    position: 'absolute',
+    right: 15 * widthScale,
+    display: 'flex',
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    overflow: 'hidden',
+    flexDirection: 'row',
+  },
+  rightText: {
+    color: 'red',
+    fontSize: 18 * widthScale,
+    marginRight: 10 * widthScale,
+  },
+});
+
+/**
+ * NumKeyboardStyles
+ */
+export const NumKeyboardStyles = StyleSheet.create({
+  area: {
+    backgroundColor: '#fff',
+    height: height * 0.5,
+  },
+  showPrice: {
+    height: 65 * widthScale,
+    marginLeft: 15 * widthScale,
+    marginRight: 15 * widthScale,
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  tip: {
+    fontSize: 18 * widthScale,
+    flex: 1,
+  },
+  result: {
+    fontSize: 18 * widthScale,
+    flex: 6,
+  },
+  num: {
+    display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    width: '75%',
+  },
+  numBox: {
+    width: '33.3333%',
+    height: '25%',
+    borderRightWidth: 1,
+    borderTopWidth: 1,
+    borderColor: 'rgba(128, 128, 128, 0.15)',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  keyboard: {
+    height: height * 0.5 - 65 * widthScale,
+    display: 'flex',
+    flexDirection: 'row',
+  },
+  right: {
+    display: 'flex',
+    width: '25%',
+  },
+  rightBox: {
+    borderRightWidth: 1,
+    height: '50%',
+    borderTopWidth: 1,
+    borderColor: 'rgba(128, 128, 128, 0.15)',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  determine: {
+    backgroundColor: '#FFEE24',
+    borderRightWidth: 0,
+    borderTopWidth: 0,
+  },
+  determineText: {},
+  boxText: {
+    fontSize: 25 * widthScale,
+    fontWeight: '600',
+  },
+});

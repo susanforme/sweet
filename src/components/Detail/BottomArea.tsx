@@ -11,7 +11,7 @@ import Icon from 'react-native-vector-icons/AntDesign';
 import {Button} from 'beeshell/dist/components/Button';
 import {useNavigation, NavigationProp} from '@react-navigation/native';
 import {MainStackList, DetailBottomAreaProps, MyAppState} from '@/types';
-import FontIcon from 'react-native-vector-icons/FontAwesome';
+import FontIcon from 'react-native-vector-icons/MaterialIcons';
 import {connect} from 'react-redux';
 import {Tip} from 'beeshell/dist/components/Tip';
 import {axios} from '@/api';
@@ -89,14 +89,9 @@ function BottomArea({
         }}>
         <View style={styles.inputIcon}>
           <FontIcon
-            name="keyboard-o"
+            name="keyboard-hide"
             size={25 * widthScale}
             color="rgba(128, 128, 128, 0.75)"></FontIcon>
-          <Icon
-            name="caretdown"
-            size={8 * widthScale}
-            color="rgba(128, 128, 128, 0.75)"
-            style={styles.angleIcon}></Icon>
         </View>
       </TouchableWithoutFeedback>
       <Image

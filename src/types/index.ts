@@ -467,3 +467,11 @@ export interface SearchHeaderProps {
   isSearching: boolean;
   setIsSearching: React.Dispatch<React.SetStateAction<boolean>>;
 }
+
+/**
+ * NumKeyboardProps
+ */
+export interface NumKeyboardProps {
+  price: string[];
+  setPrice: React.Dispatch<React.SetStateAction<string[]>>;
+}

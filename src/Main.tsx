@@ -56,8 +56,8 @@ function Main({isLogin, isLoading}: MainProps) {
           name="Release"
           component={Release}
           options={{
-            ...getDefaultHeaderStyle(80 * widthScale, paddingTop),
             title: '发布',
+            header: () => null,
           }}></MainStack.Screen>
         <MainStack.Screen
           name="Search"
