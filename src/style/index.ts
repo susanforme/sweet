@@ -1161,4 +1161,85 @@ export const ReleaseStyles = StyleSheet.create({
     width: 120 * widthScale,
     borderRadius: 5 * widthScale,
   },
+  priceArea: {
+    height: 60 * widthScale,
+    borderBottomColor: 'rgba(128, 128, 128, 0.288)',
+    borderBottomWidth: 1 * widthScale,
+    borderTopColor: 'rgba(128, 128, 128, 0.1)',
+    borderTopWidth: 1 * widthScale,
+    marginTop: 40 * widthScale,
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingLeft: 5 * widthScale,
+  },
+  price: {
+    color: 'red',
+  },
+  priceCirle: {
+    width: 20 * widthScale,
+    height: 20 * widthScale,
+    backgroundColor: 'rgb(182, 181, 181)',
+    borderRadius: 10 * widthScale,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    overflow: 'hidden',
+  },
+  priceIcon: {
+    color: 'white',
+    fontWeight: '700',
+    fontSize: 16 * widthScale,
+  },
+  priceTip: {
+    fontSize: 17 * widthScale,
+    marginLeft: 10 * widthScale,
+  },
+  right: {
+    position: 'absolute',
+    right: 15 * widthScale,
+    display: 'flex',
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    overflow: 'hidden',
+    flexDirection: 'row',
+  },
+  rightText: {
+    color: 'red',
+    fontSize: 18 * widthScale,
+    marginRight: 10 * widthScale,
+  },
+});
+
+/**
+ * NumKeyboardStyles
+ */
+export const NumKeyboardStyles = StyleSheet.create({
+  area: {
+    backgroundColor: '#fff',
+    height: height * 0.6,
+  },
+  showPrice: {
+    height: 65 * widthScale,
+    borderBottomWidth: 1 * widthScale,
+    borderBottomColor: 'rgba(128, 128, 128, 0.15)',
+    marginLeft: 15 * widthScale,
+    marginRight: 15 * widthScale,
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  placeholder: {
+    color: 'gray',
+    fontSize: 18 * widthScale,
+    flex: 6,
+  },
+  tip: {
+    fontSize: 18 * widthScale,
+    flex: 1,
+  },
+  result: {
+    fontSize: 18 * widthScale,
+    flex: 6,
+  },
 });

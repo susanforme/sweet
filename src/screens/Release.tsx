@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 import {
   View,
   Text,
@@ -11,10 +11,15 @@ import {ReleaseStyles as styles, widthScale} from '@/style';
 import Icon from 'react-native-vector-icons/AntDesign';
 import {uploadImage} from '@/tools';
 import {Tip} from 'beeshell/dist/components/Tip';
+import {BottomModal} from 'beeshell/dist/components/BottomModal';
+import NumKeyBoard from '@/components/release/NumKeyBoard';
 
 export default function Release() {
   const [imgPath, setImgPath] = useState<Array<string>>([]);
   const [description, setDescription] = useState('');
+  const bottomModalRef = useRef<BottomModal>(null);
+  const [price, setPrice] = useState('');
+
   const imgs = imgPath?.map((v, index) => {
     return (
       <TouchableNativeFeedback
@@ -70,7 +75,30 @@ export default function Release() {
           </View>
         </TouchableNativeFeedback>
       </View>
-      <View></View>
+      <TouchableNativeFeedback
+        onPress={() => {
+          bottomModalRef.current?.open('');
+        }}>
+        <View style={styles.priceArea}>
+          <View style={styles.priceCirle}>
+            <Text style={styles.priceIcon}>¥</Text>
+          </View>
+          <Text style={styles.priceTip}>价格</Text>
+          <View style={styles.right}>
+            <Text style={styles.rightText}>¥ {price || 0}</Text>
+            <Icon name="right" size={18 * widthScale} color="gray"></Icon>
+          </View>
+        </View>
+      </TouchableNativeFeedback>
+      <BottomModal
+        ref={bottomModalRef}
+        title=""
+        titleContainer={() => null}
+        leftCallback={() => {
+          setPrice('');
+        }}>
+        <NumKeyBoard price={price} setPrice={setPrice} />
+      </BottomModal>
     </ScrollView>
   );
 }
