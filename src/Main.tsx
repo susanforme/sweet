@@ -18,6 +18,7 @@ import {widthScale} from './style';
 import {StatusBar} from 'react-native';
 import Classificat from '@/screens/Classificat';
 import Detail from '@/screens/Detail';
+import ReleaseHeader from '@/components/release/ReleaseHeader';
 
 const MainStack = createStackNavigator<MainStackList>();
 
@@ -56,8 +57,8 @@ function Main({isLogin, isLoading}: MainProps) {
           name="Release"
           component={Release}
           options={{
-            ...getDefaultHeaderStyle(80 * widthScale, paddingTop),
             title: '发布',
+            header: ReleaseHeader,
           }}></MainStack.Screen>
         <MainStack.Screen
           name="Search"

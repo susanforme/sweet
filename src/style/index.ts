@@ -1092,14 +1092,73 @@ export const SearchStyles = StyleSheet.create({
 /**
  * SellScreenStyles
  */
+
 export const SellScreenStyles = StyleSheet.create({
+  btn: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#ffee00',
+    width: 45 * widthScale,
+    height: 45 * widthScale,
+    borderRadius: 22.5 * widthScale,
+  },
+  border: {
+    position: 'absolute',
+    bottom: '7%',
+    right: '5%',
+    width: 45 * widthScale,
+    height: 45 * widthScale,
+    borderRadius: 22.5 * widthScale,
+    overflow: 'hidden',
+  },
+});
+
+/**
+ * ReleaseHeaderStyles
+ */
+export const ReleaseHeaderStyles = StyleSheet.create({
+  btn: {
+    backgroundColor: '#ffee00',
+    paddingTop: 6 * widthScale,
+    paddingLeft: 15 * widthScale,
+    paddingRight: 15 * widthScale,
+    paddingBottom: 6 * widthScale,
+    borderRadius: 20 * widthScale,
+  },
+});
+
+/**
+ * ReleaseStyles
+ */
+export const ReleaseStyles = StyleSheet.create({
   area: {
     flex: 1,
     backgroundColor: 'white',
+    ...padding,
   },
-  top: {},
-  first: {},
-  second: {},
-  bottomArea: {},
-  bottomBtn: {},
+  input: {
+    marginTop: 10 * widthScale,
+    height: 200 * widthScale,
+    overflow: 'hidden',
+    fontSize: 16 * widthScale,
+  },
+  imageSelectArea: {
+    display: 'flex',
+    flexDirection: 'row',
+  },
+  box: {
+    backgroundColor: '#F1F1F1',
+    flexBasis: 120 * widthScale,
+    height: 120 * widthScale,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 5 * widthScale,
+    marginRight: 5 * widthScale,
+  },
+  img: {
+    height: 120 * widthScale,
+    width: 120 * widthScale,
+    borderRadius: 5 * widthScale,
+  },
 });
