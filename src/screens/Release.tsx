@@ -1,4 +1,4 @@
-import React, {useState, useRef} from 'react';
+import React, {useState} from 'react';
 import {
   View,
   Text,
@@ -17,9 +17,8 @@ import NumKeyBoard from '@/components/release/NumKeyBoard';
 export default function Release() {
   const [imgPath, setImgPath] = useState<Array<string>>([]);
   const [description, setDescription] = useState('');
-  const bottomModalRef = useRef<BottomModal>(null);
-  const [price, setPrice] = useState('');
-
+  const bottomModalRef = React.createRef<BottomModal>();
+  const [price, setPrice] = useState<Array<string>>([]);
   const imgs = imgPath?.map((v, index) => {
     return (
       <TouchableNativeFeedback
@@ -85,7 +84,7 @@ export default function Release() {
           </View>
           <Text style={styles.priceTip}>价格</Text>
           <View style={styles.right}>
-            <Text style={styles.rightText}>¥ {price || 0}</Text>
+            <Text style={styles.rightText}>¥ {price.join('') || 0}</Text>
             <Icon name="right" size={18 * widthScale} color="gray"></Icon>
           </View>
         </View>
@@ -95,9 +94,9 @@ export default function Release() {
         title=""
         titleContainer={() => null}
         leftCallback={() => {
-          setPrice('');
+          setPrice(['']);
         }}>
-        <NumKeyBoard price={price} setPrice={setPrice} />
+        <NumKeyBoard price={price} setPrice={setPrice} ref={bottomModalRef} />
       </BottomModal>
     </ScrollView>
   );

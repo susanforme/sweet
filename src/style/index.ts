@@ -1217,22 +1217,15 @@ export const ReleaseStyles = StyleSheet.create({
 export const NumKeyboardStyles = StyleSheet.create({
   area: {
     backgroundColor: '#fff',
-    height: height * 0.6,
+    height: height * 0.5,
   },
   showPrice: {
     height: 65 * widthScale,
-    borderBottomWidth: 1 * widthScale,
-    borderBottomColor: 'rgba(128, 128, 128, 0.15)',
     marginLeft: 15 * widthScale,
     marginRight: 15 * widthScale,
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-  },
-  placeholder: {
-    color: 'gray',
-    fontSize: 18 * widthScale,
-    flex: 6,
   },
   tip: {
     fontSize: 18 * widthScale,
@@ -1241,5 +1234,49 @@ export const NumKeyboardStyles = StyleSheet.create({
   result: {
     fontSize: 18 * widthScale,
     flex: 6,
+  },
+  num: {
+    display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    width: '75%',
+  },
+  numBox: {
+    width: '33.3333%',
+    height: '25%',
+    borderRightWidth: 1,
+    borderTopWidth: 1,
+    borderColor: 'rgba(128, 128, 128, 0.15)',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  keyboard: {
+    height: height * 0.5 - 65 * widthScale,
+    display: 'flex',
+    flexDirection: 'row',
+  },
+  right: {
+    display: 'flex',
+    width: '25%',
+  },
+  rightBox: {
+    borderRightWidth: 1,
+    height: '50%',
+    borderTopWidth: 1,
+    borderColor: 'rgba(128, 128, 128, 0.15)',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  determine: {
+    backgroundColor: '#FFEE24',
+    borderRightWidth: 0,
+    borderTopWidth: 0,
+  },
+  determineText: {},
+  boxText: {
+    fontSize: 25 * widthScale,
+    fontWeight: '600',
   },
 });
