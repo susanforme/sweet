@@ -475,3 +475,13 @@ export interface NumKeyboardProps {
   price: string[];
   setPrice: React.Dispatch<React.SetStateAction<string[]>>;
 }
+
+/**
+ * BottomCategoryProps
+ */
+export interface BottomCategoryProps {
+  kind: KindAreaGetResponse['data'][0] | undefined;
+  setKind: React.Dispatch<
+    React.SetStateAction<BottomCategoryProps['kind'] | undefined>
+  >;
+}

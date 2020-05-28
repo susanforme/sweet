@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import {
   View,
   Text,
@@ -14,15 +14,15 @@ import {Tip} from 'beeshell/dist/components/Tip';
 import {BottomModal} from 'beeshell/dist/components/BottomModal';
 import NumKeyBoard from '@/components/release/NumKeyBoard';
 import ReleaseHeader from '@/components/release/ReleaseHeader';
-import {axios} from '@/api';
 import {KindAreaGetResponse} from '@/types';
+import BottomCategory from '@/components/release/BottomCategory';
 
 export default function Release() {
   const [imgPath, setImgPath] = useState<Array<string>>([]);
   const [description, setDescription] = useState('');
   const bottomModalRef = React.createRef<BottomModal>();
+  const categoryRef = React.createRef<BottomModal>();
   const [price, setPrice] = useState<Array<string>>([]);
-  const [kindData, setKindData] = useState<KindAreaGetResponse['data']>();
   const [kind, setKind] = useState<KindAreaGetResponse['data'][0]>();
   const imgs = imgPath?.map((v, index) => {
     return (
@@ -51,11 +51,6 @@ export default function Release() {
       </TouchableNativeFeedback>
     );
   });
-  useEffect(() => {
-    axios.get<KindAreaGetResponse>('/commodity/kind').then((res) => {
-      setKindData(res.data.data);
-    });
-  }, []);
   return (
     <ScrollView style={styles.area}>
       <ReleaseHeader
@@ -110,7 +105,7 @@ export default function Release() {
       </TouchableNativeFeedback>
       <TouchableNativeFeedback
         onPress={() => {
-          bottomModalRef.current?.open('');
+          categoryRef.current?.open('');
         }}>
         <View
           style={[
@@ -130,6 +125,10 @@ export default function Release() {
         </View>
       </TouchableNativeFeedback>
       <NumKeyBoard price={price} setPrice={setPrice} ref={bottomModalRef} />
+      <BottomCategory
+        ref={categoryRef}
+        kind={kind}
+        setKind={setKind}></BottomCategory>
     </ScrollView>
   );
 }

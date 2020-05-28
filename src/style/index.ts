@@ -1122,7 +1122,7 @@ export const ReleaseHeaderStyles = StyleSheet.create({
     backgroundColor: '#ffee00',
     paddingTop: 6 * widthScale,
     paddingLeft: 15 * widthScale,
-    paddingRight: 15 * widthScale,
+    paddingRight: 10 * widthScale,
     paddingBottom: 6 * widthScale,
     borderRadius: 20 * widthScale,
   },
