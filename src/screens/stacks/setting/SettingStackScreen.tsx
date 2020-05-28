@@ -28,7 +28,7 @@ function SettingStackScreen({clearUserData, isLogin}: SettingProps) {
     }
   }, [msg]);
   const topData = getTopData(navigation);
-  const middleData = getMiddleData(navigation);
+  const middleData = getMiddleData();
   const bottomData = getBottomData(navigation);
   const Top = getAreaByData(topData[0], topData[1], topData[2]);
   const Middle = getAreaByData(middleData[0], middleData[1], middleData[2]);
@@ -47,7 +47,7 @@ function SettingStackScreen({clearUserData, isLogin}: SettingProps) {
   );
   return (
     <ScrollView>
-      {Top}
+      {isLogin ? Top : null}
       {Middle}
       {Bottom}
       {Refresh}
@@ -165,7 +165,7 @@ function getTopData(navigation: Navigation): any {
   ];
 }
 
-function getMiddleData(navigation: Navigation): any {
+function getMiddleData(): any {
   return [
     [
       {title: '宝贝自动回复', iconName: 'swap'},

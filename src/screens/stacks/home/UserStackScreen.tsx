@@ -3,7 +3,6 @@ import {createStackNavigator} from '@react-navigation/stack';
 import UserScreen from '@/screens/screens/tab/UserScreen';
 import {useHeaderHeight} from '@react-navigation/stack';
 import {getDefaultHeaderStyle} from '@/style/header';
-import UserHeader from '@/components/user/UserHeader';
 import {StatusBar} from 'react-native';
 
 const UserStack = createStackNavigator<StackList>();
@@ -19,7 +18,7 @@ export default function UserStackScreen() {
         component={UserScreen}
         options={{
           ...getDefaultHeaderStyle(height, paddingTop),
-          header: UserHeader,
+          header: () => null,
         }}></UserStack.Screen>
     </UserStack.Navigator>
   );

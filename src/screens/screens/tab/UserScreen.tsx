@@ -1,6 +1,17 @@
 import React, {useEffect, useState} from 'react';
-import {ScrollView} from 'react-native';
-import {MyAppState, UserScreenProps, ProfileUserResponse} from '@/types';
+import {
+  ScrollView,
+  TouchableWithoutFeedback,
+  View,
+  Image,
+  Text,
+} from 'react-native';
+import {
+  MyAppState,
+  UserScreenProps,
+  ProfileUserResponse,
+  MainStackList,
+} from '@/types';
 import {connect} from 'react-redux';
 import UserTopArea from '@/components/user/UserTopArea';
 import UserInfluenceArea from '@/components/user/UserInfluenceArea';
@@ -8,9 +19,13 @@ import UserFeatureArea from '@/components/user/UserFeatureArea';
 import {widthScale} from '@/style';
 import {axios} from '@/api';
 import {getRandomNumber} from '@/tools';
+import {useNavigation, NavigationProp} from '@react-navigation/native';
+import {UserScreenStyles as styles} from '@/style';
+import UserHeader from '@/components/user/UserHeader';
 
 function UserScreen({isLogin, user}: UserScreenProps) {
   const {userName, _id, headImg} = user;
+  const navigation = useNavigation<NavigationProp<MainStackList>>();
   const [data, setData] = useState<ProfileUserResponse['data']>({
     buyCount: 0,
     sellCount: 0,
@@ -80,29 +95,54 @@ function UserScreen({isLogin, user}: UserScreenProps) {
       img: 'rent.png',
     }),
   ];
+  const noLogin = (
+    <TouchableWithoutFeedback
+      onPress={() => {
+        navigation.navigate('Login');
+      }}>
+      <View style={styles.area}>
+        <View style={[styles.noResult]}>
+          <Image
+            source={require('@/resource/noResult.jpg')}
+            style={styles.noResultImg}></Image>
+          <Text style={styles.noResultText1}>点击屏幕,开始登录</Text>
+          <Text style={styles.noResultText2}>好像没登录哦~点击登录</Text>
+        </View>
+      </View>
+    </TouchableWithoutFeedback>
+  );
   return (
-    <ScrollView>
-      <UserTopArea
-        userName={userName}
-        _id={_id}
-        headImg={headImg}
-        isDefault={isDefault}></UserTopArea>
-      <UserInfluenceArea></UserInfluenceArea>
-      <UserFeatureArea
-        title="卖在甜虾"
-        style={{
-          marginTop: -15 * widthScale,
-        }}
-        data={sellData}></UserFeatureArea>
-      <UserFeatureArea title="买在甜虾" data={buyData}></UserFeatureArea>
-      <UserFeatureArea title="玩在甜虾" data={playData}></UserFeatureArea>
-      <UserFeatureArea
-        title="其他工具"
-        data={otherData}
-        style={{
-          marginBottom: 15 * widthScale,
-        }}></UserFeatureArea>
-    </ScrollView>
+    <View style={{flex: 1}}>
+      <UserHeader backgroundColor={isLogin ? '#ffee11' : 'white'}></UserHeader>
+      <ScrollView>
+        {isLogin ? (
+          <>
+            <UserTopArea
+              userName={userName}
+              _id={_id}
+              headImg={headImg}
+              isDefault={isDefault}></UserTopArea>
+            <UserInfluenceArea></UserInfluenceArea>
+            <UserFeatureArea
+              title="卖在甜虾"
+              style={{
+                marginTop: -15 * widthScale,
+              }}
+              data={sellData}></UserFeatureArea>
+            <UserFeatureArea title="买在甜虾" data={buyData}></UserFeatureArea>
+            <UserFeatureArea title="玩在甜虾" data={playData}></UserFeatureArea>
+            <UserFeatureArea
+              title="其他工具"
+              data={otherData}
+              style={{
+                marginBottom: 15 * widthScale,
+              }}></UserFeatureArea>
+          </>
+        ) : (
+          noLogin
+        )}
+      </ScrollView>
+    </View>
   );
 }
 

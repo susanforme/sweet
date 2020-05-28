@@ -39,7 +39,7 @@ export default function HomeScreen() {
         data={recommend}
         isToTop={isToTop}
         ListHeaderComponent={
-          <View>
+          <View style={{backgroundColor: 'white'}}>
             <View style={styles.top}>
               <SearchInput
                 placeholder="请输入关键词"

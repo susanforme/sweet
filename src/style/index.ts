@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet, StatusBar} from 'react-native';
 import {Dimensions} from 'react-native';
 //设计基准为宽411.43 高683.43
 
@@ -551,6 +551,8 @@ export const HomeScreenStyles = StyleSheet.create({
     justifyContent: 'center',
     height: 50 * widthScale,
     ...padding,
+    borderBottomLeftRadius: 10 * widthScale,
+    borderBottomRightRadius: 10 * widthScale,
   },
   bottom: {
     marginBottom: 10 * widthScale,
@@ -599,6 +601,7 @@ export const HomeSwiperStyles = StyleSheet.create({
     paddingRight: 5 * widthScale,
     backgroundColor: 'white',
     height: 150 * widthScale,
+    borderRadius: 15 * widthScale,
   },
   loading: {
     width: '100%',
@@ -654,6 +657,7 @@ export const RefreshListStyles = StyleSheet.create({
   headImg: {
     width: 30 * widthScale,
     height: 30 * widthScale,
+    marginRight: 5 * widthScale,
   },
   father: {},
   box: {
@@ -1276,5 +1280,97 @@ export const NumKeyboardStyles = StyleSheet.create({
   boxText: {
     fontSize: 25 * widthScale,
     fontWeight: '600',
+  },
+});
+
+/**
+ * 消息界面样式
+ */
+export const MessageScreenStyles = StyleSheet.create({
+  area: {
+    flex: 1,
+  },
+  noResult: {
+    flex: 1,
+    alignItems: 'center',
+    marginTop: '30%',
+    backgroundColor: 'white',
+  },
+  noResultImg: {
+    width: 150 * widthScale,
+    height: 150 * widthScale,
+  },
+  noResultText1: {
+    fontWeight: '700',
+    fontSize: 16 * widthScale,
+    marginTop: 20 * widthScale,
+  },
+  noResultText2: {
+    color: 'gray',
+    marginTop: 20 * widthScale,
+  },
+});
+
+/**
+ * 用户界面样式
+ */
+export const UserScreenStyles = StyleSheet.create({
+  area: {
+    flex: 1,
+    backgroundColor: 'white',
+    height: height - (StatusBar.currentHeight || 30) * 4.5,
+  },
+  noResult: {
+    flex: 1,
+    alignItems: 'center',
+    marginTop: '30%',
+    backgroundColor: 'white',
+  },
+  noResultImg: {
+    width: 150 * widthScale,
+    height: 150 * widthScale,
+  },
+  noResultText1: {
+    fontWeight: '700',
+    fontSize: 16 * widthScale,
+    marginTop: 20 * widthScale,
+  },
+  noResultText2: {
+    color: 'gray',
+    marginTop: 20 * widthScale,
+  },
+});
+
+/**
+ * 消息栏目顶部区域
+ */
+export const MessageTopAreaStyles = StyleSheet.create({
+  img: {
+    width: 40 * widthScale,
+    height: 40 * widthScale,
+  },
+  boxArea: {
+    flexDirection: 'row',
+    display: 'flex',
+    backgroundColor: 'white',
+    marginLeft: 15 * widthScale,
+    marginRight: 15 * widthScale,
+    padding: 20 * widthScale,
+    alignItems: 'center',
+    borderRadius: 15 * widthScale,
+    marginTop: -100 * widthScale,
+  },
+  box: {
+    flex: 1,
+    alignItems: 'center',
+  },
+  boxText: {
+    marginTop: 10 * widthScale,
+  },
+  topBackground: {
+    height: 200 * widthScale,
+    borderRadius: 200 * widthScale,
+    backgroundColor: '#ffee00',
+    marginTop: -100 * widthScale,
   },
 });

@@ -469,7 +469,7 @@ export interface SearchHeaderProps {
 }
 
 /**
- * NumKeyboardProps
+ * 数字键盘参数
  */
 export interface NumKeyboardProps {
   price: string[];
@@ -477,10 +477,22 @@ export interface NumKeyboardProps {
 }
 
 /**
- * BottomCategoryProps
+ * 底部选择分类参数
  */
 export interface BottomCategoryProps {
   setKind: React.Dispatch<
     React.SetStateAction<KindAreaGetResponse['data'][0] | undefined>
   >;
+}
+
+/**
+ * 消息列表页面参数
+ */
+export interface MessageScreenProps {
+  user: {
+    _id: string;
+    headImg: string;
+    userName: string;
+  };
+  isLogin: boolean;
 }
