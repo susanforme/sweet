@@ -6,8 +6,9 @@ import {axios} from '@/api';
 
 // eslint-disable-next-line react/display-name
 const BottomCategory = React.forwardRef(
-  ({kind, setKind}: BottomCategoryProps, ref: any) => {
+  ({setKind}: BottomCategoryProps, ref: any) => {
     const [kindData, setKindData] = useState<KindAreaGetResponse['data']>();
+    const [index, setIndex] = useState(2);
     const labelKindData = kindData?.map((v) => {
       return {...v, label: v.kindName};
     });
@@ -26,12 +27,18 @@ const BottomCategory = React.forwardRef(
         leftCallback={() => {
           setKind(undefined);
         }}>
-        <Scrollpicker
-          list={[labelKindData]}
-          offsetCount={2}
-          onChange={(columnIndex: any, rowIndex: any) => {
-            console.log(columnIndex, rowIndex);
-          }}></Scrollpicker>
+        {kindData ? (
+          <Scrollpicker
+            list={[labelKindData]}
+            offsetCount={2}
+            value={[index]}
+            onChange={(columnIndex: number, rowIndex: number) => {
+              setIndex(rowIndex);
+              setTimeout(() => {
+                setKind(kindData[rowIndex]);
+              }, 0);
+            }}></Scrollpicker>
+        ) : null}
       </BottomModal>
     );
   },

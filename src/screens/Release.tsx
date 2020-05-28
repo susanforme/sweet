@@ -14,16 +14,20 @@ import {Tip} from 'beeshell/dist/components/Tip';
 import {BottomModal} from 'beeshell/dist/components/BottomModal';
 import NumKeyBoard from '@/components/release/NumKeyBoard';
 import ReleaseHeader from '@/components/release/ReleaseHeader';
-import {KindAreaGetResponse} from '@/types';
+import {KindAreaGetResponse, MyAppState, MainStackList} from '@/types';
 import BottomCategory from '@/components/release/BottomCategory';
+import {connect} from 'react-redux';
+import {axios} from '@/api';
+import {useNavigation, NavigationProp} from '@react-navigation/native';
 
-export default function Release() {
+function Release({owner}: {owner: string}) {
   const [imgPath, setImgPath] = useState<Array<string>>([]);
   const [description, setDescription] = useState('');
   const bottomModalRef = React.createRef<BottomModal>();
   const categoryRef = React.createRef<BottomModal>();
   const [price, setPrice] = useState<Array<string>>([]);
   const [kind, setKind] = useState<KindAreaGetResponse['data'][0]>();
+  const navigation = useNavigation<NavigationProp<MainStackList>>();
   const imgs = imgPath?.map((v, index) => {
     return (
       <TouchableNativeFeedback
@@ -43,7 +47,7 @@ export default function Release() {
         <View style={styles.box}>
           <Image
             source={{
-              uri: `https://static-resource-1256396014.picnj.myqcloud.com/img/public/${v}/shui_ying`,
+              uri: v,
             }}
             style={styles.img}
           />
@@ -61,6 +65,31 @@ export default function Release() {
           if (!description) {
             return Tip.show('描述不能为空', 500);
           }
+          if (!kind) {
+            return Tip.show('请选择分类', 500);
+          }
+          if (!price.join('')) {
+            return Tip.show('请填写价格', 500);
+          }
+          axios
+            .post('/commodity/info', {
+              owner,
+              imgPath,
+              kind: kind._id,
+              price: Number(price.join('')),
+              description,
+            })
+            .then(() => {
+              Tip.show('发布成功', 500);
+              setTimeout(() => {
+                navigation.navigate('Tab', {
+                  screen: 'Home',
+                });
+              }, 500);
+            })
+            .catch(() => {
+              Tip.show('上传失败请检查网络', 500);
+            });
         }}></ReleaseHeader>
       <TextInput
         placeholder="品牌型号,新旧程度,入手渠道,转手原因..."
@@ -80,7 +109,10 @@ export default function Release() {
               if (err) {
                 return Tip.show('上传失败', 500);
               }
-              setImgPath([...imgPath, imgUrl]);
+              setImgPath([
+                ...imgPath,
+                `https://static-resource-1256396014.picnj.myqcloud.com/img/public/${imgUrl}/shui_ying`,
+              ]);
             });
           }}>
           <View style={styles.box}>
@@ -119,16 +151,22 @@ export default function Release() {
           <Icon name="bars" size={20 * widthScale}></Icon>
           <Text style={styles.priceTip}>分类</Text>
           <View style={styles.right}>
-            <Text style={styles.rightText}>{kind?.kindName}</Text>
+            <Text
+              style={[styles.rightText, {color: 'black', fontWeight: '500'}]}>
+              {kind?.kindName}
+            </Text>
             <Icon name="right" size={18 * widthScale} color="gray"></Icon>
           </View>
         </View>
       </TouchableNativeFeedback>
       <NumKeyBoard price={price} setPrice={setPrice} ref={bottomModalRef} />
-      <BottomCategory
-        ref={categoryRef}
-        kind={kind}
-        setKind={setKind}></BottomCategory>
+      <BottomCategory ref={categoryRef} setKind={setKind}></BottomCategory>
     </ScrollView>
   );
 }
+
+const stateToProps = (state: MyAppState) => ({
+  owner: state.user._id,
+});
+
+export default connect(stateToProps)(Release);

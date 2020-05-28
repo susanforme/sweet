@@ -17,6 +17,9 @@ const NumKeyBoard = React.forwardRef(
           onPress={() => {
             if (price.length < 15) {
               const oldPrice: string[] = JSON.parse(JSON.stringify(price));
+              if (oldPrice.includes('.') && v === '.') {
+                return;
+              }
               oldPrice.push(v.toString());
               setPrice(oldPrice);
             }

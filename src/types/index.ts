@@ -86,7 +86,7 @@ export interface MainProps {
  * 主页面的堆栈列表,stack 屏幕列表
  */
 export type MainStackList = {
-  Tab: undefined;
+  Tab: {screen: 'Home' | 'Message' | 'User' | 'Sell'};
   Chat: {userId: string; userName: string};
   Login: undefined;
   Profile: undefined;
@@ -480,8 +480,7 @@ export interface NumKeyboardProps {
  * BottomCategoryProps
  */
 export interface BottomCategoryProps {
-  kind: KindAreaGetResponse['data'][0] | undefined;
   setKind: React.Dispatch<
-    React.SetStateAction<BottomCategoryProps['kind'] | undefined>
+    React.SetStateAction<KindAreaGetResponse['data'][0] | undefined>
   >;
 }
