@@ -13,45 +13,18 @@ export default function TopArea() {
 }
 
 function getData() {
-  const data = ['官方公告', '交易信息', '互动信息', '指南教程'];
+  const data = [
+    {title: '官方公告', img: require('@/resource/message/notice.png')},
+    {title: '交易信息', img: require('@/resource/message/deal.png')},
+    {title: '互动信息', img: require('@/resource/message/message.png')},
+    {title: '指南教程', img: require('@/resource/message/pug.png')},
+  ];
   return data.map((v, index) => {
-    //把require 放在数组里面
-    let img = <Image source={require('@/resource/message/notice.png')}></Image>;
-    switch (index) {
-      case 0:
-        img = (
-          <Image
-            source={require('@/resource/message/notice.png')}
-            style={styles.img}></Image>
-        );
-        break;
-      case 1:
-        img = (
-          <Image
-            source={require('@/resource/message/deal.png')}
-            style={styles.img}></Image>
-        );
-        break;
-      case 2:
-        img = (
-          <Image
-            source={require('@/resource/message/message.png')}
-            style={styles.img}></Image>
-        );
-        break;
-      case 3:
-        img = (
-          <Image
-            source={require('@/resource/message/pug.png')}
-            style={styles.img}></Image>
-        );
-        break;
-    }
     return (
       <TouchableNativeFeedback key={index}>
         <View style={styles.box}>
-          {img}
-          <Text style={styles.boxText}>{v}</Text>
+          <Image source={v.img} style={styles.img}></Image>
+          <Text style={styles.boxText}>{v.title}</Text>
         </View>
       </TouchableNativeFeedback>
     );

@@ -6,4 +6,5 @@ export enum ActionTypes {
   SET_DEFAULT_LOCATION = 'setDefaultLocation',
   CHANGE_FISH_BOND_STATUS = 'changeFishBondStatus',
   CHANGE_USER_HEAD_IMG = 'changeUserHeadImg',
+  EMIT_CHAT_MESSAGE = 'emitChatMessage',
 }

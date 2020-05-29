@@ -28,6 +28,14 @@ export interface MyAppState {
     name: string;
   };
   fishBondStatus: boolean;
+  record: {
+    [room: string]: {
+      createTime: string;
+      msg: string;
+      send: string;
+      receive: string;
+    }[];
+  };
 }
 
 /**
@@ -87,7 +95,7 @@ export interface MainProps {
  */
 export type MainStackList = {
   Tab: {screen: 'Home' | 'Message' | 'User' | 'Sell'};
-  Chat: {userId: string; userName: string};
+  Chat: {userId: string; userName: string; headImg: string};
   Login: undefined;
   Profile: undefined;
   Release: undefined;
@@ -443,8 +451,6 @@ export interface DetailContentTopProps {
  * DetailBottomAreaProps
  */
 export interface DetailBottomAreaProps {
-  userId: string;
-  userName: string;
   toEnd: Function;
   myUserMsg: {
     _id: string;
@@ -457,6 +463,14 @@ export interface DetailBottomAreaProps {
   setIsInput: React.Dispatch<React.SetStateAction<boolean>>;
   data: getInfoResponse['data'] | undefined;
   setData: React.Dispatch<React.SetStateAction<DetailBottomAreaProps['data']>>;
+  user:
+    | {
+        _id: string;
+        userName: string;
+        headImg: string;
+        createTime: string;
+      }
+    | undefined;
 }
 
 /**
@@ -495,4 +509,15 @@ export interface MessageScreenProps {
     userName: string;
   };
   isLogin: boolean;
+}
+
+/**
+ * 聊天页面参数
+ */
+export interface ChatProps {
+  user: {
+    _id: string;
+    headImg: string;
+    userName: string;
+  };
 }

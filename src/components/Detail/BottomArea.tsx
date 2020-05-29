@@ -17,8 +17,6 @@ import {Tip} from 'beeshell/dist/components/Tip';
 import {axios} from '@/api';
 
 function BottomArea({
-  userId,
-  userName,
   toEnd,
   myUserMsg,
   commodityId,
@@ -27,6 +25,7 @@ function BottomArea({
   setIsInput,
   data,
   setData,
+  user,
 }: DetailBottomAreaProps) {
   const [comment, setComment] = useState('');
   const navigation = useNavigation<NavigationProp<MainStackList>>();
@@ -73,8 +72,9 @@ function BottomArea({
         style={styles.right}
         onPress={() => {
           navigation.navigate('Chat', {
-            userId: userId,
-            userName: userName,
+            userId: user?._id || '',
+            userName: user?.userName || '',
+            headImg: user?.headImg || '',
           });
         }}>
         我想要

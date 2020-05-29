@@ -1,10 +1,24 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View, ScrollView} from 'react-native';
+import {connect} from 'react-redux';
+import {useRoute, RouteProp} from '@react-navigation/native';
+import {MainStackList, MyAppState, ChatProps} from '@/types';
 
-export default function Chat() {
+function Chat({user}: ChatProps) {
+  const route = useRoute<RouteProp<MainStackList, 'Chat'>>();
+  console.log(route.params);
+  const me = {userId: user._id, headImg: user.headImg, userName: user.userName};
+  const you = route.params;
   return (
     <View>
-      <Text>i am chat </Text>
+      <ScrollView></ScrollView>
+      <View></View>
     </View>
   );
 }
+
+const stateToProps = (state: MyAppState) => ({
+  user: state.user,
+});
+
+export default connect(stateToProps)(Chat);

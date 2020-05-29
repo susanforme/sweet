@@ -37,7 +37,13 @@ function Main({isLogin, isLoading}: MainProps) {
           name="Tab"
           component={Tabstack}
           options={{header: () => null}}></MainStack.Screen>
-        <MainStack.Screen name="Chat" component={Chat}></MainStack.Screen>
+        <MainStack.Screen
+          name="Chat"
+          component={Chat}
+          options={({route}) => ({
+            ...getDefaultHeaderStyle(80 * widthScale, paddingTop, 0.7, 'white'),
+            title: route.params.userName,
+          })}></MainStack.Screen>
         <MainStack.Screen
           name="Login"
           component={Login}

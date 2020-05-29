@@ -114,8 +114,7 @@ export default function Detail() {
         isInput={isInput}
         setIsInput={setIsInput}
         commodityId={data?._id}
-        userId={data?.user._id || ''}
-        userName={data?.user.userName || ''}></BottomArea>
+        user={data?.user}></BottomArea>
     </SafeAreaView>
   );
 }

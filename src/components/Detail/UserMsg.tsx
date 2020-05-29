@@ -13,6 +13,8 @@ export default function UserMsg({user}: UserMsgProps) {
       onPress={() => {
         navigation.navigate('Chat', {
           userId: user?._id || '',
+          userName: user?.userName || '',
+          headImg: user?.headImg || '',
         });
       }}>
       <View style={styles.userMsg}>
