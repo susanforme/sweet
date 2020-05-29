@@ -32,7 +32,8 @@
     "react-redux": "^7.2.0",
     "redux": "^4.0.5",
     "redux-persist": "^6.0.0",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "socket.io": "^2.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.6.2",
@@ -47,6 +48,7 @@
     "@types/react-test-renderer": "16.9.2",
     "@types/redux": "^3.6.0",
     "@types/redux-persist": "^4.3.1",
+    "@types/socket.io": "^2.1.8",
     "@typescript-eslint/eslint-plugin": "^2.27.0",
     "@typescript-eslint/parser": "^2.27.0",
     "babel-jest": "^24.9.0",

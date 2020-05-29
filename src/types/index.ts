@@ -29,12 +29,14 @@ export interface MyAppState {
   };
   fishBondStatus: boolean;
   record: {
-    [room: string]: {
-      createTime: string;
-      msg: string;
-      send: string;
-      receive: string;
-    }[];
+    [room: string]:
+      | {
+          createTime: string;
+          msg: string;
+          send: string;
+          receive: string;
+        }[]
+      | undefined;
   };
 }
 
@@ -520,4 +522,60 @@ export interface ChatProps {
     headImg: string;
     userName: string;
   };
+  record(
+    roomId: string,
+  ):
+    | {
+        createTime: string;
+        msg: string;
+        send: string;
+        receive: string;
+      }[]
+    | undefined;
+  syncLocalHistory(room: string, list: ChatData): void;
+}
+/**
+ * 聊天页面数据
+ */
+export type ChatData = {
+  createTime: string;
+  msg: string;
+  send: string;
+  receive: string;
+}[];
+
+/**
+ * 聊天记录
+ */
+export interface GetHistoryResponse {
+  status: 0 | 1;
+  data: {
+    history: {
+      createTime: string;
+      msg: string;
+      send: string;
+      receive: string;
+    }[];
+  };
+}
+
+/**
+ * OnRefreshProps
+ */
+export interface OnRefreshProps {
+  setIsRefreshed: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  setData: React.Dispatch<React.SetStateAction<ChatData>>;
+  roomId: string;
+  syncLocalHistory: (room: string, list: ChatData) => void;
+  users: string[];
+}
+
+/**
+ * 底部输入区域参数
+ */
+export interface BottomInputChatProps {
+  msg: string;
+  setMsg: React.Dispatch<React.SetStateAction<string>>;
+  onPress?: Function;
 }

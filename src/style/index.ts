@@ -1376,3 +1376,25 @@ export const MessageTopAreaStyles = StyleSheet.create({
     marginTop: -100 * widthScale,
   },
 });
+
+/**
+ * 聊天界面底部输入区域
+ */
+export const BottomInputChatStyles = StyleSheet.create({
+  area: {
+    backgroundColor: 'white',
+    flexDirection: 'row',
+    display: 'flex',
+    height: 50 * widthScale,
+  },
+  input: {
+    flex: 7,
+    paddingLeft: 15 * widthScale,
+  },
+  btn: {
+    color: '#0188FB',
+    flex: 1,
+    padding: 15 * widthScale,
+    fontSize: 18 * widthScale,
+  },
+});
