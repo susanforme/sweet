@@ -31,7 +31,6 @@ export default function Detail() {
 
   const scrollRef = useRef<ScrollView>(null);
   const Images = data?.imgPath.map((v, index) => {
-    console.log(data.imgPath);
     return (
       <TouchableWithoutFeedback
         key={index}

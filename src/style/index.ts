@@ -1150,6 +1150,7 @@ export const ReleaseStyles = StyleSheet.create({
   imageSelectArea: {
     display: 'flex',
     flexDirection: 'row',
+    flexWrap: 'wrap',
   },
   box: {
     backgroundColor: '#F1F1F1',
@@ -1159,6 +1160,7 @@ export const ReleaseStyles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: 5 * widthScale,
     marginRight: 5 * widthScale,
+    marginBottom: 10 * widthScale,
   },
   img: {
     height: 120 * widthScale,

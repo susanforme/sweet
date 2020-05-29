@@ -146,6 +146,7 @@ function Release({owner}: {owner: string}) {
               borderBottomColor: 'rgba(128, 128, 128, 0.2)',
               borderBottomWidth: 1 * widthScale,
               marginTop: 0,
+              marginBottom: 50 * widthScale,
             },
           ]}>
           <Icon name="bars" size={20 * widthScale}></Icon>
