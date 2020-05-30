@@ -1,11 +1,5 @@
 import React, {useState} from 'react';
-import {
-  View,
-  FlatList,
-  RefreshControl,
-  TextInput,
-  Keyboard,
-} from 'react-native';
+import {View, FlatList, RefreshControl, TextInput} from 'react-native';
 import {connect} from 'react-redux';
 import {useRoute, RouteProp} from '@react-navigation/native';
 import {
@@ -38,7 +32,9 @@ function Chat({user}: ChatProps) {
   const [socket] = useState(() => io('https://www.wdf5.com:5050'));
   socket.connect();
   socket.on('back', (res: BackChatResponse) => {
-    setData([...data, res.data]);
+    if (res.data.send === you.userId) {
+      setData([res.data, ...data]);
+    }
   });
   return (
     <View style={{flex: 1, backgroundColor: '#F4F5F9'}}>
@@ -48,9 +44,11 @@ function Chat({user}: ChatProps) {
         removeClippedSubviews
         windowSize={height}
         ref={flatRef}
+        inverted
         renderItem={({item, index}) => {
           let itemData = item;
           if (
+            getTime(data[index + 1]?.createTime) === getTime(item.createTime) &&
             getTime(data[index - 1]?.createTime) === getTime(item.createTime)
           ) {
             itemData = {...item, createTime: ''};
@@ -78,17 +76,17 @@ function Chat({user}: ChatProps) {
         msg={msg}
         ref={inputRef}
         setMsg={setMsg}
-        onFoucus={() => {
-          Keyboard.addListener('keyboardDidShow', () => {
-            flatRef.current?.scrollToEnd();
-          });
-        }}
+        onFoucus={() => {}}
         onPress={() => {
           const info = {
             send: me.userId,
             receive: you.userId,
             msg,
           };
+          setData([
+            {...info, createTime: new Date().toLocaleString()},
+            ...data,
+          ]);
           socket.emit('chat', info);
           inputRef.current?.blur();
           inputRef.current?.clear();
@@ -117,7 +115,7 @@ function onRefresh({
       .then((res) => {
         setIsRefreshed(true);
         if (Array.isArray(res.data.data.history)) {
-          setData(res.data.data.history);
+          setData(res.data.data.history.reverse());
         }
 
         setTimeout(() => {

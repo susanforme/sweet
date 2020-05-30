@@ -30,7 +30,7 @@ export default function Comment({comment, setIsInput}: CommentProps) {
         <View style={styles.commentRight}>
           <Text style={styles.commentUsername}>{v.userId.userName}</Text>
           <Text style={styles.commentContent}>{v.comment}</Text>
-          <Text style={styles.commentTime}>{v.createTime}</Text>
+          <Text style={styles.commentTime}>{getTime(v.createTime)}</Text>
         </View>
       </View>
     );
@@ -43,4 +43,14 @@ export default function Comment({comment, setIsInput}: CommentProps) {
       {comment?.length === 0 ? noComment : comments}
     </View>
   );
+}
+
+function getTime(time: string) {
+  const date = new Date(time);
+  return `${
+    date.getMonth() + 1
+  }-${date.getDate()} ${date.getHours()}:${date
+    .getMinutes()
+    .toString()
+    .padStart(2, '0')}`;
 }
