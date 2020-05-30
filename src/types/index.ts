@@ -28,16 +28,6 @@ export interface MyAppState {
     name: string;
   };
   fishBondStatus: boolean;
-  record: {
-    [room: string]:
-      | {
-          createTime: string;
-          msg: string;
-          send: string;
-          receive: string;
-        }[]
-      | undefined;
-  };
 }
 
 /**
@@ -527,18 +517,6 @@ export interface ChatProps {
     headImg: string;
     userName: string;
   };
-  record: {
-    [room: string]:
-      | {
-          createTime: string;
-          msg: string;
-          send: string;
-          receive: string;
-        }[]
-      | undefined;
-  };
-  syncLocalHistory(room: string, list: ChatData): void;
-  emitChatMsg(room: string, msg: SingleChatMsg): void;
 }
 /**
  * 聊天页面数据
@@ -577,8 +555,6 @@ export interface OnRefreshProps {
   setIsRefreshed: React.Dispatch<React.SetStateAction<boolean>>;
   setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
   setData: React.Dispatch<React.SetStateAction<ChatData>>;
-  roomId: string;
-  syncLocalHistory: (room: string, list: ChatData) => void;
   users: string[];
 }
 
@@ -589,6 +565,7 @@ export interface BottomInputChatProps {
   msg: string;
   setMsg: React.Dispatch<React.SetStateAction<string>>;
   onPress?: () => any;
+  onFoucus: () => any;
 }
 
 /**
@@ -600,5 +577,22 @@ export interface BackChatResponse {
     send: string;
     receive: string;
     msg: string;
+  };
+}
+
+/**
+ * 单个聊天信息列表
+ */
+export interface RecordListProps {
+  data: SingleChatMsg;
+  me: {
+    userId: string;
+    headImg: string;
+    userName: string;
+  };
+  you: {
+    userId: string;
+    headImg: string;
+    userName: string;
   };
 }

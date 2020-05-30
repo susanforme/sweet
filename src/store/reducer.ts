@@ -25,12 +25,6 @@ export default (state = initState, action: any) => {
     };
     newState.fishBondStatus = false;
   }
-  console.log((state as MyAppState).record);
-
-  console.log(!(state as MyAppState).record);
-  if (!(state as MyAppState).record) {
-    newState.record = {};
-  }
   switch (action.type) {
     case ActionTypes.LOAD_DATA: {
       newState.isLoading = action.data.isLoading;
@@ -63,20 +57,6 @@ export default (state = initState, action: any) => {
     }
     case ActionTypes.CHANGE_USER_HEAD_IMG: {
       newState.user.headImg = action.data.headImg;
-      break;
-    }
-    case ActionTypes.EMIT_CHAT_MESSAGE: {
-      let ary = newState.record[action.data.room];
-      if (!ary) {
-        newState.record[action.data.room] = [action.data.msg];
-      } else {
-        ary.push(action.data.msg);
-      }
-      break;
-    }
-    case ActionTypes.SYNC_HISTORY_MESSAGE: {
-      newState.record[action.data.room] = action.data.list;
-
       break;
     }
   }

@@ -2,7 +2,7 @@ import {StyleSheet, StatusBar} from 'react-native';
 import {Dimensions} from 'react-native';
 //设计基准为宽411.43 高683.43
 
-const {width, height} = Dimensions.get('window');
+export const {width, height} = Dimensions.get('window');
 
 export const widthScale = width / 411.43;
 
@@ -1397,4 +1397,65 @@ export const BottomInputChatStyles = StyleSheet.create({
     padding: 15 * widthScale,
     fontSize: 18 * widthScale,
   },
+});
+
+/**
+ * RecordListStyles
+ */
+export const RecordListStyles = StyleSheet.create({
+  area: {},
+  img: {
+    width: 50 * widthScale,
+    height: 50 * widthScale,
+    borderRadius: 25 * widthScale,
+  },
+  time: {
+    width: '100%',
+    textAlign: 'center',
+    marginTop: 30 * widthScale,
+    marginBottom: 30 * widthScale,
+    color: 'gray',
+  },
+  me: {
+    flexDirection: 'row-reverse',
+  },
+  you: {
+    flexDirection: 'row',
+  },
+  user: {
+    display: 'flex',
+    marginBottom: 50 * widthScale,
+    alignItems: 'flex-start',
+  },
+  meMsg: {
+    backgroundColor: '#0188FB',
+  },
+  youMsg: {
+    backgroundColor: 'white',
+  },
+  msg: {
+    maxWidth: width * 0.7,
+    overflow: 'hidden',
+    padding: 10 * widthScale,
+    borderRadius: 10 * widthScale,
+    minWidth: 50 * widthScale,
+  },
+  meImg: {
+    marginRight: 20 * widthScale,
+    marginLeft: 20 * widthScale,
+  },
+  youImg: {
+    marginLeft: 20 * widthScale,
+    marginRight: 20 * widthScale,
+  },
+  text: {
+    color: 'white',
+    fontSize: 16 * widthScale,
+    fontFamily: 'song',
+  },
+  tail: {
+    position: 'absolute',
+  },
+  tailTop: {},
+  tailBottom: {},
 });
