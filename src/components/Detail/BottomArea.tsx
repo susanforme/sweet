@@ -71,6 +71,9 @@ function BottomArea({
       <Button
         style={styles.right}
         onPress={() => {
+          if (myUserMsg._id === user?._id) {
+            return Tip.show('不能和自己聊天', 500);
+          }
           navigation.navigate('Chat', {
             userId: user?._id || '',
             userName: user?.userName || '',

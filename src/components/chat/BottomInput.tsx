@@ -15,15 +15,11 @@ export default function BottomInput({
         value={msg}
         blurOnSubmit
         returnKeyType="send"
-        onSubmitEditing={() => {
-          if (onPress) {
-            onPress();
-          }
-        }}
+        onSubmitEditing={onPress}
         onChangeText={(text) => {
           setMsg(text);
         }}></TextInput>
-      <TouchableNativeFeedback onPress={() => onPress}>
+      <TouchableNativeFeedback onPress={onPress}>
         <Text style={styles.btn}>发送</Text>
       </TouchableNativeFeedback>
     </View>

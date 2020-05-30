@@ -441,6 +441,11 @@ export interface CommentProps {
  */
 export interface UserMsgProps {
   user: getInfoResponse['data']['user'] | undefined;
+  myUserMsg: {
+    _id: string;
+    headImg: string;
+    userName: string;
+  };
 }
 /**
  * DetailContentTopProps
@@ -522,27 +527,33 @@ export interface ChatProps {
     headImg: string;
     userName: string;
   };
-  record(
-    roomId: string,
-  ):
-    | {
-        createTime: string;
-        msg: string;
-        send: string;
-        receive: string;
-      }[]
-    | undefined;
+  record: {
+    [room: string]:
+      | {
+          createTime: string;
+          msg: string;
+          send: string;
+          receive: string;
+        }[]
+      | undefined;
+  };
   syncLocalHistory(room: string, list: ChatData): void;
+  emitChatMsg(room: string, msg: SingleChatMsg): void;
 }
 /**
  * 聊天页面数据
  */
-export type ChatData = {
+export type ChatData = SingleChatMsg[];
+
+/**
+ * 单条记录
+ */
+export type SingleChatMsg = {
   createTime: string;
   msg: string;
   send: string;
   receive: string;
-}[];
+};
 
 /**
  * 聊天记录
@@ -577,5 +588,17 @@ export interface OnRefreshProps {
 export interface BottomInputChatProps {
   msg: string;
   setMsg: React.Dispatch<React.SetStateAction<string>>;
-  onPress?: Function;
+  onPress?: () => any;
+}
+
+/**
+ * 聊天返回信息
+ */
+export interface BackChatResponse {
+  data: {
+    createTime: string;
+    send: string;
+    receive: string;
+    msg: string;
+  };
 }

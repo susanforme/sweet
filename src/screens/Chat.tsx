@@ -9,33 +9,34 @@ import {
   ChatData,
   GetHistoryResponse,
   OnRefreshProps,
+  BackChatResponse,
+  SingleChatMsg,
 } from '@/types';
 import RecordList from '@/components/chat/RecordList';
 import BottomInput from '@/components/chat/BottomInput';
 import {axios} from '@/api';
 import {ActionTypes} from '@/store/actionTypes';
+import io from 'socket.io-client';
 
-function Chat({user, record, syncLocalHistory}: ChatProps) {
+function Chat({user, record, syncLocalHistory, emitChatMsg}: ChatProps) {
   const route = useRoute<RouteProp<MainStackList, 'Chat'>>();
   const me = {userId: user._id, headImg: user.headImg, userName: user.userName};
   const you = route.params;
   const users = [me.userId, you.userId];
   const roomId = [me.userId, you.userId].sort().reduce((pre, cur) => pre + cur);
-  const [localHistory] = useState(record(roomId));
   const [isRefreshed, setIsRefreshed] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState<ChatData>([]);
   const [msg, setMsg] = useState('');
+  const [socket] = useState(() => io('https://www.wdf5.com:5050'));
+  socket.on('back', (res: BackChatResponse) => {
+    emitChatMsg(roomId, res.data);
+  });
   useEffect(() => {
+    const localHistory = record[roomId];
     if (Array.isArray(localHistory)) {
-      const oldData: ChatData = JSON.parse(JSON.stringify(data));
-      oldData.push(...localHistory);
-      const newData = oldData.sort((a, b) => {
-        return (
-          new Date(a.createTime).getTime() - new Date(b.createTime).getTime()
-        );
-      });
-      setData(newData);
+      console.log('我是本地历史记录', localHistory);
+      setData(localHistory);
     }
   }, []);
   return (
@@ -43,6 +44,7 @@ function Chat({user, record, syncLocalHistory}: ChatProps) {
       <FlatList
         data={data}
         renderItem={RecordList}
+        keyExtractor={(item, index) => index.toString()}
         refreshControl={
           !isRefreshed ? (
             <RefreshControl
@@ -61,16 +63,24 @@ function Chat({user, record, syncLocalHistory}: ChatProps) {
             />
           ) : undefined
         }></FlatList>
-      <BottomInput msg={msg} setMsg={setMsg}></BottomInput>
+      <BottomInput
+        msg={msg}
+        setMsg={setMsg}
+        onPress={() => {
+          const info = {
+            send: me.userId,
+            receive: you.userId,
+            msg,
+          };
+          socket.emit('chat', info);
+        }}></BottomInput>
     </View>
   );
 }
 
 const stateToProps = (state: MyAppState) => ({
   user: state.user,
-  record(roomId: string) {
-    return state.record[roomId];
-  },
+  record: state.record,
 });
 
 const dispatchToProps = (dispatch: Function) => ({
@@ -80,6 +90,16 @@ const dispatchToProps = (dispatch: Function) => ({
       data: {
         room,
         list,
+      },
+    };
+    dispatch(action);
+  },
+  emitChatMsg(room: string, msg: SingleChatMsg) {
+    const action = {
+      type: ActionTypes.EMIT_CHAT_MESSAGE,
+      data: {
+        room,
+        msg,
       },
     };
     dispatch(action);
@@ -101,6 +121,7 @@ function onRefresh({
     axios
       .get<GetHistoryResponse>(`/chat/history/${users[0]}_${users[1]}`)
       .then((res) => {
+        console.log(res.data.data);
         setIsRefreshed(true);
         if (Array.isArray(res.data.data.history)) {
           setData(res.data.data.history);

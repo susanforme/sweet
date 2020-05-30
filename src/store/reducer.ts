@@ -25,6 +25,9 @@ export default (state = initState, action: any) => {
     };
     newState.fishBondStatus = false;
   }
+  console.log((state as MyAppState).record);
+
+  console.log(!(state as MyAppState).record);
   if (!(state as MyAppState).record) {
     newState.record = {};
   }
@@ -65,7 +68,7 @@ export default (state = initState, action: any) => {
     case ActionTypes.EMIT_CHAT_MESSAGE: {
       let ary = newState.record[action.data.room];
       if (!ary) {
-        ary = [action.data.msg];
+        newState.record[action.data.room] = [action.data.msg];
       } else {
         ary.push(action.data.msg);
       }
@@ -73,6 +76,7 @@ export default (state = initState, action: any) => {
     }
     case ActionTypes.SYNC_HISTORY_MESSAGE: {
       newState.record[action.data.room] = action.data.list;
+
       break;
     }
   }

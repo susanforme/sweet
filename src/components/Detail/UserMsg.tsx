@@ -1,16 +1,21 @@
 import React from 'react';
 import {TouchableNativeFeedback, View, Text, Image} from 'react-native';
 import {useNavigation, NavigationProp} from '@react-navigation/native';
-import {MainStackList, UserMsgProps} from '@/types';
+import {MainStackList, UserMsgProps, MyAppState} from '@/types';
 import {UserMsgStyles as styles, widthScale} from '@/style';
 import Icon from 'react-native-vector-icons/AntDesign';
 import {getRandomNumber} from '@/tools';
+import {connect} from 'react-redux';
+import {Tip} from 'beeshell/dist/components/Tip';
 
-export default function UserMsg({user}: UserMsgProps) {
+function UserMsg({user, myUserMsg}: UserMsgProps) {
   const navigation = useNavigation<NavigationProp<MainStackList>>();
   return (
     <TouchableNativeFeedback
       onPress={() => {
+        if (myUserMsg._id === user?._id) {
+          return Tip.show('不能和自己聊天', 500);
+        }
         navigation.navigate('Chat', {
           userId: user?._id || '',
           userName: user?.userName || '',
@@ -49,6 +54,13 @@ export default function UserMsg({user}: UserMsgProps) {
     </TouchableNativeFeedback>
   );
 }
+
+const stateToProps = (state: MyAppState) => ({
+  myUserMsg: state.user,
+  isLogin: state.isLogin,
+});
+
+export default connect(stateToProps)(UserMsg);
 
 function getToday(time: string | number) {
   return Math.ceil(
