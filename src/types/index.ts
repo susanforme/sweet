@@ -596,3 +596,14 @@ export interface RecordListProps {
     userName: string;
   };
 }
+
+/**
+ * 消息列表回收数据
+ */
+export interface GetMsgListData {
+  data: {
+    _id: string;
+    headImg: string;
+    userName: string;
+  }[];
+}

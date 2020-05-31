@@ -1311,6 +1311,38 @@ export const MessageScreenStyles = StyleSheet.create({
     color: 'gray',
     marginTop: 20 * widthScale,
   },
+  msglist: {
+    display: 'flex',
+    flexDirection: 'row',
+    borderBottomColor: 'rgba(128, 128, 128, 0.2)',
+    borderBottomWidth: 1 * widthScale,
+    paddingTop: 15 * widthScale,
+    paddingBottom: 15 * widthScale,
+  },
+  headImg: {
+    width: 60 * widthScale,
+    height: 60 * widthScale,
+    borderRadius: 10 * widthScale,
+    marginRight: 20 * widthScale,
+  },
+  singleMsg: {
+    ...padding,
+    backgroundColor: 'white',
+  },
+  right: {
+    display: 'flex',
+    justifyContent: 'center',
+  },
+  username: {
+    fontSize: 18 * widthScale,
+    fontFamily: 'song',
+    fontWeight: '700',
+  },
+  tip: {
+    color: 'gray',
+    fontSize: 16 * widthScale,
+    marginTop: 8 * widthScale,
+  },
 });
 
 /**
