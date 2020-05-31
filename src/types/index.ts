@@ -82,6 +82,31 @@ export interface MainProps {
   isLoading: boolean;
 }
 
+export type OrderStackList = {
+  CheckOrder: {
+    /**
+     * 商品id
+     */
+    id: string;
+    /**
+     * 卖家id
+     */
+    owner: string;
+    price: number;
+    /**
+     * 只需要一个
+     */
+    imgPath: string;
+    /**
+     * 校验是否卖出,请在进入该页面之前再校验一次
+     */
+    isSale: boolean;
+    description: string;
+  };
+  OrderEvaluate: undefined;
+  OrderScreen: undefined;
+};
+
 /**
  * 主页面的堆栈列表,stack 屏幕列表
  */
@@ -95,6 +120,7 @@ export type MainStackList = {
   Setting: {title: string} | undefined;
   Classificat: {kindId: string; kindName: string};
   Detail: {commodityId: string};
+  Order: {title: string};
 };
 
 /**

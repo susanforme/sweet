@@ -18,6 +18,7 @@ import {widthScale} from './style';
 import {StatusBar} from 'react-native';
 import Classificat from '@/screens/Classificat';
 import Detail from '@/screens/Detail';
+import OrderStack from '@/screens/OrderStack';
 
 const MainStack = createStackNavigator<MainStackList>();
 
@@ -93,6 +94,13 @@ function Main({isLogin, isLoading}: MainProps) {
             ...getDefaultHeaderStyle(80 * widthScale, paddingTop, 0.6, 'white'),
             title: '',
           }}></MainStack.Screen>
+        <MainStack.Screen
+          name="Order"
+          component={OrderStack}
+          options={(route) => ({
+            title: route.route.params.title,
+            ...getDefaultHeaderStyle(80 * widthScale, paddingTop, 0.7, 'white'),
+          })}></MainStack.Screen>
       </MainStack.Navigator>
     </NavigationContainer>
   );

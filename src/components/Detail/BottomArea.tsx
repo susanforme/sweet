@@ -9,8 +9,8 @@ import {
 import {DetailBottomAreaStyles as styles, widthScale} from '@/style';
 import Icon from 'react-native-vector-icons/AntDesign';
 import {Button} from 'beeshell/dist/components/Button';
-import {useNavigation, NavigationProp} from '@react-navigation/native';
-import {MainStackList, DetailBottomAreaProps, MyAppState} from '@/types';
+import {useNavigation} from '@react-navigation/native';
+import {DetailBottomAreaProps, MyAppState} from '@/types';
 import FontIcon from 'react-native-vector-icons/MaterialIcons';
 import {connect} from 'react-redux';
 import {Tip} from 'beeshell/dist/components/Tip';
@@ -28,18 +28,28 @@ function BottomArea({
   user,
 }: DetailBottomAreaProps) {
   const [comment, setComment] = useState('');
-  const navigation = useNavigation<NavigationProp<MainStackList>>();
+  const navigation = useNavigation();
   const inputRef = useRef<TextInput>(null);
   const show = (
     <>
-      <TouchableWithoutFeedback>
+      <TouchableWithoutFeedback
+        onPress={() => {
+          if (myUserMsg._id === user?._id) {
+            return Tip.show('不能和自己聊天', 500);
+          }
+          navigation.navigate('Chat', {
+            userId: user?._id || '',
+            userName: user?.userName || '',
+            headImg: user?.headImg || '',
+          });
+        }}>
         <View style={styles.icon}>
-          <Icon
-            name="hearto"
+          <FontIcon
+            name="chat"
             size={22 * widthScale}
             color="gray"
-            style={styles.iconFont}></Icon>
-          <Text style={styles.text}>喜欢</Text>
+            style={styles.iconFont}></FontIcon>
+          <Text style={styles.text}>聊天</Text>
         </View>
       </TouchableWithoutFeedback>
       <TouchableWithoutFeedback
@@ -61,26 +71,30 @@ function BottomArea({
       <TouchableWithoutFeedback>
         <View style={styles.icon}>
           <Icon
-            name="shoppingcart"
+            name="hearto"
             size={22 * widthScale}
             color="gray"
             style={styles.iconFont}></Icon>
-          <Text style={styles.text}>购买</Text>
+          <Text style={styles.text}>想要</Text>
         </View>
       </TouchableWithoutFeedback>
       <Button
         style={styles.right}
         onPress={() => {
-          if (myUserMsg._id === user?._id) {
-            return Tip.show('不能和自己聊天', 500);
-          }
-          navigation.navigate('Chat', {
-            userId: user?._id || '',
-            userName: user?.userName || '',
-            headImg: user?.headImg || '',
+          navigation.navigate('Order', {
+            title: '确认订单',
+            screen: 'CheckOrder',
+            params: {
+              id: commodityId || '',
+              owner: user?._id || '',
+              imgPath: '',
+              price: 0,
+              description: '',
+              isSale: false,
+            },
           });
         }}>
-        我想要
+        购买
       </Button>
     </>
   );
