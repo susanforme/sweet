@@ -16,7 +16,7 @@ function FishSettingScreen({
       <Switch
         style={styles.right}
         activeColor="yellowgreen"
-        value={defaultFish}
+        value={Boolean(defaultFish)}
         onChange={(status: boolean) => {
           changeFishStatus(status);
         }}></Switch>

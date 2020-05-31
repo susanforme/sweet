@@ -21,7 +21,7 @@ export interface MyAppState {
     headImg: string;
     userName: string;
   };
-  location: {
+  location?: {
     area: string;
     phoneNum: string;
     _id: string;
@@ -244,8 +244,15 @@ export type SettingStackList = {
  */
 export interface LocationStackScreenProps {
   userId: string;
-  defaultLocationId: string;
   setDefaultLocation(data: SingleLocation): void;
+  defaultLocation:
+    | {
+        area: string;
+        phoneNum: string;
+        _id: string;
+        name: string;
+      }
+    | undefined;
 }
 
 /**
@@ -303,7 +310,7 @@ export interface GetLocationResponse {
  */
 export interface LocationBoxProps {
   data: SingleLocation;
-  defaultLocationId: string;
+  defaultLocationId: string | undefined;
   setDefaultLocation: (data: SingleLocation) => void;
   onPress: ((event: GestureResponderEvent) => void) | undefined;
 }

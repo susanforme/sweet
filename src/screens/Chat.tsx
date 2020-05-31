@@ -90,6 +90,7 @@ function Chat({user}: ChatProps) {
           socket.emit('chat', info);
           inputRef.current?.blur();
           inputRef.current?.clear();
+          setMsg('');
         }}></BottomInput>
       {isLoading ? <Loading title="同步中" /> : null}
     </View>

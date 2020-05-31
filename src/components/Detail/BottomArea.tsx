@@ -37,6 +37,9 @@ function BottomArea({
           if (myUserMsg._id === user?._id) {
             return Tip.show('不能和自己聊天', 500);
           }
+          if (!isLogin) {
+            return Tip.show('未登录', 500);
+          }
           navigation.navigate('Chat', {
             userId: user?._id || '',
             userName: user?.userName || '',
@@ -55,6 +58,9 @@ function BottomArea({
       <TouchableWithoutFeedback
         onPress={() => {
           toEnd();
+          if (!isLogin) {
+            return Tip.show('未登录', 500);
+          }
           setTimeout(() => {
             setIsInput(true);
           }, 0);
@@ -81,16 +87,25 @@ function BottomArea({
       <Button
         style={styles.right}
         onPress={() => {
+          if (data?.isSale) {
+            return Tip.show('该商品已经卖出', 500);
+          }
+          if (myUserMsg._id === user?._id) {
+            return Tip.show('不能购买自己正在卖出的物品', 500);
+          }
+          if (!isLogin) {
+            return Tip.show('未登录', 500);
+          }
           navigation.navigate('Order', {
             title: '确认订单',
             screen: 'CheckOrder',
             params: {
               id: commodityId || '',
               owner: user?._id || '',
-              imgPath: '',
-              price: 0,
-              description: '',
-              isSale: false,
+              imgPath: data?.imgPath[0] || '',
+              price: data?.price || 0,
+              description: data?.description || '',
+              isSale: data?.isSale || false,
             },
           });
         }}>

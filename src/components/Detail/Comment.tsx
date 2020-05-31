@@ -29,7 +29,9 @@ export default function Comment({comment, setIsInput}: CommentProps) {
           style={styles.commentImage}></Image>
         <View style={styles.commentRight}>
           <Text style={styles.commentUsername}>{v.userId.userName}</Text>
-          <Text style={styles.commentContent}>{v.comment}</Text>
+          <Text selectable style={styles.commentContent}>
+            {v.comment}
+          </Text>
           <Text style={styles.commentTime}>{getTime(v.createTime)}</Text>
         </View>
       </View>

@@ -339,6 +339,7 @@ export const AddLocationScreenStyles = StyleSheet.create({
   },
   title: {
     width: '20%',
+    fontSize: 16 * widthScale,
   },
   input: {
     width: '76%',
@@ -385,6 +386,7 @@ export const LocationInformationBoxStyles = StyleSheet.create({
     width: '80%',
     marginLeft: '2%',
     height: '100%',
+    fontSize: 16 * widthScale,
   },
   contentTop: {
     flexDirection: 'row',
@@ -399,9 +401,11 @@ export const LocationInformationBoxStyles = StyleSheet.create({
   },
   name: {
     marginRight: 5 * widthScale,
+    fontSize: 16 * widthScale,
   },
   phoneNum: {
     marginRight: 5 * widthScale,
+    fontSize: 16 * widthScale,
   },
   check: {
     width: 16 * widthScale,
@@ -555,16 +559,17 @@ export const HomeScreenStyles = StyleSheet.create({
     borderBottomRightRadius: 10 * widthScale,
   },
   bottom: {
-    marginBottom: 10 * widthScale,
+    paddingBottom: 10 * widthScale,
+    backgroundColor: '#F2F2F2',
   },
   goTop: {
     position: 'absolute',
     bottom: '10%',
     right: '6%',
-    width: 40 * widthScale,
-    height: 40 * widthScale,
+    width: 55 * widthScale,
+    height: 55 * widthScale,
     backgroundColor: 'white',
-    borderRadius: 20 * widthScale,
+    borderRadius: 27.5 * widthScale,
     borderWidth: 2 * widthScale,
     borderColor: '#ffee00',
     display: 'flex',
@@ -602,6 +607,7 @@ export const HomeSwiperStyles = StyleSheet.create({
     backgroundColor: 'white',
     height: 150 * widthScale,
     borderRadius: 15 * widthScale,
+    overflow: 'hidden',
   },
   loading: {
     width: '100%',
@@ -658,6 +664,7 @@ export const RefreshListStyles = StyleSheet.create({
     width: 30 * widthScale,
     height: 30 * widthScale,
     marginRight: 5 * widthScale,
+    borderRadius: 5 * widthScale,
   },
   father: {},
   box: {
@@ -816,6 +823,7 @@ export const CommentStyles = StyleSheet.create({
   commentContent: {
     paddingBottom: 10 * widthScale,
     fontSize: 16 * widthScale,
+    width: width - 35 * widthScale - 15 * widthScale - 40 * widthScale,
   },
   commentTime: {
     color: 'gray',
@@ -1041,7 +1049,7 @@ export const DetailBottomAreaStyles = StyleSheet.create({
  */
 export const SearchHeaderStyles = StyleSheet.create({
   header: {
-    marginTop: 15 * widthScale,
+    marginTop: 30 * widthScale,
     flexDirection: 'row',
     display: 'flex',
     height: 60 * widthScale,
@@ -1070,7 +1078,6 @@ export const SearchHeaderStyles = StyleSheet.create({
   },
   btn: {
     borderWidth: 0,
-    flex: 1,
     textAlign: 'center',
     fontSize: 18 * widthScale,
     marginLeft: 10 * widthScale,
@@ -1129,6 +1136,8 @@ export const ReleaseHeaderStyles = StyleSheet.create({
     paddingRight: 10 * widthScale,
     paddingBottom: 6 * widthScale,
     borderRadius: 20 * widthScale,
+    width: 70 * widthScale,
+    borderWidth: 0,
   },
 });
 
@@ -1417,7 +1426,7 @@ export const BottomInputChatStyles = StyleSheet.create({
     backgroundColor: 'white',
     flexDirection: 'row',
     display: 'flex',
-    height: 50 * widthScale,
+    height: 60 * widthScale,
   },
   input: {
     flex: 7,
@@ -1428,6 +1437,7 @@ export const BottomInputChatStyles = StyleSheet.create({
     flex: 1,
     padding: 15 * widthScale,
     fontSize: 18 * widthScale,
+    paddingTop: 20 * widthScale,
   },
 });
 
