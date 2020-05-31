@@ -1,8 +1,8 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet, StatusBar} from 'react-native';
 import {Dimensions} from 'react-native';
 //设计基准为宽411.43 高683.43
 
-const {width, height} = Dimensions.get('window');
+export const {width, height} = Dimensions.get('window');
 
 export const widthScale = width / 411.43;
 
@@ -551,6 +551,8 @@ export const HomeScreenStyles = StyleSheet.create({
     justifyContent: 'center',
     height: 50 * widthScale,
     ...padding,
+    borderBottomLeftRadius: 10 * widthScale,
+    borderBottomRightRadius: 10 * widthScale,
   },
   bottom: {
     marginBottom: 10 * widthScale,
@@ -599,6 +601,7 @@ export const HomeSwiperStyles = StyleSheet.create({
     paddingRight: 5 * widthScale,
     backgroundColor: 'white',
     height: 150 * widthScale,
+    borderRadius: 15 * widthScale,
   },
   loading: {
     width: '100%',
@@ -654,6 +657,7 @@ export const RefreshListStyles = StyleSheet.create({
   headImg: {
     width: 30 * widthScale,
     height: 30 * widthScale,
+    marginRight: 5 * widthScale,
   },
   father: {},
   box: {
@@ -1122,7 +1126,7 @@ export const ReleaseHeaderStyles = StyleSheet.create({
     backgroundColor: '#ffee00',
     paddingTop: 6 * widthScale,
     paddingLeft: 15 * widthScale,
-    paddingRight: 15 * widthScale,
+    paddingRight: 10 * widthScale,
     paddingBottom: 6 * widthScale,
     borderRadius: 20 * widthScale,
   },
@@ -1146,6 +1150,7 @@ export const ReleaseStyles = StyleSheet.create({
   imageSelectArea: {
     display: 'flex',
     flexDirection: 'row',
+    flexWrap: 'wrap',
   },
   box: {
     backgroundColor: '#F1F1F1',
@@ -1155,6 +1160,7 @@ export const ReleaseStyles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: 5 * widthScale,
     marginRight: 5 * widthScale,
+    marginBottom: 10 * widthScale,
   },
   img: {
     height: 120 * widthScale,
@@ -1277,4 +1283,179 @@ export const NumKeyboardStyles = StyleSheet.create({
     fontSize: 25 * widthScale,
     fontWeight: '600',
   },
+});
+
+/**
+ * 消息界面样式
+ */
+export const MessageScreenStyles = StyleSheet.create({
+  area: {
+    flex: 1,
+  },
+  noResult: {
+    flex: 1,
+    alignItems: 'center',
+    marginTop: '30%',
+    backgroundColor: 'white',
+  },
+  noResultImg: {
+    width: 150 * widthScale,
+    height: 150 * widthScale,
+  },
+  noResultText1: {
+    fontWeight: '700',
+    fontSize: 16 * widthScale,
+    marginTop: 20 * widthScale,
+  },
+  noResultText2: {
+    color: 'gray',
+    marginTop: 20 * widthScale,
+  },
+});
+
+/**
+ * 用户界面样式
+ */
+export const UserScreenStyles = StyleSheet.create({
+  area: {
+    flex: 1,
+    backgroundColor: 'white',
+    height: height - (StatusBar.currentHeight || 30) * 4.5,
+  },
+  noResult: {
+    flex: 1,
+    alignItems: 'center',
+    marginTop: '30%',
+    backgroundColor: 'white',
+  },
+  noResultImg: {
+    width: 150 * widthScale,
+    height: 150 * widthScale,
+  },
+  noResultText1: {
+    fontWeight: '700',
+    fontSize: 16 * widthScale,
+    marginTop: 20 * widthScale,
+  },
+  noResultText2: {
+    color: 'gray',
+    marginTop: 20 * widthScale,
+  },
+});
+
+/**
+ * 消息栏目顶部区域
+ */
+export const MessageTopAreaStyles = StyleSheet.create({
+  img: {
+    width: 40 * widthScale,
+    height: 40 * widthScale,
+  },
+  boxArea: {
+    flexDirection: 'row',
+    display: 'flex',
+    backgroundColor: 'white',
+    marginLeft: 15 * widthScale,
+    marginRight: 15 * widthScale,
+    padding: 20 * widthScale,
+    alignItems: 'center',
+    borderRadius: 15 * widthScale,
+    marginTop: -100 * widthScale,
+  },
+  box: {
+    flex: 1,
+    alignItems: 'center',
+  },
+  boxText: {
+    marginTop: 10 * widthScale,
+  },
+  topBackground: {
+    height: 200 * widthScale,
+    borderRadius: 200 * widthScale,
+    backgroundColor: '#ffee00',
+    marginTop: -100 * widthScale,
+  },
+});
+
+/**
+ * 聊天界面底部输入区域
+ */
+export const BottomInputChatStyles = StyleSheet.create({
+  area: {
+    backgroundColor: 'white',
+    flexDirection: 'row',
+    display: 'flex',
+    height: 50 * widthScale,
+  },
+  input: {
+    flex: 7,
+    paddingLeft: 15 * widthScale,
+  },
+  btn: {
+    color: '#0188FB',
+    flex: 1,
+    padding: 15 * widthScale,
+    fontSize: 18 * widthScale,
+  },
+});
+
+/**
+ * RecordListStyles
+ */
+export const RecordListStyles = StyleSheet.create({
+  area: {},
+  img: {
+    width: 50 * widthScale,
+    height: 50 * widthScale,
+    borderRadius: 25 * widthScale,
+  },
+  time: {
+    width: '100%',
+    textAlign: 'center',
+    marginTop: 30 * widthScale,
+    marginBottom: 30 * widthScale,
+    color: 'gray',
+  },
+  me: {
+    flexDirection: 'row-reverse',
+  },
+  you: {
+    flexDirection: 'row',
+  },
+  user: {
+    display: 'flex',
+    marginBottom: 50 * widthScale,
+    alignItems: 'flex-start',
+  },
+  meMsg: {
+    backgroundColor: '#0188FB',
+  },
+  youMsg: {
+    backgroundColor: 'white',
+  },
+  msg: {
+    maxWidth: width * 0.7,
+    overflow: 'hidden',
+    padding: 10 * widthScale,
+    borderRadius: 10 * widthScale,
+    minWidth: 50 * widthScale,
+  },
+  meImg: {
+    marginRight: 20 * widthScale,
+    marginLeft: 20 * widthScale,
+  },
+  youImg: {
+    marginLeft: 20 * widthScale,
+    marginRight: 20 * widthScale,
+  },
+  text: {
+    color: 'white',
+    fontSize: 16 * widthScale,
+    fontFamily: 'song',
+  },
+  tail: {
+    position: 'absolute',
+  },
+  tailTop: {},
+  tailBottom: {},
 });

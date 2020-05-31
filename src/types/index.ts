@@ -86,8 +86,8 @@ export interface MainProps {
  * 主页面的堆栈列表,stack 屏幕列表
  */
 export type MainStackList = {
-  Tab: undefined;
-  Chat: {userId: string; userName: string};
+  Tab: {screen: 'Home' | 'Message' | 'User' | 'Sell'};
+  Chat: {userId: string; userName: string; headImg: string};
   Login: undefined;
   Profile: undefined;
   Release: undefined;
@@ -431,6 +431,11 @@ export interface CommentProps {
  */
 export interface UserMsgProps {
   user: getInfoResponse['data']['user'] | undefined;
+  myUserMsg: {
+    _id: string;
+    headImg: string;
+    userName: string;
+  };
 }
 /**
  * DetailContentTopProps
@@ -443,8 +448,6 @@ export interface DetailContentTopProps {
  * DetailBottomAreaProps
  */
 export interface DetailBottomAreaProps {
-  userId: string;
-  userName: string;
   toEnd: Function;
   myUserMsg: {
     _id: string;
@@ -457,6 +460,14 @@ export interface DetailBottomAreaProps {
   setIsInput: React.Dispatch<React.SetStateAction<boolean>>;
   data: getInfoResponse['data'] | undefined;
   setData: React.Dispatch<React.SetStateAction<DetailBottomAreaProps['data']>>;
+  user:
+    | {
+        _id: string;
+        userName: string;
+        headImg: string;
+        createTime: string;
+      }
+    | undefined;
 }
 
 /**
@@ -469,9 +480,119 @@ export interface SearchHeaderProps {
 }
 
 /**
- * NumKeyboardProps
+ * 数字键盘参数
  */
 export interface NumKeyboardProps {
   price: string[];
   setPrice: React.Dispatch<React.SetStateAction<string[]>>;
+}
+
+/**
+ * 底部选择分类参数
+ */
+export interface BottomCategoryProps {
+  setKind: React.Dispatch<
+    React.SetStateAction<KindAreaGetResponse['data'][0] | undefined>
+  >;
+}
+
+/**
+ * 消息列表页面参数
+ */
+export interface MessageScreenProps {
+  user: {
+    _id: string;
+    headImg: string;
+    userName: string;
+  };
+  isLogin: boolean;
+}
+
+/**
+ * 聊天页面参数
+ */
+export interface ChatProps {
+  user: {
+    _id: string;
+    headImg: string;
+    userName: string;
+  };
+}
+/**
+ * 聊天页面数据
+ */
+export type ChatData = SingleChatMsg[];
+
+/**
+ * 单条记录
+ */
+export type SingleChatMsg = {
+  createTime: string;
+  msg: string;
+  send: string;
+  receive: string;
+};
+
+/**
+ * 聊天记录
+ */
+export interface GetHistoryResponse {
+  status: 0 | 1;
+  data: {
+    history: {
+      createTime: string;
+      msg: string;
+      send: string;
+      receive: string;
+    }[];
+  };
+}
+
+/**
+ * OnRefreshProps
+ */
+export interface OnRefreshProps {
+  setIsRefreshed: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  setData: React.Dispatch<React.SetStateAction<ChatData>>;
+  users: string[];
+}
+
+/**
+ * 底部输入区域参数
+ */
+export interface BottomInputChatProps {
+  msg: string;
+  setMsg: React.Dispatch<React.SetStateAction<string>>;
+  onPress?: () => any;
+  onFoucus: () => any;
+}
+
+/**
+ * 聊天返回信息
+ */
+export interface BackChatResponse {
+  data: {
+    createTime: string;
+    send: string;
+    receive: string;
+    msg: string;
+  };
+}
+
+/**
+ * 单个聊天信息列表
+ */
+export interface RecordListProps {
+  data: SingleChatMsg;
+  me: {
+    userId: string;
+    headImg: string;
+    userName: string;
+  };
+  you: {
+    userId: string;
+    headImg: string;
+    userName: string;
+  };
 }

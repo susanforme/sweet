@@ -30,7 +30,7 @@ export default function Comment({comment, setIsInput}: CommentProps) {
         <View style={styles.commentRight}>
           <Text style={styles.commentUsername}>{v.userId.userName}</Text>
           <Text style={styles.commentContent}>{v.comment}</Text>
-          <Text style={styles.commentTime}>{getHours(v.createTime)}</Text>
+          <Text style={styles.commentTime}>{getTime(v.createTime)}</Text>
         </View>
       </View>
     );
@@ -45,16 +45,12 @@ export default function Comment({comment, setIsInput}: CommentProps) {
   );
 }
 
-function getHours(time: string) {
-  const nowDate = new Date();
-  const oldDate = new Date(time);
-  const hour = 1000 * 60 * 60;
-  const timeOffSet = new Date().getTimezoneOffset() / 60;
-  const result = Math.floor(
-    (nowDate.getTime() + timeOffSet - oldDate.getTime()) / hour + 8,
-  );
-  if (result < 24) {
-    return result + '小时前';
-  }
-  return `${Math.floor(result / 24)}天前`;
+function getTime(time: string) {
+  const date = new Date(time);
+  return `${
+    date.getMonth() + 1
+  }-${date.getDate()} ${date.getHours()}:${date
+    .getMinutes()
+    .toString()
+    .padStart(2, '0')}`;
 }

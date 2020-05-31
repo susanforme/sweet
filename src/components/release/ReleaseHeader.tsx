@@ -24,6 +24,7 @@ export default function SettingHeader({onPress}: {onPress: Function}) {
       onPressBack={() => {
         navigation.goBack();
       }}
+      onPressForward={onPress}
       titleStyle={{fontSize: height * 0.8}}
       title="发布"></NavigationBar>
   );
