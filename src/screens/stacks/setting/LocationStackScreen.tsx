@@ -20,7 +20,7 @@ import {ActionTypes} from '@/store/actionTypes';
 
 function LocationStackScreen({
   userId,
-  defaultLocationId,
+  defaultLocation,
   setDefaultLocation,
 }: LocationStackScreenProps) {
   const [isLoading, setIsLoading] = useState(true);
@@ -49,6 +49,7 @@ function LocationStackScreen({
       <LocationInformationBox
         key={v._id}
         data={v}
+        defaultLocationId={defaultLocation?._id}
         onPress={() => {
           axios
             .delete(`/user/location/${userId}_${v._id}`)
@@ -58,7 +59,7 @@ function LocationStackScreen({
               });
               setData(newData);
               Tip.show('删除成功', 1000);
-              if (defaultLocationId === v._id) {
+              if (defaultLocation?._id === v._id) {
                 setDefaultLocation({
                   _id: '',
                   area: '',
@@ -101,7 +102,7 @@ function LocationStackScreen({
 
 const stateToProps = (state: MyAppState) => ({
   userId: state.user._id,
-  defaultLocationId: state.location._id,
+  defaultLocation: state.location,
 });
 
 const dispatchToProps = (dispatch: Function) => ({

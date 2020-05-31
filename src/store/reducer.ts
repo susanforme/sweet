@@ -16,15 +16,7 @@ const initState = {
 
 export default (state = initState, action: any) => {
   let newState: MyAppState = JSON.parse(JSON.stringify(state));
-  if (!(state as MyAppState).location) {
-    newState.location = {
-      area: '',
-      _id: '',
-      phoneNum: '',
-      name: '',
-    };
-    newState.fishBondStatus = false;
-  }
+
   switch (action.type) {
     case ActionTypes.LOAD_DATA: {
       newState.isLoading = action.data.isLoading;

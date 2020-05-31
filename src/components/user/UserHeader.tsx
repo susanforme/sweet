@@ -24,7 +24,9 @@ export default function UserHeader({
       onPressForward={() => {
         navigation.navigate('Setting');
       }}
-      forwardLabel={<Icon name="setting" size={height}></Icon>}
+      forwardLabel={
+        <Icon name="setting" color="gray" size={height * 1.1}></Icon>
+      }
       title=""></NavigationBar>
   );
 }

@@ -9,8 +9,8 @@ import {
 import {DetailBottomAreaStyles as styles, widthScale} from '@/style';
 import Icon from 'react-native-vector-icons/AntDesign';
 import {Button} from 'beeshell/dist/components/Button';
-import {useNavigation, NavigationProp} from '@react-navigation/native';
-import {MainStackList, DetailBottomAreaProps, MyAppState} from '@/types';
+import {useNavigation} from '@react-navigation/native';
+import {DetailBottomAreaProps, MyAppState} from '@/types';
 import FontIcon from 'react-native-vector-icons/MaterialIcons';
 import {connect} from 'react-redux';
 import {Tip} from 'beeshell/dist/components/Tip';
@@ -28,23 +28,39 @@ function BottomArea({
   user,
 }: DetailBottomAreaProps) {
   const [comment, setComment] = useState('');
-  const navigation = useNavigation<NavigationProp<MainStackList>>();
+  const navigation = useNavigation();
   const inputRef = useRef<TextInput>(null);
   const show = (
     <>
-      <TouchableWithoutFeedback>
+      <TouchableWithoutFeedback
+        onPress={() => {
+          if (myUserMsg._id === user?._id) {
+            return Tip.show('不能和自己聊天', 500);
+          }
+          if (!isLogin) {
+            return Tip.show('未登录', 500);
+          }
+          navigation.navigate('Chat', {
+            userId: user?._id || '',
+            userName: user?.userName || '',
+            headImg: user?.headImg || '',
+          });
+        }}>
         <View style={styles.icon}>
-          <Icon
-            name="hearto"
+          <FontIcon
+            name="chat"
             size={22 * widthScale}
             color="gray"
-            style={styles.iconFont}></Icon>
-          <Text style={styles.text}>喜欢</Text>
+            style={styles.iconFont}></FontIcon>
+          <Text style={styles.text}>聊天</Text>
         </View>
       </TouchableWithoutFeedback>
       <TouchableWithoutFeedback
         onPress={() => {
           toEnd();
+          if (!isLogin) {
+            return Tip.show('未登录', 500);
+          }
           setTimeout(() => {
             setIsInput(true);
           }, 0);
@@ -61,26 +77,39 @@ function BottomArea({
       <TouchableWithoutFeedback>
         <View style={styles.icon}>
           <Icon
-            name="shoppingcart"
+            name="hearto"
             size={22 * widthScale}
             color="gray"
             style={styles.iconFont}></Icon>
-          <Text style={styles.text}>购买</Text>
+          <Text style={styles.text}>想要</Text>
         </View>
       </TouchableWithoutFeedback>
       <Button
         style={styles.right}
         onPress={() => {
-          if (myUserMsg._id === user?._id) {
-            return Tip.show('不能和自己聊天', 500);
+          if (data?.isSale) {
+            return Tip.show('该商品已经卖出', 500);
           }
-          navigation.navigate('Chat', {
-            userId: user?._id || '',
-            userName: user?.userName || '',
-            headImg: user?.headImg || '',
+          if (myUserMsg._id === user?._id) {
+            return Tip.show('不能购买自己正在卖出的物品', 500);
+          }
+          if (!isLogin) {
+            return Tip.show('未登录', 500);
+          }
+          navigation.navigate('Order', {
+            title: '确认订单',
+            screen: 'CheckOrder',
+            params: {
+              id: commodityId || '',
+              owner: user?._id || '',
+              imgPath: data?.imgPath[0] || '',
+              price: data?.price || 0,
+              description: data?.description || '',
+              isSale: data?.isSale || false,
+            },
           });
         }}>
-        我想要
+        购买
       </Button>
     </>
   );

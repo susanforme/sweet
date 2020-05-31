@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Text, TouchableNativeFeedback} from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
-import {LocationBoxProps, MyAppState, SingleLocation} from '@/types';
+import {LocationBoxProps, SingleLocation} from '@/types';
 import {LocationInformationBoxStyles as styles} from '@/style';
 import {connect} from 'react-redux';
 import {ActionTypes} from '@/store/actionTypes';
@@ -55,10 +55,6 @@ function LocationInformationBox({
   );
 }
 
-const stateToProps = (state: MyAppState) => ({
-  defaultLocationId: state.location._id,
-});
-
 const dispatchToProps = (dispatch: Function) => ({
   setDefaultLocation(data: SingleLocation) {
     const action = {
@@ -69,4 +65,4 @@ const dispatchToProps = (dispatch: Function) => ({
   },
 });
 
-export default connect(stateToProps, dispatchToProps)(LocationInformationBox);
+export default connect(null, dispatchToProps)(LocationInformationBox);

@@ -51,6 +51,7 @@ export default function HomeScreen() {
             </View>
             <HomeSwiper></HomeSwiper>
             <KindArea></KindArea>
+            <View style={{marginBottom: 10 * widthScale}}></View>
             <View style={styles.bottom}></View>
           </View>
         }
@@ -75,7 +76,7 @@ export default function HomeScreen() {
           <View style={styles.goTop}>
             <Icon
               name="arrowup"
-              size={22 * widthScale}
+              size={25 * widthScale}
               style={styles.goTopText}></Icon>
           </View>
         </TouchableWithoutFeedback>

@@ -21,7 +21,7 @@ export interface MyAppState {
     headImg: string;
     userName: string;
   };
-  location: {
+  location?: {
     area: string;
     phoneNum: string;
     _id: string;
@@ -82,6 +82,31 @@ export interface MainProps {
   isLoading: boolean;
 }
 
+export type OrderStackList = {
+  CheckOrder: {
+    /**
+     * 商品id
+     */
+    id: string;
+    /**
+     * 卖家id
+     */
+    owner: string;
+    price: number;
+    /**
+     * 只需要一个
+     */
+    imgPath: string;
+    /**
+     * 校验是否卖出,请在进入该页面之前再校验一次
+     */
+    isSale: boolean;
+    description: string;
+  };
+  OrderEvaluate: undefined;
+  OrderScreen: undefined;
+};
+
 /**
  * 主页面的堆栈列表,stack 屏幕列表
  */
@@ -95,6 +120,7 @@ export type MainStackList = {
   Setting: {title: string} | undefined;
   Classificat: {kindId: string; kindName: string};
   Detail: {commodityId: string};
+  Order: {title: string};
 };
 
 /**
@@ -218,8 +244,15 @@ export type SettingStackList = {
  */
 export interface LocationStackScreenProps {
   userId: string;
-  defaultLocationId: string;
   setDefaultLocation(data: SingleLocation): void;
+  defaultLocation:
+    | {
+        area: string;
+        phoneNum: string;
+        _id: string;
+        name: string;
+      }
+    | undefined;
 }
 
 /**
@@ -277,7 +310,7 @@ export interface GetLocationResponse {
  */
 export interface LocationBoxProps {
   data: SingleLocation;
-  defaultLocationId: string;
+  defaultLocationId: string | undefined;
   setDefaultLocation: (data: SingleLocation) => void;
   onPress: ((event: GestureResponderEvent) => void) | undefined;
 }
@@ -595,4 +628,15 @@ export interface RecordListProps {
     headImg: string;
     userName: string;
   };
+}
+
+/**
+ * 消息列表回收数据
+ */
+export interface GetMsgListData {
+  data: {
+    _id: string;
+    headImg: string;
+    userName: string;
+  }[];
 }
