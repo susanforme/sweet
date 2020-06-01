@@ -681,3 +681,19 @@ export interface DepositBalanceProps {
   setIsRefresh: React.Dispatch<React.SetStateAction<boolean>>;
   isRefresh: boolean;
 }
+
+/**
+ * 订单校验顶部区域参数
+ */
+export interface checkOrderTopAreaProps {
+  description: string;
+  imgPath: string;
+  price: number;
+}
+
+/**
+ * 订单校验底部区域按钮参数
+ */
+export interface checkOrderBottomButtonProps {
+  price: number;
+}

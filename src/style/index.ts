@@ -1612,3 +1612,37 @@ export const DepositBlanceStyles = StyleSheet.create({
     marginTop: -210 * widthScale,
   },
 });
+
+export const checkOrderTopAreaStyles = StyleSheet.create({
+  area: {
+    backgroundColor: 'white',
+    ...padding,
+    marginTop: 15 * widthScale,
+    display: 'flex',
+    height: 140 * widthScale,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  rgiht: {
+    flex: 2,
+    justifyContent: 'flex-start',
+    height: '80%',
+  },
+  bottom: {
+    position: 'absolute',
+    bottom: 0,
+    fontSize: 15 * widthScale,
+    color: 'red',
+  },
+  des: {
+    overflow: 'hidden',
+    fontSize: 16 * widthScale,
+    fontFamily: 'song',
+  },
+  img: {
+    flex: 0.8,
+    height: '80%',
+    borderRadius: 10 * widthScale,
+    marginRight: 10 * widthScale,
+  },
+});

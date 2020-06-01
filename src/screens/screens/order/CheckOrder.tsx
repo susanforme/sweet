@@ -2,6 +2,8 @@ import React from 'react';
 import {View, Text} from 'react-native';
 import {useRoute, RouteProp} from '@react-navigation/native';
 import {OrderStackList} from '@/types';
+import CheckOrderTopArea from '@/components/order/CheckOrderTopArea';
+import CheckOrderBottomButton from '@/components/order/CheckOrderBottomButton';
 
 export default function CheckOrder() {
   const params = useRoute<RouteProp<OrderStackList, 'CheckOrder'>>().params;
@@ -9,7 +11,12 @@ export default function CheckOrder() {
 
   return (
     <View>
-      <Text>123</Text>
+      <CheckOrderTopArea
+        description={params.description}
+        price={params.price}
+        imgPath={params.imgPath}
+      />
+      <CheckOrderBottomButton price={params.price} />
     </View>
   );
 }
