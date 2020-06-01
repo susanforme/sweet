@@ -237,6 +237,7 @@ export type SettingStackList = {
   FishSettingScreen: undefined;
   DeleteAccountScreen: undefined;
   PersonalSettingScreen: undefined;
+  BalanceScreen: undefined;
 };
 
 /**
@@ -639,4 +640,60 @@ export interface GetMsgListData {
     headImg: string;
     userName: string;
   }[];
+}
+
+/**
+ * 余额页面参数
+ */
+export interface BalanceScreenProps {
+  user: {
+    _id: string;
+    headImg: string;
+    userName: string;
+  };
+}
+
+/**
+ * 请求余额回应
+ */
+export interface GetBalanceResponse {
+  data: {
+    balance: number;
+  };
+}
+
+/**
+ * 验证码
+ */
+export interface GetCaptchaResponse {
+  data: {
+    imgPath: string;
+    text: string;
+  };
+}
+
+/**
+ * 弹出框的参数
+ */
+export interface DepositBalanceProps {
+  hotAreaId: number;
+  userId: string;
+  setIsRefresh: React.Dispatch<React.SetStateAction<boolean>>;
+  isRefresh: boolean;
+}
+
+/**
+ * 订单校验顶部区域参数
+ */
+export interface checkOrderTopAreaProps {
+  description: string;
+  imgPath: string;
+  price: number;
+}
+
+/**
+ * 订单校验底部区域按钮参数
+ */
+export interface checkOrderBottomButtonProps {
+  price: number;
 }

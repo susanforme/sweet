@@ -268,7 +268,7 @@ export const LoadingStyle = StyleSheet.create({
     borderRadius: 5 * widthScale,
     left: width / 2 - 50 * widthScale,
     top: height / 2 - 90 * widthScale,
-    zIndex: 10,
+    zIndex: 20,
   },
   anima: {},
   text: {
@@ -1500,4 +1500,149 @@ export const RecordListStyles = StyleSheet.create({
   },
   tailTop: {},
   tailBottom: {},
+});
+
+/**
+ * 余额样式
+ */
+export const BalanceScreenStyles = StyleSheet.create({
+  area: {
+    flex: 1,
+    alignItems: 'center',
+  },
+  icon: {
+    marginTop: '20%',
+  },
+  title: {
+    fontSize: 22 * widthScale,
+    marginTop: 25 * widthScale,
+  },
+  balance: {
+    fontSize: 30 * widthScale,
+    fontWeight: '700',
+    marginTop: 30 * widthScale,
+  },
+  full: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: 'rgba(0, 0, 0, .4)',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flex: 1,
+  },
+  btn: {
+    borderTopWidth: 0,
+    borderRadius: 6 * widthScale,
+    backgroundColor: '#07C160',
+    width: '60%',
+    marginTop: 50 * widthScale,
+    paddingTop: 15 * widthScale,
+    paddingBottom: 15 * widthScale,
+  },
+  text: {
+    color: 'white',
+    fontFamily: 'song',
+    fontSize: 18 * widthScale,
+  },
+});
+
+/**
+ * 弹出框
+ */
+export const DepositBlanceStyles = StyleSheet.create({
+  area: {
+    backgroundColor: 'white',
+    zIndex: 10,
+    marginLeft: '5%',
+    marginRight: '5%',
+    width: '90%',
+    paddingTop: 10 * widthScale,
+    borderRadius: 10 * widthScale,
+  },
+  img: {
+    flex: 3,
+    height: '80%',
+  },
+  lineFather: {
+    paddingLeft: 18 * widthScale,
+    paddingRight: 18 * widthScale,
+  },
+  line: {
+    display: 'flex',
+    borderBottomColor: 'rgba(196, 196, 196, 0.192)',
+    flexDirection: 'row',
+    alignItems: 'center',
+    height: 70 * widthScale,
+    borderBottomWidth: 1,
+  },
+  btn: {
+    backgroundColor: '#1989FA',
+    borderTopWidth: 0,
+    borderRadius: 6 * widthScale,
+    width: '60%',
+    marginTop: 20 * widthScale,
+    marginBottom: 20 * widthScale,
+    paddingTop: 15 * widthScale,
+    paddingBottom: 15 * widthScale,
+  },
+  btnText: {
+    color: 'white',
+    fontFamily: 'song',
+    fontSize: 18 * widthScale,
+  },
+  btnCenter: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  title: {
+    flex: 0.8,
+    fontSize: 16 * widthScale,
+  },
+  input: {
+    flex: 3,
+  },
+  rightTitle: {
+    flex: 1.5,
+  },
+  loading: {
+    marginTop: -210 * widthScale,
+  },
+});
+
+export const checkOrderTopAreaStyles = StyleSheet.create({
+  area: {
+    backgroundColor: 'white',
+    ...padding,
+    marginTop: 15 * widthScale,
+    display: 'flex',
+    height: 140 * widthScale,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  rgiht: {
+    flex: 2,
+    justifyContent: 'flex-start',
+    height: '80%',
+  },
+  bottom: {
+    position: 'absolute',
+    bottom: 0,
+    fontSize: 15 * widthScale,
+    color: 'red',
+  },
+  des: {
+    overflow: 'hidden',
+    fontSize: 16 * widthScale,
+    fontFamily: 'song',
+  },
+  img: {
+    flex: 0.8,
+    height: '80%',
+    borderRadius: 10 * widthScale,
+    marginRight: 10 * widthScale,
+  },
 });

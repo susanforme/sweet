@@ -117,6 +117,7 @@ function getTopData(navigation: Navigation): any {
       {title: '鱼塘', iconName: 'team'},
       {title: '账号', iconName: 'github'},
       {title: '黑名单', iconName: 'user'},
+      {title: '我的余额', iconName: 'pay-circle-o1'},
     ],
     null,
     [
@@ -158,6 +159,14 @@ function getTopData(navigation: Navigation): any {
         onPress: () => {
           navigation.navigate('Setting', {
             screen: 'PersonalSettingScreen',
+          });
+        },
+      },
+      {
+        index: 5,
+        onPress: () => {
+          navigation.navigate('Setting', {
+            screen: 'BalanceScreen',
           });
         },
       },
