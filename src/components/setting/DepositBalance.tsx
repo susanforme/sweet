@@ -4,8 +4,9 @@ import {DepositBlanceStyles as styles} from '@/style';
 import {axios} from '@/api';
 import {GetCaptchaResponse} from '@/types';
 import {Button} from 'beeshell/dist/components/Button';
-// import {Image as SvgImage} from 'react-native-svg';
-
+import base64 from 'base-64';
+// import SvgUri from 'react-native-svg-uri';
+import {SvgXml} from 'react-native-svg';
 export default function DepositBlance() {
   const [data, setData] = useState<GetCaptchaResponse['data']>();
   useEffect(() => {
@@ -38,11 +39,16 @@ export default function DepositBlance() {
                 .catch(() => {});
             }}>
             <View style={styles.img}>
-              {/* <SvgImage
-                href={{uri: data?.imgPath || ''}}
-                width={150}
-                height={150}
-              /> */}
+              {data?.imgPath && (
+                <SvgXml
+                  width="100%"
+                  height="100%"
+                  xml={base64.decode(
+                    data?.imgPath.replace('data:image/svg+xml;base64,', '') ||
+                      '',
+                  )}
+                />
+              )}
             </View>
           </TouchableWithoutFeedback>
         </View>
