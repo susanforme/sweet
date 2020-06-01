@@ -13,6 +13,7 @@ import BlackListScreen from './stacks/setting/BlackListScreen';
 import FishSettingScreen from './stacks/setting/FishSettingScreen';
 import DeleteAccountScreen from './stacks/setting/DeleteAccountScreen';
 import PersonalSettingScreen from './stacks/setting/PersonalSettingScreen';
+import BalanceScreen from '@/screens/stacks/setting/BalanceScreen';
 
 const SettingStack = createStackNavigator<SettingStackList>();
 
@@ -77,6 +78,13 @@ export default function Setting() {
           ...getDefaultHeaderStyle(80 * widthScale, paddingTop, 0.7, 'white'),
         }}
         component={PersonalSettingScreen}></SettingStack.Screen>
+      <SettingStack.Screen
+        name="BalanceScreen"
+        options={{
+          title: '我的余额',
+          ...getDefaultHeaderStyle(80 * widthScale, paddingTop, 0.7, 'white'),
+        }}
+        component={BalanceScreen}></SettingStack.Screen>
     </SettingStack.Navigator>
   );
 }
