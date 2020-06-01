@@ -9,10 +9,11 @@ import {
 import {useNavigation, NavigationProp} from '@react-navigation/native';
 import RefreshList from '@/components/comm/RefreshList';
 import {axios} from '@/api';
-import {RecommendGetResponse, MainStackList} from '@/types';
+import {RecommendGetResponse, MainStackList, MyAppState} from '@/types';
 import Icon from 'react-native-vector-icons/AntDesign';
+import {connect} from 'react-redux';
 
-export default function HomeScreen() {
+function SellScreen({isLogin}: {isLogin: boolean}) {
   const [recommend, setRecommend] = useState<RecommendGetResponse['data']>();
   const [isRefresh, setIsRefresh] = useState(false);
   const navigation = useNavigation<NavigationProp<MainStackList, 'Tab'>>();
@@ -58,6 +59,9 @@ export default function HomeScreen() {
         <TouchableNativeFeedback
           style={{overflow: 'hidden'}}
           onPress={() => {
+            if (!isLogin) {
+              return navigation.navigate('Login');
+            }
             navigation.navigate('Release');
           }}>
           <View style={myStyles.btn}>
@@ -68,3 +72,9 @@ export default function HomeScreen() {
     </SafeAreaView>
   );
 }
+
+const stateToProps = (state: MyAppState) => ({
+  isLogin: state.isLogin,
+});
+
+export default connect(stateToProps)(SellScreen);

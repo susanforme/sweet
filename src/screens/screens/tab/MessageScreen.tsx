@@ -38,7 +38,7 @@ function MessageScreen({isLogin, user}: MessageScreenProps) {
         setIsLoading(false);
         return Tip.show('网络错误', 500);
       });
-  }, []);
+  }, [isLogin]);
   const noLogin = (
     <TouchableWithoutFeedback
       onPress={() => {

@@ -696,4 +696,47 @@ export interface checkOrderTopAreaProps {
  */
 export interface checkOrderBottomButtonProps {
   price: number;
+  onPress?: Function | undefined;
+}
+
+/**
+ * 订单校验中间区域
+ */
+
+export interface CheckOrderLocationProps {
+  location:
+    | {
+        area: string;
+        phoneNum: string;
+        _id: string;
+        name: string;
+      }
+    | undefined;
+}
+
+/**
+ * 订单校验参数
+ */
+export interface CheckOrderProps {
+  location:
+    | {
+        area: string;
+        phoneNum: string;
+        _id: string;
+        name: string;
+      }
+    | undefined;
+  user: {
+    _id: string;
+    headImg: string;
+    userName: string;
+  };
+}
+
+/**
+ * 订单校验state
+ */
+export interface DialogState {
+  bodyText: string;
+  confirmCallback: Function;
 }

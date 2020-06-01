@@ -1613,6 +1613,9 @@ export const DepositBlanceStyles = StyleSheet.create({
   },
 });
 
+/**
+ * 顶部区域样式
+ */
 export const checkOrderTopAreaStyles = StyleSheet.create({
   area: {
     backgroundColor: 'white',
@@ -1644,5 +1647,75 @@ export const checkOrderTopAreaStyles = StyleSheet.create({
     height: '80%',
     borderRadius: 10 * widthScale,
     marginRight: 10 * widthScale,
+  },
+});
+
+/**
+ * 底部按钮样式
+ */
+export const CheckOrderBottomButtonStyles = StyleSheet.create({
+  area: {
+    backgroundColor: 'white',
+    position: 'absolute',
+    bottom: 0,
+    display: 'flex',
+    flexDirection: 'row',
+    width: '100%',
+    height: 60 * widthScale,
+    padding: 8 * widthScale,
+    alignItems: 'center',
+    ...padding,
+  },
+  text: {
+    fontSize: 16 * widthScale,
+    flex: 1,
+  },
+  price: {
+    color: 'red',
+    fontFamily: 'song',
+    fontSize: 18 * widthScale,
+  },
+  btn: {
+    backgroundColor: '#FFEE24',
+    position: 'absolute',
+    height: '100%',
+    right: 15 * widthScale,
+    paddingLeft: 25 * widthScale,
+    paddingRight: 25 * widthScale,
+    borderRadius: 25 * widthScale,
+  },
+});
+
+/**
+ * 检验订单中间区域样式
+ */
+export const CheckOrderLocationStyles = StyleSheet.create({
+  area: {
+    backgroundColor: 'white',
+    height: 60 * widthScale,
+    padding: 10 * widthScale,
+    ...padding,
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: 10 * widthScale,
+  },
+  right: {
+    position: 'absolute',
+    right: 15 * widthScale,
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  rightText: {
+    width: 180 * widthScale,
+    overflow: 'hidden',
+    textAlign: 'right',
+    marginRight: 5 * widthScale,
+  },
+  title: {
+    marginLeft: 5 * widthScale,
+    fontFamily: 'song',
+    fontSize: 16 * widthScale,
   },
 });
