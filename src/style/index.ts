@@ -268,7 +268,7 @@ export const LoadingStyle = StyleSheet.create({
     borderRadius: 5 * widthScale,
     left: width / 2 - 50 * widthScale,
     top: height / 2 - 90 * widthScale,
-    zIndex: 10,
+    zIndex: 20,
   },
   anima: {},
   text: {
@@ -1583,8 +1583,8 @@ export const DepositBlanceStyles = StyleSheet.create({
     borderTopWidth: 0,
     borderRadius: 6 * widthScale,
     width: '60%',
-    marginTop: 30 * widthScale,
-    marginBottom: 30 * widthScale,
+    marginTop: 20 * widthScale,
+    marginBottom: 20 * widthScale,
     paddingTop: 15 * widthScale,
     paddingBottom: 15 * widthScale,
   },
@@ -1599,9 +1599,16 @@ export const DepositBlanceStyles = StyleSheet.create({
     justifyContent: 'center',
   },
   title: {
-    flex: 1,
+    flex: 0.8,
+    fontSize: 16 * widthScale,
   },
   input: {
     flex: 3,
+  },
+  rightTitle: {
+    flex: 1.5,
+  },
+  loading: {
+    marginTop: -210 * widthScale,
   },
 });

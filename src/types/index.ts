@@ -671,3 +671,13 @@ export interface GetCaptchaResponse {
     text: string;
   };
 }
+
+/**
+ * 弹出框的参数
+ */
+export interface DepositBalanceProps {
+  hotAreaId: number;
+  userId: string;
+  setIsRefresh: React.Dispatch<React.SetStateAction<boolean>>;
+  isRefresh: boolean;
+}

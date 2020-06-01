@@ -37,7 +37,14 @@ function BalanceScreen({user}: BalanceScreenProps) {
         textStyle={styles.text}
         onPress={() => {
           TopviewGetInstance()
-            .add(renderFullScreenView(hotAreaId))
+            .add(
+              renderFullScreenView(
+                hotAreaId,
+                user._id,
+                setIsRefresh,
+                isRefresh,
+              ),
+            )
             .then((id: any) => {
               setHotAreaId(id);
             });
@@ -54,7 +61,12 @@ const stateToProps = (state: MyAppState) => ({
 
 export default connect(stateToProps)(BalanceScreen);
 
-function renderFullScreenView(hotAreaId: number) {
+function renderFullScreenView(
+  hotAreaId: number,
+  userId: string,
+  setIsRefresh: React.Dispatch<React.SetStateAction<boolean>>,
+  isRefresh: boolean,
+) {
   return (
     <View style={styles.full}>
       <TouchableWithoutFeedback
@@ -63,7 +75,12 @@ function renderFullScreenView(hotAreaId: number) {
         }}>
         <View style={styles.full}></View>
       </TouchableWithoutFeedback>
-      <DepositBalance />
+      <DepositBalance
+        userId={userId}
+        hotAreaId={hotAreaId}
+        setIsRefresh={setIsRefresh}
+        isRefresh={isRefresh}
+      />
     </View>
   );
 }
