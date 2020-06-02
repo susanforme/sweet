@@ -31,6 +31,7 @@ export default function ContentTop({data}: DetailContentTopProps) {
         <View style={styles.priceRight}>
           <Text style={styles.priceRightText}>包邮</Text>
         </View>
+        {data?.isSale && <Text style={styles.saled}>已经卖出</Text>}
       </View>
       <View>
         <Text style={styles.description}>{data?.description}</Text>

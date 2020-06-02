@@ -28,6 +28,7 @@ export interface MyAppState {
     name: string;
   };
   fishBondStatus: boolean;
+  forceRefresh: boolean;
 }
 
 /**
@@ -731,6 +732,8 @@ export interface CheckOrderProps {
     headImg: string;
     userName: string;
   };
+  forceRefresh: boolean;
+  changeForceRefreshStatus(status: boolean): void;
 }
 
 /**
@@ -739,4 +742,22 @@ export interface CheckOrderProps {
 export interface DialogState {
   bodyText: string;
   confirmCallback: Function;
+}
+
+/**
+ *  个人主页props
+ */
+export interface ProfileProps {
+  forceRefresh: boolean;
+}
+
+/**
+ * 个人主页顶部参数
+ */
+export interface ProfileTopAreaProps {
+  user: {
+    _id: string;
+    headImg: string;
+    userName: string;
+  };
 }

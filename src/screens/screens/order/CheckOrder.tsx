@@ -14,10 +14,18 @@ import CheckOrderLocation from '@/components/order/CheckOrderLocation';
 import {connect} from 'react-redux';
 import {Dialog} from 'beeshell/dist/components/Dialog';
 import {axios} from '@/api';
+import {ActionTypes} from '@/store/actionTypes';
+import Loading from '@/components/comm/Loading';
 
-function CheckOrder({location, user}: CheckOrderProps) {
+function CheckOrder({
+  location,
+  user,
+  forceRefresh,
+  changeForceRefreshStatus,
+}: CheckOrderProps) {
   const params = useRoute<RouteProp<OrderStackList, 'CheckOrder'>>().params;
   const [dialogData, setDialogData] = useState<DialogState>();
+  const [isLoading, setIsLoading] = useState(false);
   const dialogRef = useRef<Dialog>(null);
   const navigation = useNavigation();
   const check = () => {
@@ -50,7 +58,28 @@ function CheckOrder({location, user}: CheckOrderProps) {
           setTimeout(() => {
             dialogRef.current?.open();
           }, 0);
+          return;
         }
+      })
+      .then(() => {
+        setIsLoading(true);
+        setTimeout(async () => {
+          await axios.post('/order', {
+            commodityId: params.id,
+            receive: {
+              area: location.area,
+              phoneNum: location.phoneNum,
+              name: location.name,
+            },
+            buyerId: user._id,
+            sellerId: params.owner,
+          });
+          setIsLoading(false);
+          changeForceRefreshStatus(!forceRefresh);
+          navigation.navigate('Tab', {
+            screen: 'User',
+          });
+        }, 0);
       })
       .catch(() => {});
   };
@@ -68,6 +97,7 @@ function CheckOrder({location, user}: CheckOrderProps) {
         bodyText={dialogData?.bodyText}
         confirmCallback={dialogData?.confirmCallback}
       />
+      {isLoading && <Loading title="购买中" />}
       <CheckOrderBottomButton price={params.price} onPress={check} />
     </View>
   );
@@ -76,6 +106,19 @@ function CheckOrder({location, user}: CheckOrderProps) {
 const stateToProps = (state: MyAppState) => ({
   location: state.location,
   user: state.user,
+  forceRefresh: state.forceRefresh,
 });
 
-export default connect(stateToProps)(CheckOrder);
+const dispatchToProps = (dispatch: Function) => ({
+  changeForceRefreshStatus(status: boolean) {
+    const action = {
+      type: ActionTypes.ENABLE_FORCE_REFRESH,
+      data: {
+        status,
+      },
+    };
+    dispatch(action);
+  },
+});
+
+export default connect(stateToProps, dispatchToProps)(CheckOrder);

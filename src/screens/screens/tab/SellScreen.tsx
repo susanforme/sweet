@@ -13,7 +13,7 @@ import {RecommendGetResponse, MainStackList, MyAppState} from '@/types';
 import Icon from 'react-native-vector-icons/AntDesign';
 import {connect} from 'react-redux';
 
-function SellScreen({isLogin}: {isLogin: boolean}) {
+function SellScreen({isLogin, forceRefresh}: SellScreenProps) {
   const [recommend, setRecommend] = useState<RecommendGetResponse['data']>();
   const [isRefresh, setIsRefresh] = useState(false);
   const navigation = useNavigation<NavigationProp<MainStackList, 'Tab'>>();
@@ -32,7 +32,7 @@ function SellScreen({isLogin}: {isLogin: boolean}) {
     axios.get<RecommendGetResponse>('/commodity/recommend').then((res) => {
       setRecommend(res.data.data);
     });
-  }, []);
+  }, [forceRefresh]);
   return (
     <SafeAreaView style={{flex: 1}}>
       <RefreshList
@@ -75,6 +75,12 @@ function SellScreen({isLogin}: {isLogin: boolean}) {
 
 const stateToProps = (state: MyAppState) => ({
   isLogin: state.isLogin,
+  forceRefresh: state.forceRefresh,
 });
 
 export default connect(stateToProps)(SellScreen);
+
+type SellScreenProps = {
+  isLogin: boolean;
+  forceRefresh: boolean;
+};

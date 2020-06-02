@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, Image} from 'react-native';
+import {View, Text, Image, TouchableNativeFeedback} from 'react-native';
 import {UserFeatureAreaProps} from '@/types';
 import {UserFeatureAreaStyles as styles} from '@/style';
 
@@ -12,16 +12,18 @@ export default function UserFeatureArea({
     'https://static-resource-1256396014.cos.ap-nanjing.myqcloud.com/img/mobile/user/';
   const Boxs = data.map((v, index) => {
     return (
-      <View key={index} style={[styles.box, v.style]}>
-        <Image
-          style={styles.img}
-          source={{
-            uri: website + v.img,
-          }}></Image>
-        <Text style={styles.count}>
-          {v.title} {v.count}
-        </Text>
-      </View>
+      <TouchableNativeFeedback key={index}>
+        <View style={[styles.box, v.style]}>
+          <Image
+            style={styles.img}
+            source={{
+              uri: website + v.img,
+            }}></Image>
+          <Text style={styles.count}>
+            {v.title} {v.count}
+          </Text>
+        </View>
+      </TouchableNativeFeedback>
     );
   });
   return (

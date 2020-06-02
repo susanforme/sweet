@@ -154,6 +154,7 @@ function BottomArea({
         }}></TextInput>
       <Button
         style={styles.button}
+        disabled={data?.isSale}
         onPress={() => {
           inputRef.current?.blur();
           sendComment(
