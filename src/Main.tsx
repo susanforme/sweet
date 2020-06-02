@@ -56,8 +56,7 @@ function Main({isLogin, isLoading}: MainProps) {
           name="Profile"
           component={Profile}
           options={{
-            ...getDefaultHeaderStyle(80 * widthScale, paddingTop),
-            title: '个人主页',
+            header: () => null,
           }}></MainStack.Screen>
         <MainStack.Screen
           name="Release"

@@ -10,7 +10,7 @@ import {
   ActivityIndicator,
 } from 'react-native';
 import {useRoute, RouteProp} from '@react-navigation/native';
-import {MainStackList, getInfoResponse} from '@/types';
+import {MainStackList, getInfoResponse, MyAppState} from '@/types';
 import {axios} from '@/api';
 import {DetailStyles as styles, widthScale} from '@/style';
 import Icon from 'react-native-vector-icons/AntDesign';
@@ -20,8 +20,9 @@ import Comment from '@/components/Detail/Comment';
 import UserMsg from '@/components/Detail/UserMsg';
 import ContentTop from '@/components/Detail/ContentTop';
 import BottomArea from '@/components/Detail/BottomArea';
+import {connect} from 'react-redux';
 
-export default function Detail() {
+function Detail({forceRefresh}: {forceRefresh: boolean}) {
   const route = useRoute<RouteProp<MainStackList, 'Detail'>>();
   const [data, setData] = useState<getInfoResponse['data']>();
   const [showImg, setShowImg] = useState(false);
@@ -59,7 +60,7 @@ export default function Detail() {
       .catch(() => {
         setIsLoading(false);
       });
-  }, []);
+  }, [forceRefresh]);
   return (
     <SafeAreaView style={{flex: 1}}>
       <ScrollView style={styles.area} ref={scrollRef}>
@@ -118,3 +119,9 @@ export default function Detail() {
     </SafeAreaView>
   );
 }
+
+const stateToProps = (state: MyAppState) => ({
+  forceRefresh: state.forceRefresh,
+});
+
+export default connect(stateToProps)(Detail);

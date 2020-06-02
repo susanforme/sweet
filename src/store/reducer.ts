@@ -12,6 +12,7 @@ const initState = {
   err: {
     verifyAccount: '',
   },
+  forceRefresh: false,
 };
 
 export default (state = initState, action: any) => {
@@ -49,6 +50,10 @@ export default (state = initState, action: any) => {
     }
     case ActionTypes.CHANGE_USER_HEAD_IMG: {
       newState.user.headImg = action.data.headImg;
+      break;
+    }
+    case ActionTypes.ENABLE_FORCE_REFRESH: {
+      newState.forceRefresh = action.data.status;
       break;
     }
   }

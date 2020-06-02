@@ -7,10 +7,11 @@ import HomeSwiper from '@/components/home/HomeSwiper';
 import KindArea from '@/components/home/KindArea';
 import RefreshList from '@/components/comm/RefreshList';
 import {axios} from '@/api';
-import {RecommendGetResponse} from '@/types';
+import {RecommendGetResponse, MyAppState} from '@/types';
 import Icon from 'react-native-vector-icons/AntDesign';
+import {connect} from 'react-redux';
 
-export default function HomeScreen() {
+function HomeScreen({forceRefresh}: HomeScreenProps) {
   const navigation = useNavigation();
   const [recommend, setRecommend] = useState<RecommendGetResponse['data']>();
   const [isRefresh, setIsRefresh] = useState(false);
@@ -31,7 +32,7 @@ export default function HomeScreen() {
     axios.get<RecommendGetResponse>('/commodity/recommend').then((res) => {
       setRecommend(res.data.data);
     });
-  }, []);
+  }, [forceRefresh]);
   return (
     <SafeAreaView style={{flex: 1}}>
       <RefreshList
@@ -84,3 +85,11 @@ export default function HomeScreen() {
     </SafeAreaView>
   );
 }
+
+const stateToProps = (state: MyAppState) => ({
+  forceRefresh: state.forceRefresh,
+});
+
+export default connect(stateToProps)(HomeScreen);
+
+type HomeScreenProps = {forceRefresh: boolean};

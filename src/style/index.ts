@@ -104,7 +104,7 @@ export const UserTopAreaStyles = StyleSheet.create({
   personal: {
     backgroundColor: 'white',
     borderRadius: 50 * widthScale,
-    height: 15 * widthScale,
+    height: 35 * widthScale,
     paddingLeft: 35 * widthScale,
     paddingRight: 35 * widthScale,
   },
@@ -954,6 +954,13 @@ export const DeatailContentTopStyles = StyleSheet.create({
     paddingBottom: 20 * widthScale,
     ...detailstylePadding,
   },
+  saled: {
+    fontSize: 18 * widthScale,
+    fontFamily: 'song',
+    color: 'red',
+    position: 'absolute',
+    right: 20 * widthScale,
+  },
 });
 
 /**
@@ -1717,5 +1724,72 @@ export const CheckOrderLocationStyles = StyleSheet.create({
     marginLeft: 5 * widthScale,
     fontFamily: 'song',
     fontSize: 16 * widthScale,
+  },
+});
+
+/**
+ * 个人主页顶部区域
+ */
+export const ProfileTopAreaStyles = StyleSheet.create({
+  area: {
+    backgroundColor: 'rgba(66,66,66,.51)',
+    height: '100%',
+    width: '100%',
+  },
+  bgImg: {
+    width: '100%',
+    height: height * 0.4,
+    zIndex: -1,
+  },
+  nav: {
+    marginTop: StatusBar.currentHeight || 30,
+    ...padding,
+  },
+  headImgView: {
+    borderWidth: 3 * widthScale,
+    borderColor: 'white',
+    width: 75 * widthScale,
+    height: 75 * widthScale,
+    marginRight: 15 * widthScale,
+    borderRadius: 10 * widthScale,
+  },
+  headImg: {
+    width: '100%',
+    height: '100%',
+    borderRadius: 10 * widthScale,
+  },
+  top: {
+    marginTop: 10 * widthScale,
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    ...padding,
+  },
+  user: {
+    display: 'flex',
+    justifyContent: 'center',
+  },
+  userId: {
+    color: 'white',
+    fontFamily: 'song',
+    fontSize: 18 * widthScale,
+    overflow: 'hidden',
+    width: '70%',
+    marginBottom: 5 * widthScale,
+    fontWeight: '700',
+  },
+  username: {
+    color: 'white',
+    fontFamily: 'song',
+    marginBottom: 5 * widthScale,
+  },
+  auth: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  authText: {
+    color: 'white',
+    fontFamily: 'song',
   },
 });
