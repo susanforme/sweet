@@ -6,12 +6,7 @@ import {
   Image,
   Text,
 } from 'react-native';
-import {
-  MyAppState,
-  UserScreenProps,
-  ProfileUserResponse,
-  MainStackList,
-} from '@/types';
+import {MyAppState, UserScreenProps, ProfileUserResponse} from '@/types';
 import {connect} from 'react-redux';
 import UserTopArea from '@/components/user/UserTopArea';
 import UserInfluenceArea from '@/components/user/UserInfluenceArea';
@@ -19,13 +14,13 @@ import UserFeatureArea from '@/components/user/UserFeatureArea';
 import {widthScale} from '@/style';
 import {axios} from '@/api';
 import {getRandomNumber} from '@/tools';
-import {useNavigation, NavigationProp} from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 import {UserScreenStyles as styles} from '@/style';
 import UserHeader from '@/components/user/UserHeader';
 
 function UserScreen({isLogin, user}: UserScreenProps) {
   const {userName, _id, headImg} = user;
-  const navigation = useNavigation<NavigationProp<MainStackList>>();
+  const navigation = useNavigation();
   const [data, setData] = useState<ProfileUserResponse['data']>({
     buyCount: 0,
     sellCount: 0,
@@ -56,6 +51,15 @@ function UserScreen({isLogin, user}: UserScreenProps) {
       count: data.sellCount,
       img: 'gold-coin.png',
       style: {marginRight: 120 * widthScale},
+      onPress: () => {
+        navigation.navigate('Order', {
+          title: '出售订单',
+          screen: 'OrderScreen',
+          params: {
+            isBuy: false,
+          },
+        });
+      },
     },
   ];
   const buyData = [
@@ -63,6 +67,15 @@ function UserScreen({isLogin, user}: UserScreenProps) {
       title: '我买到的',
       count: data.buyCount,
       img: 'bag.png',
+      onPress: () => {
+        navigation.navigate('Order', {
+          title: '购买订单',
+          screen: 'OrderScreen',
+          params: {
+            isBuy: true,
+          },
+        });
+      },
     },
     {
       title: '我租到的',

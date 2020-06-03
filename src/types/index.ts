@@ -105,7 +105,9 @@ export type OrderStackList = {
     description: string;
   };
   OrderEvaluate: undefined;
-  OrderScreen: undefined;
+  OrderScreen: {
+    isBuy: boolean;
+  };
 };
 
 /**
@@ -162,6 +164,7 @@ export interface UserFeatureAreaProps {
     count: number;
     img: string;
     style?: StyleProp<ViewStyle>;
+    onPress?: ((event: GestureResponderEvent) => void) | undefined;
   }[];
   style?: StyleProp<ViewStyle>;
 }
