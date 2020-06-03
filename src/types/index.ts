@@ -749,6 +749,11 @@ export interface DialogState {
  */
 export interface ProfileProps {
   forceRefresh: boolean;
+  user: {
+    _id: string;
+    headImg: string;
+    userName: string;
+  };
 }
 
 /**
@@ -761,3 +766,31 @@ export interface ProfileTopAreaProps {
     userName: string;
   };
 }
+
+/**
+ * 个人页面接受回应
+ */
+export interface GetPersonalResponse {
+  data: {
+    commodity: {
+      _id: string;
+      description: string;
+      imgPath: string[];
+      price: number;
+    }[];
+  };
+}
+
+/**
+ * 个人页面data state
+ */
+export type ProfileDataState = {
+  _id: string;
+  description: string;
+  imgPath: string[];
+  user: {
+    userName: string;
+    headImg: string;
+  };
+  price: number;
+}[];
