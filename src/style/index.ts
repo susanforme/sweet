@@ -1775,7 +1775,7 @@ export const ProfileTopAreaStyles = StyleSheet.create({
     fontSize: 18 * widthScale,
     overflow: 'hidden',
     width: '70%',
-    marginBottom: 5 * widthScale,
+    marginBottom: 8 * widthScale,
     fontWeight: '700',
   },
   username: {
@@ -1787,9 +1787,82 @@ export const ProfileTopAreaStyles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
+    backgroundColor: '#AAA8AC',
+    width: 70 * widthScale,
+    borderRadius: 10 * widthScale,
+    justifyContent: 'center',
   },
   authText: {
     color: 'white',
     fontFamily: 'song',
+  },
+  editProfile: {
+    borderColor: 'white',
+    borderWidth: 1 * widthScale,
+    padding: 8 * widthScale,
+    marginLeft: -35 * widthScale,
+    borderRadius: 5 * widthScale,
+  },
+  editText: {
+    color: 'white',
+    fontFamily: 'song',
+    fontSize: 16 * widthScale,
+  },
+  bottom: {
+    ...padding,
+    marginTop: 15 * widthScale,
+  },
+  randomBottom: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  timeTip: {
+    color: 'white',
+    marginBottom: 10 * widthScale,
+    fontSize: 16 * widthScale,
+    fontFamily: 'song',
+  },
+  randomText: {
+    color: 'white',
+    fontSize: 18 * widthScale,
+    fontFamily: 'song',
+    fontWeight: '700',
+    marginRight: 20 * widthScale,
+    marginTop: 8 * widthScale,
+  },
+});
+
+/**
+ * 个人主页样式
+ */
+
+export const ProfileStyles = StyleSheet.create({
+  loading: {
+    width: '100%',
+    height: '20%',
+  },
+  area: {
+    flex: 1,
+    backgroundColor: 'white',
+  },
+});
+
+/**
+ *  顶部区域样式
+ */
+export const OrderScreenStyles = StyleSheet.create({
+  tabBarUnderlineStyle: {
+    backgroundColor: '#EE0A24',
+    borderRadius: 5 * widthScale,
+    width: '10%',
+    marginLeft: '5.5%',
+  },
+  tabBarTextStyle: {
+    fontSize: 16 * widthScale,
+    fontFamily: 'song',
+  },
+  tabbarStyle: {
+    borderBottomWidth: 0,
   },
 });

@@ -105,7 +105,9 @@ export type OrderStackList = {
     description: string;
   };
   OrderEvaluate: undefined;
-  OrderScreen: undefined;
+  OrderScreen: {
+    isBuy: boolean;
+  };
 };
 
 /**
@@ -162,6 +164,7 @@ export interface UserFeatureAreaProps {
     count: number;
     img: string;
     style?: StyleProp<ViewStyle>;
+    onPress?: ((event: GestureResponderEvent) => void) | undefined;
   }[];
   style?: StyleProp<ViewStyle>;
 }
@@ -749,6 +752,11 @@ export interface DialogState {
  */
 export interface ProfileProps {
   forceRefresh: boolean;
+  user: {
+    _id: string;
+    headImg: string;
+    userName: string;
+  };
 }
 
 /**
@@ -760,4 +768,80 @@ export interface ProfileTopAreaProps {
     headImg: string;
     userName: string;
   };
+}
+
+/**
+ * 个人页面接受回应
+ */
+export interface GetPersonalResponse {
+  data: {
+    commodity: {
+      _id: string;
+      description: string;
+      imgPath: string[];
+      price: number;
+    }[];
+  };
+}
+
+/**
+ * 个人页面data state
+ */
+export type ProfileDataState = {
+  _id: string;
+  description: string;
+  imgPath: string[];
+  user: {
+    userName: string;
+    headImg: string;
+  };
+  price: number;
+}[];
+
+/**
+ * 订单页面
+ */
+export interface OrderProps {
+  forceRefresh: boolean;
+  setRefresh(status: boolean): void;
+  user: {
+    _id: string;
+    headImg: string;
+    userName: string;
+  };
+}
+
+/**
+ * 请求买家或者买家状态订单
+ */
+export interface GetBuyrtOrSellerResponse {
+  data: {
+    _id: string;
+    buyerId: {
+      _id: string;
+      headImg: string;
+      userName: string;
+    };
+    commodity: {
+      _id: string;
+      description: string;
+      imgPath: string[];
+      price: number;
+    };
+    createTime: string;
+    deliveryTime: string;
+    evaluate: string;
+    receive: {
+      area: string;
+      name: string;
+      phoneNum: number;
+    };
+    receiveTime: string;
+    sellerId: {
+      _id: string;
+      headImg: string;
+      userName: string;
+    };
+    status: 0 | 1 | 2 | 3;
+  }[];
 }

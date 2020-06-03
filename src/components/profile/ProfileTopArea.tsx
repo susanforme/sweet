@@ -6,7 +6,6 @@ import {
   ImageBackground,
   TouchableNativeFeedback,
   Modal,
-  StatusBar,
 } from 'react-native';
 import {MyAppState, ProfileTopAreaProps} from '@/types';
 import {connect} from 'react-redux';
@@ -14,6 +13,7 @@ import {ProfileTopAreaStyles as styles, widthScale} from '@/style';
 import Icon from 'react-native-vector-icons/AntDesign';
 import {useNavigation} from '@react-navigation/native';
 import ImageViewer from 'react-native-image-zoom-viewer';
+import {getRandomNumber} from '@/tools';
 
 function ProfileTopArea({user}: ProfileTopAreaProps) {
   const navigation = useNavigation();
@@ -67,12 +67,34 @@ function ProfileTopArea({user}: ProfileTopAreaProps) {
               昵称: {user.userName}
             </Text>
             <View style={styles.auth}>
-              <Text style={styles.authText}>未认证</Text>
+              <Text style={styles.authText}>未认证 </Text>
               <Icon name="right" color="white" />
             </View>
           </View>
-          <View>
-            <Text>编辑资料</Text>
+          <TouchableNativeFeedback
+            onPress={() => {
+              navigation.navigate('Setting', {
+                screen: 'PersonalSettingScreen',
+              });
+            }}>
+            <View style={styles.editProfile}>
+              <Text style={styles.editText}>编辑资料</Text>
+            </View>
+          </TouchableNativeFeedback>
+        </View>
+        <View style={styles.bottom}>
+          <Text style={styles.timeTip}>十分钟前来过甜虾</Text>
+          <Text style={styles.timeTip}>四川</Text>
+          <View style={styles.randomBottom}>
+            <Text style={styles.randomText}>
+              {getRandomNumber(0, 5000)} 超赞
+            </Text>
+            <Text style={styles.randomText}>
+              {getRandomNumber(10, 50)} 关注
+            </Text>
+            <Text style={styles.randomText}>
+              {getRandomNumber(0, 5000)} 粉丝
+            </Text>
           </View>
         </View>
       </View>

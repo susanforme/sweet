@@ -12,7 +12,7 @@ export default function UserFeatureArea({
     'https://static-resource-1256396014.cos.ap-nanjing.myqcloud.com/img/mobile/user/';
   const Boxs = data.map((v, index) => {
     return (
-      <TouchableNativeFeedback key={index}>
+      <TouchableNativeFeedback key={index} onPress={v.onPress}>
         <View style={[styles.box, v.style]}>
           <Image
             style={styles.img}
