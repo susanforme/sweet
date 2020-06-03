@@ -1847,3 +1847,22 @@ export const ProfileStyles = StyleSheet.create({
     backgroundColor: 'white',
   },
 });
+
+/**
+ *  顶部区域样式
+ */
+export const OrderScreenStyles = StyleSheet.create({
+  tabBarUnderlineStyle: {
+    backgroundColor: '#EE0A24',
+    borderRadius: 5 * widthScale,
+    width: '10%',
+    marginLeft: '5.5%',
+  },
+  tabBarTextStyle: {
+    fontSize: 16 * widthScale,
+    fontFamily: 'song',
+  },
+  tabbarStyle: {
+    borderBottomWidth: 0,
+  },
+});

@@ -797,3 +797,51 @@ export type ProfileDataState = {
   };
   price: number;
 }[];
+
+/**
+ * 订单页面
+ */
+export interface OrderProps {
+  forceRefresh: boolean;
+  setRefresh(status: boolean): void;
+  user: {
+    _id: string;
+    headImg: string;
+    userName: string;
+  };
+}
+
+/**
+ * 请求买家或者买家状态订单
+ */
+export interface GetBuyrtOrSellerResponse {
+  data: {
+    _id: string;
+    buyerId: {
+      _id: string;
+      headImg: string;
+      userName: string;
+    };
+    commodity: {
+      _id: string;
+      description: string;
+      imgPath: string[];
+      price: number;
+    };
+    createTime: string;
+    deliveryTime: string;
+    evaluate: string;
+    receive: {
+      area: string;
+      name: string;
+      phoneNum: number;
+    };
+    receiveTime: string;
+    sellerId: {
+      _id: string;
+      headImg: string;
+      userName: string;
+    };
+    status: 0 | 1 | 2 | 3;
+  }[];
+}
