@@ -104,7 +104,6 @@ export type OrderStackList = {
     isSale: boolean;
     description: string;
   };
-  OrderEvaluate: undefined;
   OrderScreen: {
     isBuy: boolean;
   };
@@ -852,4 +851,15 @@ export interface GetBuyrtOrSellerResponse {
 export interface AllGoodsProps {
   tabLabel: string;
   data: GetBuyrtOrSellerResponse['data'] | undefined;
+  status: 0 | 1 | 2 | 3;
+  isBuy: boolean;
+}
+
+/**
+ * 盒子操作单个参数
+ */
+export interface OperateBoxs {
+  data: GetBuyrtOrSellerResponse['data'][0] | undefined;
+  isBuy: boolean;
+  status: 0 | 1 | 2 | 3;
 }

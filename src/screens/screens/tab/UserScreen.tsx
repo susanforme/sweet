@@ -96,18 +96,6 @@ function UserScreen({isLogin, user}: UserScreenProps) {
       img: 'gold-coin.png',
     }),
   ];
-  const otherData = [
-    ...Array(2).fill({
-      title: '我卖出的',
-      count: getRandomNumber(0, 10),
-      img: 'gold-coin.png',
-    }),
-    ...Array(6).fill({
-      title: '我租到的',
-      count: getRandomNumber(0, 10),
-      img: 'rent.png',
-    }),
-  ];
   const noLogin = (
     <TouchableWithoutFeedback
       onPress={() => {
@@ -144,12 +132,6 @@ function UserScreen({isLogin, user}: UserScreenProps) {
               data={sellData}></UserFeatureArea>
             <UserFeatureArea title="买在甜虾" data={buyData}></UserFeatureArea>
             <UserFeatureArea title="玩在甜虾" data={playData}></UserFeatureArea>
-            <UserFeatureArea
-              title="其他工具"
-              data={otherData}
-              style={{
-                marginBottom: 15 * widthScale,
-              }}></UserFeatureArea>
           </>
         ) : (
           noLogin

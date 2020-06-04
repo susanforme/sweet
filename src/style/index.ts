@@ -1866,3 +1866,61 @@ export const OrderScreenStyles = StyleSheet.create({
     borderBottomWidth: 0,
   },
 });
+
+/**
+ * 操作框的样式
+ */
+export const OperateBoxsStyles = StyleSheet.create({
+  father: {
+    borderRadius: 10 * widthScale,
+    overflow: 'hidden',
+  },
+  area: {
+    display: 'flex',
+    backgroundColor: 'white',
+    flexDirection: 'row',
+    margin: 5 * widthScale,
+    marginLeft: 10 * widthScale,
+    marginRight: 10 * widthScale,
+    padding: 10 * widthScale,
+    borderRadius: 10 * widthScale,
+  },
+  img: {
+    width: 110 * widthScale,
+    height: 110 * widthScale,
+    borderRadius: 10 * widthScale,
+    marginRight: 10 * widthScale,
+  },
+  description: {
+    width: width - 160 * widthScale,
+    fontFamily: 'song',
+    fontSize: 16 * widthScale,
+    marginBottom: 10 * widthScale,
+    height: 45 * widthScale,
+  },
+  right: {
+    display: 'flex',
+  },
+  author: {
+    color: 'gray',
+    fontFamily: 'song',
+    marginBottom: 10 * widthScale,
+  },
+  price: {
+    color: 'red',
+    fontSize: 16 * widthScale,
+  },
+  empty: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  emptyText: {
+    fontSize: 16 * widthScale,
+    color: 'gray',
+  },
+  emptyImg: {
+    width: width * 0.8,
+    height: height * 0.5,
+  },
+});

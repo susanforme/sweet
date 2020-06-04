@@ -13,10 +13,8 @@ import ScrollableTabView, {
 import {connect} from 'react-redux';
 import {ActionTypes} from '@/store/actionTypes';
 import {axios} from '@/api';
-import DeliveryGoods from '@/components/order/DeliveryGoods';
-import ReceiveGoods from '@/components/order/ReceiveGoods';
-import EvaluateGoods from '@/components/order/EvaluateGoods';
-import CompleteGoods from '@/components/order/CompleteGoods';
+import GoodsStatus from '@/components/order/GoodsStatus';
+
 import {OrderScreenStyles as styles} from '@/style';
 
 //传递参数来确认是买家还是卖家
@@ -40,6 +38,23 @@ function OrderScreen({forceRefresh, setRefresh, user}: OrderProps) {
         .catch(() => {});
     }
   }, [forceRefresh]);
+  const tabBarTitle = [
+    {tabLabel: '待发货'},
+    {tabLabel: '待收货'},
+    {tabLabel: '待评价'},
+    {tabLabel: '已完成'},
+  ];
+  const tabbarList = tabBarTitle.map((v, index) => {
+    return (
+      <GoodsStatus
+        key={index}
+        tabLabel={v.tabLabel}
+        data={data}
+        status={index as 0}
+        isBuy={params.isBuy}
+      />
+    );
+  });
   return (
     <View style={{flex: 1}}>
       <ScrollableTabView
@@ -49,10 +64,7 @@ function OrderScreen({forceRefresh, setRefresh, user}: OrderProps) {
         tabBarInactiveTextColor="gray"
         tabBarUnderlineStyle={styles.tabBarUnderlineStyle}
         renderTabBar={() => <DefaultTabBar style={styles.tabbarStyle} />}>
-        <DeliveryGoods tabLabel="待发货" data={data} />
-        <ReceiveGoods tabLabel="待收货" data={data} />
-        <EvaluateGoods tabLabel="待评价" data={data} />
-        <CompleteGoods tabLabel="已完成" data={data} />
+        {tabbarList}
       </ScrollableTabView>
     </View>
   );
