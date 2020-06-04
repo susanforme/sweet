@@ -49,10 +49,10 @@ function OrderScreen({forceRefresh, setRefresh, user}: OrderProps) {
         tabBarInactiveTextColor="gray"
         tabBarUnderlineStyle={styles.tabBarUnderlineStyle}
         renderTabBar={() => <DefaultTabBar style={styles.tabbarStyle} />}>
-        <DeliveryGoods tabLabel="待发货" />
-        <ReceiveGoods tabLabel="待收货" />
-        <EvaluateGoods tabLabel="待评价" />
-        <CompleteGoods tabLabel="已完成" />
+        <DeliveryGoods tabLabel="待发货" data={data} />
+        <ReceiveGoods tabLabel="待收货" data={data} />
+        <EvaluateGoods tabLabel="待评价" data={data} />
+        <CompleteGoods tabLabel="已完成" data={data} />
       </ScrollableTabView>
     </View>
   );

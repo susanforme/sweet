@@ -845,3 +845,11 @@ export interface GetBuyrtOrSellerResponse {
     status: 0 | 1 | 2 | 3;
   }[];
 }
+
+/**
+ * 发送货物
+ */
+export interface AllGoodsProps {
+  tabLabel: string;
+  data: GetBuyrtOrSellerResponse['data'] | undefined;
+}
