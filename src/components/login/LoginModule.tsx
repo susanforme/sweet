@@ -1,5 +1,5 @@
 import React, {useState, useRef, useEffect} from 'react';
-import {View, Image, Animated} from 'react-native';
+import {View, Image, Animated, KeyboardAvoidingView} from 'react-native';
 import {widthScale, LoginModuleStyles as styles} from '@/style';
 import {Input} from 'beeshell/dist/components/Input';
 import {Form} from 'beeshell/dist/components/Form';
@@ -76,7 +76,7 @@ function LoginModule({
     }
   }, [isLogin]);
   return (
-    <View style={styles.module}>
+    <KeyboardAvoidingView style={styles.module} enabled>
       <Image
         source={require('@/resource/logo.png')}
         style={styles.image}></Image>
@@ -158,7 +158,7 @@ function LoginModule({
           fade={isRegister ? fadeOut : fadeIn}
           setRegister={setRegister}></LoginBottom>
       </Form>
-    </View>
+    </KeyboardAvoidingView>
   );
 }
 

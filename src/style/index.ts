@@ -49,7 +49,7 @@ export const LoginModuleStyles = StyleSheet.create({
   inputStyle: {
     backgroundColor: 'white',
     textAlignVertical: 'bottom',
-    height: 45 * widthScale,
+    height: 50 * widthScale,
   },
   form: {
     width: '100%',
@@ -674,7 +674,7 @@ export const RefreshListStyles = StyleSheet.create({
     marginRight: '1.25%',
     marginBottom: '2%',
     borderRadius: 10 * widthScale,
-    height: 300 * widthScale,
+    height: 310 * widthScale,
   },
   img: {
     width: '100%',
@@ -702,19 +702,23 @@ export const RefreshListStyles = StyleSheet.create({
     overflow: 'hidden',
     fontWeight: '700',
     padding: 5 * widthScale,
-    height: 50 * widthScale,
+    height: '20%',
   },
   head: {
     padding: 5 * widthScale,
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
+    paddingBottom: 10 * widthScale,
   },
   headRight: {
     position: 'absolute',
     right: 15 * widthScale,
     fontSize: 12 * widthScale,
     color: 'gray',
+  },
+  username: {
+    width: '40%',
   },
 });
 
@@ -845,9 +849,11 @@ export const UserMsgStyles = StyleSheet.create({
   userMsgRight: {
     position: 'absolute',
     right: 20 * widthScale,
-    top: 28 * widthScale,
+    top: '50%',
+    marginTop: -32.5 * widthScale,
     width: 65 * widthScale,
     height: 65 * widthScale,
+    borderRadius: 5 * widthScale,
   },
   userMsgBottom: {
     display: 'flex',
@@ -1788,7 +1794,7 @@ export const ProfileTopAreaStyles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: '#AAA8AC',
-    width: 70 * widthScale,
+    width: '40%',
     borderRadius: 10 * widthScale,
     justifyContent: 'center',
   },

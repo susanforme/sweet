@@ -89,7 +89,9 @@ function renderItem(
           <Image
             source={{uri: item.user.headImg}}
             style={styles.headImg}></Image>
-          <Text numberOfLines={1}>{item.user.userName}</Text>
+          <Text numberOfLines={1} style={styles.username}>
+            {item.user.userName}
+          </Text>
           <Text style={styles.headRight}>超级卖家</Text>
         </View>
       </View>
