@@ -10,17 +10,23 @@ export default function Classficat() {
   const route = useRoute<RouteProp<MainStackList, 'Classificat'>>();
   const kindId = route.params.kindId;
   const [data, setData] = useState<getClassificationResponse['data']>();
+  const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
+    setIsLoading(true);
     axios
       .get<getClassificationResponse>(`/commodity/classification/${kindId}`)
       .then((res) => {
         setData(res.data.data);
+        setIsLoading(false);
       })
-      .catch(() => {});
+      .catch(() => {
+        setIsLoading(false);
+      });
   }, []);
   return (
     <RefreshList
       data={data}
+      isLoading={isLoading}
       ListHeaderComponent={
         <View style={{marginTop: 10 * widthScale}}></View>
       }></RefreshList>

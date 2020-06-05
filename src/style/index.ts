@@ -1990,3 +1990,30 @@ export const OrderRenderButtonStyles = StyleSheet.create({
     fontSize: 16 * widthScale,
   },
 });
+
+/**
+ * 公约样式
+ */
+export const PactStyles = StyleSheet.create({
+  area: {
+    flex: 1,
+    backgroundColor: 'white',
+    paddingLeft: 40 * widthScale,
+    paddingRight: 40 * widthScale,
+  },
+  title: {
+    fontSize: 20 * widthScale,
+    fontWeight: '700',
+    textAlign: 'center',
+    marginTop: 20 * widthScale,
+    marginBottom: 20 * widthScale,
+  },
+  bottom: {
+    width: '100%',
+    textAlign: 'right',
+    paddingLeft: 40 * widthScale,
+    paddingRight: 20 * widthScale,
+    marginTop: 40 * widthScale,
+    marginBottom: 100 * widthScale,
+  },
+});

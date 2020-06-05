@@ -12,6 +12,7 @@ import {RefreshListProps, RecommendGetResponse, MainStackList} from '@/types';
 import {RefreshListStyles as styles, widthScale} from '@/style';
 import {getRandomNumber} from '@/tools';
 import {useNavigation, NavigationProp} from '@react-navigation/native';
+import EmptyResult from './EmptyResult';
 
 export default function RefreshList({
   onRefresh,
@@ -21,6 +22,7 @@ export default function RefreshList({
   isToTop,
   onScroll,
   enabelRefresh = true,
+  isLoading = false,
 }: RefreshListProps<RecommendGetResponse['data']>) {
   const flatListRef = useRef<FlatList>(null);
   const navigation = useNavigation<NavigationProp<MainStackList>>();
@@ -45,7 +47,9 @@ export default function RefreshList({
       keyExtractor={(item) => item._id}
       ListHeaderComponent={ListHeaderComponent}
       scrollsToTop={true}
-      ListEmptyComponent={() => renderListEmptyComponent()}
+      ListEmptyComponent={() =>
+        isLoading ? renderListEmptyComponent() : EmptyResult()
+      }
       refreshControl={
         enabelRefresh ? (
           <RefreshControl

@@ -23,21 +23,24 @@ import {Tip} from 'beeshell/dist/components/Tip';
 
 function MessageScreen({isLogin, user}: MessageScreenProps) {
   const navigation = useNavigation<NavigationProp<MainStackList>>();
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [msgList, setMsgList] = useState<GetMsgListData['data']>();
   useEffect(() => {
-    axios
-      .get<GetMsgListData>(`/chat/msglist/${user._id}`)
-      .then((res) => {
-        setMsgList(res.data.data);
-        setTimeout(() => {
+    if (isLogin) {
+      setIsLoading(true);
+      axios
+        .get<GetMsgListData>(`/chat/msglist/${user._id}`)
+        .then((res) => {
+          setMsgList(res.data.data);
+          setTimeout(() => {
+            setIsLoading(false);
+          }, 0);
+        })
+        .catch(() => {
           setIsLoading(false);
-        }, 0);
-      })
-      .catch(() => {
-        setIsLoading(false);
-        return Tip.show('网络错误', 500);
-      });
+          return Tip.show('网络错误', 500);
+        });
+    }
   }, [isLogin]);
   const noLogin = (
     <TouchableWithoutFeedback

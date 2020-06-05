@@ -123,6 +123,7 @@ export type MainStackList = {
   Classificat: {kindId: string; kindName: string};
   Detail: {commodityId: string};
   Order: {title: string};
+  AssetsMessage: {title: string};
 };
 
 /**
@@ -160,7 +161,7 @@ export interface UserFeatureAreaProps {
   title: string;
   data: {
     title: string;
-    count: number;
+    count?: number;
     img: string;
     style?: StyleProp<ViewStyle>;
     onPress?: ((event: GestureResponderEvent) => void) | undefined;
@@ -405,6 +406,7 @@ export interface RefreshListProps<DataT> {
     | ((event: NativeSyntheticEvent<NativeScrollEvent>) => void)
     | undefined;
   enabelRefresh?: boolean;
+  isLoading: boolean;
 }
 
 /**
@@ -888,3 +890,9 @@ export interface OrderRenderButton {
   setRefresh(status: boolean): void;
   setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }
+
+export type AssetsMessageStackList = {
+  Pact: undefined;
+  Community: undefined;
+  Timeout: undefined;
+};
