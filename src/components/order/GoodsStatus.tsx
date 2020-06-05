@@ -3,12 +3,15 @@ import {ScrollView, Image, View, Text} from 'react-native';
 import {AllGoodsProps} from '@/types';
 import OperateBoxs from '@/components/comm/OperateBoxs';
 import {OperateBoxsStyles as styles} from '@/style';
+import Loading from '@/components/comm/Loading';
 
 export default function DeliveryGoods({
   tabLabel,
   data,
   isBuy,
   status,
+  isLoaidng,
+  setIsLoading,
 }: AllGoodsProps) {
   const List = data?.map((v) => {
     if (v.status !== status) {
@@ -16,13 +19,19 @@ export default function DeliveryGoods({
     }
     return (
       <OperateBoxs
+        setIsLoading={setIsLoading}
         data={v}
         isBuy={Boolean(tabLabel + 's') && isBuy}
         status={status}
       />
     );
   });
-  return <ScrollView>{List?.join('') ? List : renderEmpty()}</ScrollView>;
+  return (
+    <View>
+      <Loading style={styles.loading} show={isLoaidng} />
+      <ScrollView>{List?.join('') ? List : renderEmpty()}</ScrollView>
+    </View>
+  );
 }
 
 function renderEmpty() {

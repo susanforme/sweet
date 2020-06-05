@@ -70,16 +70,11 @@ export async function changeOrderStatusByStatus(
   orderId: string,
   userId: string,
 ) {
-  let getData = () => axios.put(`/seller/delivery`, {orderId, userId});
+  let getData = () => axios.put(`/order/seller/delivery`, {orderId, userId});
   switch (status) {
     case 1:
       {
-        getData = () => axios.put(`/buyer/receipt`, {orderId, userId});
-      }
-      break;
-    case 2:
-      {
-        getData = () => axios.post(`/buyer/evaluate`, {orderId, userId});
+        getData = () => axios.put(`/order/buyer/receipt`, {orderId, userId});
       }
       break;
   }

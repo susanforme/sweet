@@ -1923,4 +1923,35 @@ export const OperateBoxsStyles = StyleSheet.create({
     width: width * 0.8,
     height: height * 0.5,
   },
+  loading: {
+    top: height / 2 - 120 * widthScale,
+  },
+});
+
+/**
+ * 底部按钮样式渲染
+ */
+export const OrderRenderButtonStyles = StyleSheet.create({
+  area: {
+    position: 'absolute',
+    right: 0,
+    bottom: 5 * widthScale,
+  },
+  commText: {
+    fontFamily: 'song',
+    color: 'white',
+    padding: 5 * widthScale,
+  },
+  nonOperate: {
+    backgroundColor: '#07C160',
+    borderRadius: 5 * widthScale,
+    fontSize: 12 * widthScale,
+  },
+  operate: {
+    backgroundColor: '#FFEE24',
+    borderRadius: 10 * widthScale,
+    paddingLeft: 10 * widthScale,
+    paddingRight: 10 * widthScale,
+    fontSize: 14 * widthScale,
+  },
 });

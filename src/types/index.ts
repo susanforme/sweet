@@ -802,7 +802,6 @@ export type ProfileDataState = {
  */
 export interface OrderProps {
   forceRefresh: boolean;
-  setRefresh(status: boolean): void;
   user: {
     _id: string;
     headImg: string;
@@ -853,6 +852,8 @@ export interface AllGoodsProps {
   data: GetBuyrtOrSellerResponse['data'] | undefined;
   status: 0 | 1 | 2 | 3;
   isBuy: boolean;
+  isLoaidng: boolean;
+  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 /**
@@ -862,4 +863,28 @@ export interface OperateBoxs {
   data: GetBuyrtOrSellerResponse['data'][0] | undefined;
   isBuy: boolean;
   status: 0 | 1 | 2 | 3;
+  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+/**
+ * 渲染按钮参数
+ */
+export interface OrderRenderButton {
+  status: 0 | 1 | 2 | 3;
+  isBuy: boolean;
+  /**
+   * 订单id
+   */
+  orderId?: string;
+  /**
+   * 本人id
+   */
+  user: {
+    _id: string;
+    headImg: string;
+    userName: string;
+  };
+  forceRefresh: boolean;
+  setRefresh(status: boolean): void;
+  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }

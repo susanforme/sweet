@@ -11,31 +11,38 @@ import ScrollableTabView, {
   DefaultTabBar,
 } from 'react-native-scrollable-tab-view';
 import {connect} from 'react-redux';
-import {ActionTypes} from '@/store/actionTypes';
 import {axios} from '@/api';
 import GoodsStatus from '@/components/order/GoodsStatus';
 
 import {OrderScreenStyles as styles} from '@/style';
 
 //传递参数来确认是买家还是卖家
-function OrderScreen({forceRefresh, setRefresh, user}: OrderProps) {
+function OrderScreen({forceRefresh, user}: OrderProps) {
   const params = useRoute<RouteProp<OrderStackList, 'OrderScreen'>>().params;
   const [data, setData] = useState<GetBuyrtOrSellerResponse['data']>();
+  const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
+    setIsLoading(true);
     if (params.isBuy) {
       axios
         .get<GetBuyrtOrSellerResponse>(`/order/buyer/${user._id}`)
         .then((res) => {
           setData(res.data.data);
+          setIsLoading(false);
         })
-        .catch(() => {});
+        .catch(() => {
+          setIsLoading(false);
+        });
     } else {
       axios
         .get<GetBuyrtOrSellerResponse>(`/order/seller/${user._id}`)
         .then((res) => {
           setData(res.data.data);
+          setIsLoading(false);
         })
-        .catch(() => {});
+        .catch(() => {
+          setIsLoading(false);
+        });
     }
   }, [forceRefresh]);
   const tabBarTitle = [
@@ -47,11 +54,13 @@ function OrderScreen({forceRefresh, setRefresh, user}: OrderProps) {
   const tabbarList = tabBarTitle.map((v, index) => {
     return (
       <GoodsStatus
+        setIsLoading={setIsLoading}
         key={index}
         tabLabel={v.tabLabel}
         data={data}
         status={index as 0}
         isBuy={params.isBuy}
+        isLoaidng={isLoading}
       />
     );
   });
@@ -75,16 +84,4 @@ const stateToProps = (state: MyAppState) => ({
   user: state.user,
 });
 
-const dispatchToProps = (dispatch: Function) => ({
-  setRefresh(status: boolean) {
-    const action = {
-      type: ActionTypes.ENABLE_FORCE_REFRESH,
-      data: {
-        status,
-      },
-    };
-    dispatch(action);
-  },
-});
-
-export default connect(stateToProps, dispatchToProps)(OrderScreen);
+export default connect(stateToProps)(OrderScreen);
