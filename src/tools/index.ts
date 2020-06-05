@@ -58,3 +58,25 @@ export function uploadImage(callback: (err: any, imgUrl: string) => any) {
     }
   });
 }
+
+/**
+ * 根据0 1 2 3来发送请求
+ * @param status 0 | 1 | 2 | 3
+ * @param orderId string
+ * @param userId string
+ */
+export async function changeOrderStatusByStatus(
+  status: 0 | 1 | 2 | 3,
+  orderId: string,
+  userId: string,
+) {
+  let getData = () => axios.put(`/order/seller/delivery`, {orderId, userId});
+  switch (status) {
+    case 1:
+      {
+        getData = () => axios.put(`/order/buyer/receipt`, {orderId, userId});
+      }
+      break;
+  }
+  return await getData();
+}

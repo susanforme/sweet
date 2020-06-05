@@ -49,7 +49,7 @@ export const LoginModuleStyles = StyleSheet.create({
   inputStyle: {
     backgroundColor: 'white',
     textAlignVertical: 'bottom',
-    height: 45 * widthScale,
+    height: 50 * widthScale,
   },
   form: {
     width: '100%',
@@ -674,7 +674,7 @@ export const RefreshListStyles = StyleSheet.create({
     marginRight: '1.25%',
     marginBottom: '2%',
     borderRadius: 10 * widthScale,
-    height: 300 * widthScale,
+    height: 310 * widthScale,
   },
   img: {
     width: '100%',
@@ -702,19 +702,23 @@ export const RefreshListStyles = StyleSheet.create({
     overflow: 'hidden',
     fontWeight: '700',
     padding: 5 * widthScale,
-    height: 50 * widthScale,
+    height: '20%',
   },
   head: {
     padding: 5 * widthScale,
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
+    paddingBottom: 10 * widthScale,
   },
   headRight: {
     position: 'absolute',
     right: 15 * widthScale,
     fontSize: 12 * widthScale,
     color: 'gray',
+  },
+  username: {
+    width: '40%',
   },
 });
 
@@ -845,9 +849,11 @@ export const UserMsgStyles = StyleSheet.create({
   userMsgRight: {
     position: 'absolute',
     right: 20 * widthScale,
-    top: 28 * widthScale,
+    top: '50%',
+    marginTop: -32.5 * widthScale,
     width: 65 * widthScale,
     height: 65 * widthScale,
+    borderRadius: 5 * widthScale,
   },
   userMsgBottom: {
     display: 'flex',
@@ -1788,7 +1794,7 @@ export const ProfileTopAreaStyles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: '#AAA8AC',
-    width: 70 * widthScale,
+    width: '40%',
     borderRadius: 10 * widthScale,
     justifyContent: 'center',
   },
@@ -1864,5 +1870,156 @@ export const OrderScreenStyles = StyleSheet.create({
   },
   tabbarStyle: {
     borderBottomWidth: 0,
+  },
+});
+
+/**
+ * 操作框的样式
+ */
+export const OperateBoxsStyles = StyleSheet.create({
+  father: {
+    borderRadius: 10 * widthScale,
+    overflow: 'hidden',
+  },
+  area: {
+    display: 'flex',
+    backgroundColor: 'white',
+    flexDirection: 'row',
+    margin: 5 * widthScale,
+    marginLeft: 10 * widthScale,
+    marginRight: 10 * widthScale,
+    padding: 10 * widthScale,
+    borderRadius: 10 * widthScale,
+  },
+  img: {
+    width: 110 * widthScale,
+    height: 110 * widthScale,
+    borderRadius: 10 * widthScale,
+    marginRight: 10 * widthScale,
+  },
+  description: {
+    width: width - 160 * widthScale,
+    fontFamily: 'song',
+    fontSize: 16 * widthScale,
+    marginBottom: 10 * widthScale,
+    height: 45 * widthScale,
+  },
+  right: {
+    display: 'flex',
+  },
+  author: {
+    color: 'gray',
+    fontFamily: 'song',
+    marginBottom: 10 * widthScale,
+  },
+  price: {
+    color: 'red',
+    fontSize: 16 * widthScale,
+  },
+  empty: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  emptyText: {
+    fontSize: 16 * widthScale,
+    color: 'gray',
+  },
+  emptyImg: {
+    width: width * 0.8,
+    height: height * 0.5,
+  },
+  loading: {
+    top: height / 2 - 120 * widthScale,
+  },
+});
+
+/**
+ * 底部按钮样式渲染
+ */
+export const OrderRenderButtonStyles = StyleSheet.create({
+  area: {
+    position: 'absolute',
+    right: 0,
+    bottom: 5 * widthScale,
+  },
+  commText: {
+    fontFamily: 'song',
+    color: 'white',
+    padding: 5 * widthScale,
+  },
+  nonOperate: {
+    backgroundColor: '#07C160',
+    borderRadius: 5 * widthScale,
+    fontSize: 12 * widthScale,
+  },
+  operate: {
+    backgroundColor: '#FFEE24',
+    borderRadius: 10 * widthScale,
+    paddingLeft: 10 * widthScale,
+    paddingRight: 10 * widthScale,
+    fontSize: 14 * widthScale,
+  },
+  bottom: {
+    padding: 10 * widthScale,
+    height: height * 0.22,
+  },
+  bottomLine: {
+    display: 'flex',
+    flexDirection: 'row',
+    padding: 10 * widthScale,
+    borderBottomWidth: 1,
+    alignItems: 'center',
+    borderBottomColor: 'rgba(1,1,1,0.1)',
+  },
+  btnFather: {
+    padding: 12 * widthScale,
+    display: 'flex',
+    alignItems: 'flex-end',
+  },
+  bottomBtn: {
+    backgroundColor: '#FFEE24',
+    width: '30%',
+    paddingLeft: 0 * widthScale,
+    paddingRight: 0 * widthScale,
+    borderRadius: 5 * widthScale,
+    borderTopWidth: 0,
+  },
+  bottomBtnText: {
+    color: 'white',
+  },
+  bottomInput: {
+    width: width - 80 * widthScale,
+    fontSize: 16 * widthScale,
+  },
+  bottomTips: {
+    fontSize: 16 * widthScale,
+  },
+});
+
+/**
+ * 公约样式
+ */
+export const PactStyles = StyleSheet.create({
+  area: {
+    flex: 1,
+    backgroundColor: 'white',
+    paddingLeft: 40 * widthScale,
+    paddingRight: 40 * widthScale,
+  },
+  title: {
+    fontSize: 20 * widthScale,
+    fontWeight: '700',
+    textAlign: 'center',
+    marginTop: 20 * widthScale,
+    marginBottom: 20 * widthScale,
+  },
+  bottom: {
+    width: '100%',
+    textAlign: 'right',
+    paddingLeft: 40 * widthScale,
+    paddingRight: 20 * widthScale,
+    marginTop: 40 * widthScale,
+    marginBottom: 100 * widthScale,
   },
 });

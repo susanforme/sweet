@@ -10,6 +10,7 @@ import {axios} from '@/api';
 import {RecommendGetResponse, MyAppState} from '@/types';
 import Icon from 'react-native-vector-icons/AntDesign';
 import {connect} from 'react-redux';
+import {Tip} from 'beeshell/dist/components/Tip';
 
 function HomeScreen({forceRefresh}: HomeScreenProps) {
   const navigation = useNavigation();
@@ -17,15 +18,26 @@ function HomeScreen({forceRefresh}: HomeScreenProps) {
   const [isRefresh, setIsRefresh] = useState(false);
   const [showGoTop, setShowGoTop] = useState(false);
   const [isToTop, setIsToTop] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
   const getRecommendList = () => {
     setIsRefresh(true);
+    setIsLoading(true);
+
     setTimeout(() => {
-      axios.get<RecommendGetResponse>('/commodity/recommend').then((res) => {
-        setRecommend(res.data.data);
-        setTimeout(() => {
-          setIsRefresh(false);
-        }, 0);
-      });
+      axios
+        .get<RecommendGetResponse>('/commodity/recommend')
+        .then((res) => {
+          setRecommend(res.data.data);
+          setTimeout(() => {
+            setIsLoading(false);
+            setIsRefresh(false);
+          }, 0);
+        })
+        .catch(() => {
+          setIsLoading(false);
+          Tip.show('网络错误', 300);
+        });
     }, 0);
   };
   useEffect(() => {
@@ -39,6 +51,7 @@ function HomeScreen({forceRefresh}: HomeScreenProps) {
         isRefresh={isRefresh}
         data={recommend}
         isToTop={isToTop}
+        isLoading={isLoading}
         ListHeaderComponent={
           <View style={{backgroundColor: 'white'}}>
             <View style={styles.top}>

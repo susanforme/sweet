@@ -4,7 +4,6 @@ import {useHeaderHeight} from '@react-navigation/stack';
 import {getDefaultHeaderStyle} from '@/style/header';
 import {StatusBar} from 'react-native';
 import CheckOrder from '@/screens/screens/order/CheckOrder';
-import OrderEvaluate from '@/screens/screens/order/OrderEvaluate';
 import OrderScreen from '@/screens/screens/order/OrderScreen';
 import {OrderStackList} from '@/types';
 
@@ -18,13 +17,6 @@ export default function OrderStackScreen() {
       <OrderStack.Screen
         name="CheckOrder"
         component={CheckOrder}
-        options={{
-          ...getDefaultHeaderStyle(height, paddingTop, 0.6),
-          header: () => null,
-        }}></OrderStack.Screen>
-      <OrderStack.Screen
-        name="OrderEvaluate"
-        component={OrderEvaluate}
         options={{
           ...getDefaultHeaderStyle(height, paddingTop, 0.6),
           header: () => null,

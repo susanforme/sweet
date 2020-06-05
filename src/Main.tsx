@@ -19,18 +19,23 @@ import {StatusBar} from 'react-native';
 import Classificat from '@/screens/Classificat';
 import Detail from '@/screens/Detail';
 import OrderStack from '@/screens/OrderStack';
+import AssetsMessageScreen from './screens/AssetsMessage';
+import {Tip} from 'beeshell/dist/components/Tip';
 
 const MainStack = createStackNavigator<MainStackList>();
 
-function Main({isLogin, isLoading}: MainProps) {
+function Main({isLogin, isLoading, err}: MainProps) {
   const paddingTop = StatusBar.currentHeight || 30;
   useEffect(() => {
     store.dispatch(verifyAccount());
+    if (!isLogin && err) {
+      Tip.show('网络错误', 1000);
+    }
   }, []);
   if (!isLoading) {
     SplashScreen.hide();
   }
-  console.log(isLogin, isLoading);
+
   return (
     <NavigationContainer>
       <MainStack.Navigator initialRouteName="Tab">
@@ -42,7 +47,7 @@ function Main({isLogin, isLoading}: MainProps) {
           name="Chat"
           component={Chat}
           options={({route}) => ({
-            ...getDefaultHeaderStyle(80 * widthScale, paddingTop, 0.7, 'white'),
+            ...getDefaultHeaderStyle(80 * widthScale, paddingTop, 0.8, 'white'),
             title: route.params.userName,
           })}></MainStack.Screen>
         <MainStack.Screen
@@ -76,26 +81,33 @@ function Main({isLogin, isLoading}: MainProps) {
           name="Setting"
           component={Setting}
           options={{
-            ...getDefaultHeaderStyle(80 * widthScale, paddingTop, 0.6, 'white'),
+            ...getDefaultHeaderStyle(80 * widthScale, paddingTop, 0.7, 'white'),
             header: () => null,
           }}></MainStack.Screen>
         <MainStack.Screen
           name="Classificat"
           component={Classificat}
           options={({route}) => ({
-            ...getDefaultHeaderStyle(80 * widthScale, paddingTop, 0.6, 'white'),
+            ...getDefaultHeaderStyle(80 * widthScale, paddingTop, 0.7, 'white'),
             headerTitle: route.params.kindName,
           })}></MainStack.Screen>
         <MainStack.Screen
           name="Detail"
           component={Detail}
           options={{
-            ...getDefaultHeaderStyle(80 * widthScale, paddingTop, 0.6, 'white'),
+            ...getDefaultHeaderStyle(80 * widthScale, paddingTop, 0.7, 'white'),
             title: '',
           }}></MainStack.Screen>
         <MainStack.Screen
           name="Order"
           component={OrderStack}
+          options={(route) => ({
+            title: route.route.params.title,
+            ...getDefaultHeaderStyle(80 * widthScale, paddingTop, 0.7, 'white'),
+          })}></MainStack.Screen>
+        <MainStack.Screen
+          name="AssetsMessage"
+          component={AssetsMessageScreen}
           options={(route) => ({
             title: route.route.params.title,
             ...getDefaultHeaderStyle(80 * widthScale, paddingTop, 0.7, 'white'),
@@ -108,6 +120,7 @@ function Main({isLogin, isLoading}: MainProps) {
 const stateToProps = (state: MyAppState) => ({
   isLogin: state.isLogin,
   isLoading: state.isLoading,
+  err: state.err.verifyAccount,
 });
 
 export default connect(stateToProps)(Main);

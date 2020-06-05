@@ -1,5 +1,11 @@
 import React from 'react';
-import {View, Text, Image, TouchableNativeFeedback} from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  TouchableNativeFeedback,
+  Linking,
+} from 'react-native';
 import {MessageTopAreaStyles as styles} from '@/style';
 
 export default function TopArea() {
@@ -21,7 +27,11 @@ function getData() {
   ];
   return data.map((v, index) => {
     return (
-      <TouchableNativeFeedback key={index}>
+      <TouchableNativeFeedback
+        key={index}
+        onPress={() => {
+          Linking.openURL('https://www.wdf5.com');
+        }}>
         <View style={styles.box}>
           <Image source={v.img} style={styles.img}></Image>
           <Text style={styles.boxText}>{v.title}</Text>

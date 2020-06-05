@@ -5,6 +5,7 @@ import {
   View,
   Image,
   Text,
+  Linking,
 } from 'react-native';
 import {MyAppState, UserScreenProps, ProfileUserResponse} from '@/types';
 import {connect} from 'react-redux';
@@ -45,6 +46,15 @@ function UserScreen({isLogin, user}: UserScreenProps) {
       title: '我发布的',
       count: data.totalCount,
       img: 'balance-list.png',
+      onPress: () => {
+        navigation.navigate('Order', {
+          title: '出售订单',
+          screen: 'OrderScreen',
+          params: {
+            isBuy: false,
+          },
+        });
+      },
     },
     {
       title: '我卖出的',
@@ -85,28 +95,51 @@ function UserScreen({isLogin, user}: UserScreenProps) {
     },
   ];
   const playData = [
-    ...Array(3).fill({
-      title: '我卖出的',
-      count: getRandomNumber(0, 10),
-      img: 'bag.png',
-    }),
-    ...Array(4).fill({
-      title: '我卖出的',
-      count: getRandomNumber(0, 10),
-      img: 'gold-coin.png',
-    }),
-  ];
-  const otherData = [
-    ...Array(2).fill({
-      title: '我卖出的',
-      count: getRandomNumber(0, 10),
-      img: 'gold-coin.png',
-    }),
-    ...Array(6).fill({
-      title: '我租到的',
-      count: getRandomNumber(0, 10),
-      img: 'rent.png',
-    }),
+    {
+      title: '客服',
+      img: 'service.png',
+      onPress: () => {
+        Linking.openURL('https://www.wdf5.com');
+      },
+    },
+    {
+      title: '条款',
+      img: 'law.png',
+      onPress: () => {
+        Linking.openURL('https://www.wdf5.com');
+      },
+    },
+    {
+      title: '音视频公约',
+      img: 'pact.png',
+      onPress: () => {
+        navigation.navigate('AssetsMessage', {
+          screen: 'Pact',
+          title: '关于甜虾社区音视频类商品的管控通知',
+        });
+      },
+    },
+    {
+      title: '社区规定',
+      img: 'community.png',
+      onPress: () => {
+        navigation.navigate('AssetsMessage', {
+          screen: 'Community',
+          title: '甜虾社区信息发布规范',
+        });
+      },
+    },
+    {
+      title: '超时规定',
+      img: 'timeout.png',
+      style: {marginTop: 20 * widthScale},
+      onPress: () => {
+        navigation.navigate('AssetsMessage', {
+          screen: 'Timeout',
+          title: '甜虾交易超时说明',
+        });
+      },
+    },
   ];
   const noLogin = (
     <TouchableWithoutFeedback
@@ -143,13 +176,7 @@ function UserScreen({isLogin, user}: UserScreenProps) {
               }}
               data={sellData}></UserFeatureArea>
             <UserFeatureArea title="买在甜虾" data={buyData}></UserFeatureArea>
-            <UserFeatureArea title="玩在甜虾" data={playData}></UserFeatureArea>
-            <UserFeatureArea
-              title="其他工具"
-              data={otherData}
-              style={{
-                marginBottom: 15 * widthScale,
-              }}></UserFeatureArea>
+            <UserFeatureArea title="其他工具" data={playData}></UserFeatureArea>
           </>
         ) : (
           noLogin

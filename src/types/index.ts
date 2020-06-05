@@ -73,6 +73,8 @@ export interface LoginBottomProps {
 export interface LoginModuleProps {
   addUser: (user: UserResponse) => void;
   isLogin: boolean;
+  forceRefresh: boolean;
+  setRefresh(status: boolean): void;
 }
 
 /**
@@ -81,6 +83,7 @@ export interface LoginModuleProps {
 export interface MainProps {
   isLogin: boolean;
   isLoading: boolean;
+  err: string;
 }
 
 export type OrderStackList = {
@@ -104,7 +107,6 @@ export type OrderStackList = {
     isSale: boolean;
     description: string;
   };
-  OrderEvaluate: undefined;
   OrderScreen: {
     isBuy: boolean;
   };
@@ -124,6 +126,7 @@ export type MainStackList = {
   Classificat: {kindId: string; kindName: string};
   Detail: {commodityId: string};
   Order: {title: string};
+  AssetsMessage: {title: string};
 };
 
 /**
@@ -161,7 +164,7 @@ export interface UserFeatureAreaProps {
   title: string;
   data: {
     title: string;
-    count: number;
+    count?: number;
     img: string;
     style?: StyleProp<ViewStyle>;
     onPress?: ((event: GestureResponderEvent) => void) | undefined;
@@ -406,6 +409,7 @@ export interface RefreshListProps<DataT> {
     | ((event: NativeSyntheticEvent<NativeScrollEvent>) => void)
     | undefined;
   enabelRefresh?: boolean;
+  isLoading: boolean;
 }
 
 /**
@@ -803,7 +807,6 @@ export type ProfileDataState = {
  */
 export interface OrderProps {
   forceRefresh: boolean;
-  setRefresh(status: boolean): void;
   user: {
     _id: string;
     headImg: string;
@@ -845,3 +848,54 @@ export interface GetBuyrtOrSellerResponse {
     status: 0 | 1 | 2 | 3;
   }[];
 }
+
+/**
+ * 发送货物
+ */
+export interface AllGoodsProps {
+  tabLabel: string;
+  data: GetBuyrtOrSellerResponse['data'] | undefined;
+  status: 0 | 1 | 2 | 3;
+  isBuy: boolean;
+  isLoaidng: boolean;
+  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+/**
+ * 盒子操作单个参数
+ */
+export interface OperateBoxs {
+  data: GetBuyrtOrSellerResponse['data'][0] | undefined;
+  isBuy: boolean;
+  status: 0 | 1 | 2 | 3;
+  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+/**
+ * 渲染按钮参数
+ */
+export interface OrderRenderButton {
+  status: 0 | 1 | 2 | 3;
+  isBuy: boolean;
+  /**
+   * 订单id
+   */
+  orderId?: string;
+  /**
+   * 本人id
+   */
+  user: {
+    _id: string;
+    headImg: string;
+    userName: string;
+  };
+  forceRefresh: boolean;
+  setRefresh(status: boolean): void;
+  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export type AssetsMessageStackList = {
+  Pact: undefined;
+  Community: undefined;
+  Timeout: undefined;
+};

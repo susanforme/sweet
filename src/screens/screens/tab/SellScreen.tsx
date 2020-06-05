@@ -17,15 +17,24 @@ function SellScreen({isLogin, forceRefresh}: SellScreenProps) {
   const [recommend, setRecommend] = useState<RecommendGetResponse['data']>();
   const [isRefresh, setIsRefresh] = useState(false);
   const navigation = useNavigation<NavigationProp<MainStackList, 'Tab'>>();
+  const [isLoading, setIsLoading] = useState(false);
+
   const getRecommendList = () => {
     setIsRefresh(true);
+    setIsLoading(true);
     setTimeout(() => {
-      axios.get<RecommendGetResponse>('/commodity/recommend').then((res) => {
-        setRecommend(res.data.data);
-        setTimeout(() => {
-          setIsRefresh(false);
-        }, 0);
-      });
+      axios
+        .get<RecommendGetResponse>('/commodity/recommend')
+        .then((res) => {
+          setRecommend(res.data.data);
+          setTimeout(() => {
+            setIsLoading(false);
+            setIsRefresh(false);
+          }, 0);
+        })
+        .catch(() => {
+          setIsLoading(false);
+        });
     }, 0);
   };
   useEffect(() => {
@@ -38,6 +47,7 @@ function SellScreen({isLogin, forceRefresh}: SellScreenProps) {
       <RefreshList
         isRefresh={isRefresh}
         data={recommend}
+        isLoading={isLoading}
         ListHeaderComponent={
           <View>
             <View style={styles.top}>

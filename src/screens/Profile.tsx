@@ -47,7 +47,7 @@ function Profile({forceRefresh, user}: ProfileProps) {
           style={styles.loading}
         />
       ) : (
-        <RefreshList data={data} />
+        <RefreshList data={data} isLoading={isLoading} />
       )}
     </View>
   );
