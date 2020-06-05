@@ -1,12 +1,6 @@
-import React from 'react';
-import {
-  View,
-  Text,
-  TouchableWithoutFeedback,
-  TextInput,
-  KeyboardAvoidingView,
-} from 'react-native';
-import {OrderRenderButtonStyles as styles} from '@/style';
+import React, {useState} from 'react';
+import {View, Text, TouchableWithoutFeedback, TextInput} from 'react-native';
+import {OrderRenderButtonStyles as styles, height} from '@/style';
 import {OrderRenderButton, MyAppState} from '@/types';
 import {connect} from 'react-redux';
 import {ActionTypes} from '@/store/actionTypes';
@@ -14,6 +8,8 @@ import {changeOrderStatusByStatus} from '@/tools';
 import {Tip} from 'beeshell/dist/components/Tip';
 import {BottomModal} from 'beeshell/dist/components/BottomModal';
 import {Button} from 'beeshell/dist/components/Button';
+import {useKeyBoardHeight} from '@/hook';
+import {axios} from '@/api';
 
 function RenderButton({
   isBuy,
@@ -31,6 +27,29 @@ function RenderButton({
     ['卖家发货中', '确认收货', '发表评价', '已完成'],
   ];
   const bottomRef = React.createRef<BottomModal>();
+  const [isShow, setIsShow] = useState(false);
+  const [evaluate, setEvaluate] = useState('');
+  const keyboardHeight = useKeyBoardHeight();
+  const sendEvaluate = () => {
+    if (!evaluate) {
+      return Tip.show('不能为空', 300);
+    }
+    bottomRef.current?.close();
+    setIsLoading(true);
+    setIsShow(false);
+    setTimeout(() => {
+      axios
+        .post('/order/buyer/evaluate', {
+          orderId,
+          userId: user._id,
+          evaluate,
+        })
+        .then(() => {
+          setRefresh(!forceRefresh);
+        })
+        .catch(() => Tip.show('网络错误', 300));
+    }, 0);
+  };
   return (
     <TouchableWithoutFeedback
       onPress={() => {
@@ -55,22 +74,58 @@ function RenderButton({
         <Text
           style={[
             styles.commText,
-            isBuy === Boolean(status) ? styles.operate : styles.nonOperate,
+            isBuy === Boolean(status) && status !== 3
+              ? styles.operate
+              : styles.nonOperate,
           ]}>
           {tips[Number(isBuy)][status]}
         </Text>
         <BottomModal
           ref={bottomRef}
           title=""
+          onClose={() => {
+            setIsShow(false);
+          }}
           leftLabelText=""
           rightLabelText="">
-          <KeyboardAvoidingView>
-            <KeyboardAvoidingView>
-              <Text>评价: </Text>
-              <TextInput />
-            </KeyboardAvoidingView>
-            <Button>提交评价</Button>
-          </KeyboardAvoidingView>
+          <View
+            style={[
+              styles.bottom,
+              isShow && {height: 0.22 * height + keyboardHeight},
+            ]}>
+            <View style={styles.bottomLine}>
+              <Text style={styles.bottomTips}>评价: </Text>
+              <TextInput
+                placeholder="请输入对该商品的评价,最大字数30"
+                onFocus={() => {
+                  setIsShow(true);
+                }}
+                blurOnSubmit
+                maxLength={30}
+                style={styles.bottomInput}
+                onBlur={() => {
+                  setIsShow(false);
+                }}
+                value={evaluate}
+                onChangeText={(text) => {
+                  setEvaluate(text);
+                }}
+                onSubmitEditing={() => {
+                  sendEvaluate();
+                }}
+              />
+            </View>
+            <View style={styles.btnFather}>
+              <Button
+                textStyle={styles.bottomBtnText}
+                style={styles.bottomBtn}
+                onPress={() => {
+                  sendEvaluate();
+                }}>
+                提交评价
+              </Button>
+            </View>
+          </View>
         </BottomModal>
       </View>
     </TouchableWithoutFeedback>

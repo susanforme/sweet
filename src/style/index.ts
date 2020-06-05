@@ -1954,4 +1954,39 @@ export const OrderRenderButtonStyles = StyleSheet.create({
     paddingRight: 10 * widthScale,
     fontSize: 14 * widthScale,
   },
+  bottom: {
+    padding: 10 * widthScale,
+    height: height * 0.22,
+  },
+  bottomLine: {
+    display: 'flex',
+    flexDirection: 'row',
+    padding: 10 * widthScale,
+    borderBottomWidth: 1,
+    alignItems: 'center',
+    borderBottomColor: 'rgba(1,1,1,0.1)',
+  },
+  btnFather: {
+    padding: 12 * widthScale,
+    display: 'flex',
+    alignItems: 'flex-end',
+  },
+  bottomBtn: {
+    backgroundColor: '#FFEE24',
+    width: '30%',
+    paddingLeft: 0 * widthScale,
+    paddingRight: 0 * widthScale,
+    borderRadius: 5 * widthScale,
+    borderTopWidth: 0,
+  },
+  bottomBtnText: {
+    color: 'white',
+  },
+  bottomInput: {
+    width: width - 80 * widthScale,
+    fontSize: 16 * widthScale,
+  },
+  bottomTips: {
+    fontSize: 16 * widthScale,
+  },
 });
