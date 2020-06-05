@@ -20,7 +20,9 @@ export default function RecordList({data, me, you}: RecordListProps) {
           source={{uri: user.headImg}}
           style={[styles.img, isMe ? styles.meImg : styles.youImg]}></Image>
         <View style={[styles.msg, isMe ? styles.meMsg : styles.youMsg]}>
-          <Text style={styles.text} selectable={true}>
+          <Text
+            style={[styles.text, !isMe && {color: 'black'}]}
+            selectable={true}>
             {data.msg || ' '}
           </Text>
         </View>

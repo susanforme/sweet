@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {View, Text, TextInput, TouchableWithoutFeedback} from 'react-native';
-import {DepositBlanceStyles as styles} from '@/style';
+import {DepositBlanceStyles as styles, widthScale} from '@/style';
 import {axios} from '@/api';
 import {GetCaptchaResponse, DepositBalanceProps} from '@/types';
 import {Button} from 'beeshell/dist/components/Button';
@@ -72,6 +72,8 @@ export default function DepositBlance({
                 <SvgXml
                   width="100%"
                   height="100%"
+                  scaleX={widthScale}
+                  scaleY={widthScale}
                   xml={base64.decode(
                     data?.imgPath.replace('data:image/svg+xml;base64,', '') ||
                       '',

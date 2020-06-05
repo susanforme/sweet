@@ -1576,8 +1576,8 @@ export const DepositBlanceStyles = StyleSheet.create({
     borderRadius: 10 * widthScale,
   },
   img: {
-    flex: 3,
     height: '80%',
+    width: 150 * widthScale,
   },
   lineFather: {
     paddingLeft: 18 * widthScale,
