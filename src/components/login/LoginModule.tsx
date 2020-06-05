@@ -14,7 +14,12 @@ import {UserResponse, LoginModuleProps, MyAppState} from '@/types';
 import {ActionTypes} from '@/store/actionTypes';
 import {useNavigation} from '@react-navigation/native';
 
-function LoginModule({addUser, isLogin}: LoginModuleProps) {
+function LoginModule({
+  addUser,
+  isLogin,
+  forceRefresh,
+  setRefresh,
+}: LoginModuleProps) {
   const [user, setUser] = useState('');
   const [password, setPassword] = useState('');
   const [rePassword, setRePassword] = useState('');
@@ -131,9 +136,11 @@ function LoginModule({addUser, isLogin}: LoginModuleProps) {
           onPress={() => {
             checkPassword(user, password, rePassword, isRegister)
               .then((data) => {
+                setRefresh(!forceRefresh);
                 addUser(data.data.data);
               })
               .catch((err) => {
+                setRefresh(!forceRefresh);
                 setError(err.message);
                 dialogRef.current?.open();
               });
@@ -157,6 +164,7 @@ function LoginModule({addUser, isLogin}: LoginModuleProps) {
 
 const stateToProps = (state: MyAppState) => ({
   isLogin: state.isLogin,
+  forceRefresh: state.forceRefresh,
 });
 
 const dispatchToProps = (dispatch: Function) => ({
@@ -164,6 +172,15 @@ const dispatchToProps = (dispatch: Function) => ({
     const action = {
       type: ActionTypes.ADD_USER_MSG,
       data: {user},
+    };
+    dispatch(action);
+  },
+  setRefresh(status: boolean) {
+    const action = {
+      type: ActionTypes.ENABLE_FORCE_REFRESH,
+      data: {
+        status,
+      },
     };
     dispatch(action);
   },
@@ -188,7 +205,7 @@ async function checkPassword(
         password: MD5(password),
       })
       .catch((err) => {
-        throw new Error(err.response.data.data.msg);
+        throw new Error(err.response?.data?.data.msg || '网络错误');
       });
     return data;
   } else {

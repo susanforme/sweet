@@ -28,10 +28,8 @@ function SettingStackScreen({clearUserData, isLogin}: SettingProps) {
     }
   }, [msg]);
   const topData = getTopData(navigation);
-  const middleData = getMiddleData();
   const bottomData = getBottomData(navigation);
   const Top = getAreaByData(topData[0], topData[1], topData[2]);
-  const Middle = getAreaByData(middleData[0], middleData[1], middleData[2]);
   const Bottom = getAreaByData(bottomData[0], bottomData[1], bottomData[2]);
   const Refresh = getAreaByData(
     [{title: '清除缓存', iconName: 'reload1'}],
@@ -48,7 +46,6 @@ function SettingStackScreen({clearUserData, isLogin}: SettingProps) {
   return (
     <ScrollView>
       {isLogin ? Top : null}
-      {Middle}
       {Bottom}
       {Refresh}
       <Button
@@ -170,18 +167,6 @@ function getTopData(navigation: Navigation): any {
           });
         },
       },
-    ],
-  ];
-}
-
-function getMiddleData(): any {
-  return [
-    [
-      {title: '宝贝自动回复', iconName: 'swap'},
-      {title: '图片质量设置', iconName: 'picture'},
-      {title: '自动播放视频设置', iconName: 'playcircleo'},
-      {title: '语音电话设置', iconName: 'phone'},
-      {title: '隐私', iconName: 'infocirlceo'},
     ],
   ];
 }

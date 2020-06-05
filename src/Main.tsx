@@ -20,18 +20,22 @@ import Classificat from '@/screens/Classificat';
 import Detail from '@/screens/Detail';
 import OrderStack from '@/screens/OrderStack';
 import AssetsMessageScreen from './screens/AssetsMessage';
+import {Tip} from 'beeshell/dist/components/Tip';
 
 const MainStack = createStackNavigator<MainStackList>();
 
-function Main({isLogin, isLoading}: MainProps) {
+function Main({isLogin, isLoading, err}: MainProps) {
   const paddingTop = StatusBar.currentHeight || 30;
   useEffect(() => {
     store.dispatch(verifyAccount());
+    if (!isLogin && err) {
+      Tip.show('网络错误', 1000);
+    }
   }, []);
   if (!isLoading) {
     SplashScreen.hide();
   }
-  console.log(isLogin, isLoading);
+
   return (
     <NavigationContainer>
       <MainStack.Navigator initialRouteName="Tab">
@@ -116,6 +120,7 @@ function Main({isLogin, isLoading}: MainProps) {
 const stateToProps = (state: MyAppState) => ({
   isLogin: state.isLogin,
   isLoading: state.isLoading,
+  err: state.err.verifyAccount,
 });
 
 export default connect(stateToProps)(Main);

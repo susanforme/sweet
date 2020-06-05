@@ -73,6 +73,8 @@ export interface LoginBottomProps {
 export interface LoginModuleProps {
   addUser: (user: UserResponse) => void;
   isLogin: boolean;
+  forceRefresh: boolean;
+  setRefresh(status: boolean): void;
 }
 
 /**
@@ -81,6 +83,7 @@ export interface LoginModuleProps {
 export interface MainProps {
   isLogin: boolean;
   isLoading: boolean;
+  err: string;
 }
 
 export type OrderStackList = {
