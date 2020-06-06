@@ -16,7 +16,12 @@ import {
 import {Tip} from 'beeshell/dist/components/Tip';
 import AsyncStorage from '@react-native-community/async-storage';
 
-function SettingStackScreen({clearUserData, isLogin}: SettingProps) {
+function SettingStackScreen({
+  clearUserData,
+  isLogin,
+  forceRefresh,
+  setRefresh,
+}: SettingProps) {
   const dialogRef = useRef<Dialog>(null);
   const clearDialogRef = useRef<Dialog>(null);
   const [msg, setMsg] = useState('');
@@ -56,12 +61,15 @@ function SettingStackScreen({clearUserData, isLogin}: SettingProps) {
           axios
             .get('/user/logout')
             .then(() => {
+              setRefresh(!forceRefresh);
               setIsLogout(true);
               clearUserData();
               setMsg('注销成功');
               AsyncStorage.clear();
             })
             .catch(() => {
+              setRefresh(!forceRefresh);
+
               setMsg('注销失败');
             });
         }}>
@@ -84,6 +92,7 @@ function SettingStackScreen({clearUserData, isLogin}: SettingProps) {
         confirmLabelTextStyle={{color: 'red'}}
         cancelLabelTextStyle={{color: 'green'}}
         confirmCallback={() => {
+          setRefresh(!forceRefresh);
           AsyncStorage.clear();
         }}
         bodyText="你确定要清楚所有缓存吗?"></Dialog>
@@ -93,6 +102,7 @@ function SettingStackScreen({clearUserData, isLogin}: SettingProps) {
 
 const stateToProps = (state: MyAppState) => ({
   isLogin: state.isLogin,
+  forceRefresh: state.forceRefresh,
 });
 
 const dispatchToProps = (dispatch: Function) => ({
@@ -101,6 +111,15 @@ const dispatchToProps = (dispatch: Function) => ({
       type: ActionTypes.CLEAR_USER_DATA,
     };
     dispatch(actions);
+  },
+  setRefresh(status: boolean) {
+    const action = {
+      type: ActionTypes.ENABLE_FORCE_REFRESH,
+      data: {
+        status,
+      },
+    };
+    dispatch(action);
   },
 });
 

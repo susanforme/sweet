@@ -145,6 +145,7 @@ export type TabStackList = {
 export interface UserScreenProps {
   isLogin: boolean;
   user: MyAppState['user'];
+  forceRefresh: boolean;
 }
 
 /**
@@ -206,6 +207,8 @@ export interface SingleLineSettingAreaProps {
 export interface SettingProps {
   clearUserData: () => void;
   isLogin: boolean;
+  setRefresh(status: boolean): void;
+  forceRefresh: boolean;
 }
 
 /**
@@ -548,6 +551,7 @@ export interface MessageScreenProps {
     userName: string;
   };
   isLogin: boolean;
+  forceRefresh: boolean;
 }
 
 /**

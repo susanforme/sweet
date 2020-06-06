@@ -19,7 +19,7 @@ import {useNavigation} from '@react-navigation/native';
 import {UserScreenStyles as styles} from '@/style';
 import UserHeader from '@/components/user/UserHeader';
 
-function UserScreen({isLogin, user}: UserScreenProps) {
+function UserScreen({isLogin, user, forceRefresh}: UserScreenProps) {
   const {userName, _id, headImg} = user;
   const navigation = useNavigation();
   const [data, setData] = useState<ProfileUserResponse['data']>({
@@ -40,7 +40,7 @@ function UserScreen({isLogin, user}: UserScreenProps) {
         })
         .catch(() => {});
     }
-  }, []);
+  }, [forceRefresh]);
   const sellData = [
     {
       title: '我发布的',
@@ -189,6 +189,7 @@ function UserScreen({isLogin, user}: UserScreenProps) {
 const stateToProps = (state: MyAppState) => ({
   isLogin: state.isLogin,
   user: state.user,
+  forceRefresh: state.forceRefresh,
 });
 
 export default connect(stateToProps)(UserScreen);
