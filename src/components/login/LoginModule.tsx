@@ -1,5 +1,5 @@
 import React, {useState, useRef, useEffect} from 'react';
-import {View, Image, Animated, KeyboardAvoidingView} from 'react-native';
+import {Image, Animated, KeyboardAvoidingView} from 'react-native';
 import {widthScale, LoginModuleStyles as styles} from '@/style';
 import {Input} from 'beeshell/dist/components/Input';
 import {Form} from 'beeshell/dist/components/Form';

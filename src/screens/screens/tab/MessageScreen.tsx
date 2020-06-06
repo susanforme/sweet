@@ -21,7 +21,7 @@ import Loading from '@/components/comm/Loading';
 import {axios} from '@/api';
 import {Tip} from 'beeshell/dist/components/Tip';
 
-function MessageScreen({isLogin, user}: MessageScreenProps) {
+function MessageScreen({isLogin, user, forceRefresh}: MessageScreenProps) {
   const navigation = useNavigation<NavigationProp<MainStackList>>();
   const [isLoading, setIsLoading] = useState(false);
   const [msgList, setMsgList] = useState<GetMsgListData['data']>();
@@ -41,7 +41,7 @@ function MessageScreen({isLogin, user}: MessageScreenProps) {
           return Tip.show('网络错误', 500);
         });
     }
-  }, [isLogin]);
+  }, [isLogin, forceRefresh]);
   const noLogin = (
     <TouchableWithoutFeedback
       onPress={() => {
@@ -58,25 +58,27 @@ function MessageScreen({isLogin, user}: MessageScreenProps) {
   );
   const msgLists = msgList?.map((v) => {
     return (
-      <TouchableNativeFeedback
-        key={v._id}
-        onPress={() => {
-          navigation.navigate('Chat', {
-            userId: v._id,
-            headImg: v.headImg,
-            userName: v.userName,
-          });
-        }}>
-        <View style={styles.singleMsg}>
-          <View style={styles.msglist}>
-            <Image source={{uri: v.headImg}} style={styles.headImg}></Image>
-            <View style={styles.right}>
-              <Text style={styles.username}>{v.userName}</Text>
-              <Text style={styles.tip}>你有一条消息</Text>
+      v && (
+        <TouchableNativeFeedback
+          key={v?._id}
+          onPress={() => {
+            navigation.navigate('Chat', {
+              userId: v._id,
+              headImg: v?.headImg,
+              userName: v?.userName,
+            });
+          }}>
+          <View style={styles.singleMsg}>
+            <View style={styles.msglist}>
+              <Image source={{uri: v?.headImg}} style={styles.headImg}></Image>
+              <View style={styles.right}>
+                <Text style={styles.username}>{v?.userName}</Text>
+                <Text style={styles.tip}>你有一条消息</Text>
+              </View>
             </View>
           </View>
-        </View>
-      </TouchableNativeFeedback>
+        </TouchableNativeFeedback>
+      )
     );
   });
 
@@ -99,6 +101,7 @@ function MessageScreen({isLogin, user}: MessageScreenProps) {
 const stateToProps = (state: MyAppState) => ({
   user: state.user,
   isLogin: state.isLogin,
+  forceRefresh: state.forceRefresh,
 });
 
 export default connect(stateToProps)(MessageScreen);

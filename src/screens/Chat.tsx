@@ -132,7 +132,9 @@ function onRefresh({
 
 function getTime(time: string) {
   const date = new Date(time);
-  return `${date.getMonth()}-${date.getDate()} ${date.getHours()}:${date
+  return `${
+    date.getMonth() + 1
+  }-${date.getDate()} ${date.getHours()}:${date
     .getMinutes()
     .toString()
     .padStart(2, '0')}`;
